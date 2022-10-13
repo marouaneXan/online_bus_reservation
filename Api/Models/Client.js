@@ -4,5 +4,8 @@ const clientSchema=mongoose.Schema({
         type:String,
         required:[true,"Please add a gendar field"]
     },
-    
+    nom:{
+        type:String,
+        required:[true,"Please add a name field"]
+    }
 })
