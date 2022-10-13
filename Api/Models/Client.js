@@ -6,6 +6,10 @@ const clientSchema=mongoose.Schema({
     },
     nom:{
         type:String,
-        required:[true,"Please add a name field"]
+        required:[true,"Please add a firstname field"]
+    },
+    prenom:{
+        type:String,
+        required:[true,"Please add a lastname field"]
     }
 })
