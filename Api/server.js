@@ -12,8 +12,11 @@ connectDB()
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 
-//Routes
+//Admin Routes
 app.use('/api/v1/adminAuth/',require('./Routes/AdminAuthRoute'))
+
+//Client Routes
+app.use('/api/v1/clientAuth/',require('./Routes/ClientAuthRoute'))
 
 //Error handler
 app.use(ErrorHandler)
