@@ -42,3 +42,4 @@ const clientSchema=mongoose.Schema({
         required:[true,"Please add a password field"]
     }
 })
+module.exports=mongoose.model('Client',clientSchema)
