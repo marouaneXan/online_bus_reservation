@@ -28,5 +28,17 @@ const clientSchema=mongoose.Schema({
     adress:{
         type:String,
         required:[true,"Please add a adress field"]
+    },
+    ville:{
+        type:String,
+        required:[true,"Please add a city field"]
+    },
+    nationalite:{
+        type:String,
+        required:[true,"Please add a country field"]
+    },
+    password:{
+        type:String,
+        required:[true,"Please add a password field"]
     }
 })
