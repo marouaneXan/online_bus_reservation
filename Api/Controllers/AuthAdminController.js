@@ -24,6 +24,14 @@ const login = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Password is incorrect");
   }
+  if(admin && isPasswordCorrect){
+    res.status(201).json({
+        message:"Login successfully",
+    })
+  }else{
+    res.status(400)
+    throw new Error('Invalid Admin data')
+  }
 });
 module.exports = {
   login,
