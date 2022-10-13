@@ -8,6 +8,6 @@ const connectDB =require('./Config/db')
 connectDB()
 
 //Routes
-app.use('/api/v1/auth/',require('./Routes/AuthRoute'))
+app.use('/api/v1/auth/',require('./Routes/AdminAuthRoute'))
 
 app.listen(PORT,()=>console.log('Server running at the PORT '+PORT))
