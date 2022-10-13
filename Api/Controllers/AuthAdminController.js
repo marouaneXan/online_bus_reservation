@@ -1,3 +1,4 @@
+const asyncHandler = require("express-async-handler");
 // @desc POST Register
 // @route /api/v1/auth/register
 // access public
