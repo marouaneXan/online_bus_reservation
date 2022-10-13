@@ -16,5 +16,9 @@ const clientSchema=mongoose.Schema({
         type:String,
         required:[true,"Please add a email field"],
         unique:true
+    },
+    date_naissance:{
+        type:String,
+        required:[true,"Please add a birthday field"]
     }
 })
