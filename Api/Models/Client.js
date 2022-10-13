@@ -24,5 +24,9 @@ const clientSchema=mongoose.Schema({
     tel:{
         type:String,
         required:[true,"Please add a phone field"]
+    },
+    adress:{
+        type:String,
+        required:[true,"Please add a adress field"]
     }
 })
