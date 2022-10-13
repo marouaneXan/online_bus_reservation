@@ -11,5 +11,10 @@ const clientSchema=mongoose.Schema({
     prenom:{
         type:String,
         required:[true,"Please add a lastname field"]
+    },
+    email:{
+        type:String,
+        required:[true,"Please add a email field"],
+        unique:true
     }
 })
