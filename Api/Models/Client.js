@@ -20,5 +20,9 @@ const clientSchema=mongoose.Schema({
     date_naissance:{
         type:String,
         required:[true,"Please add a birthday field"]
+    },
+    tel:{
+        type:String,
+        required:[true,"Please add a phone field"]
     }
 })
