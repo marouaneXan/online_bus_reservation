@@ -1,6 +1,7 @@
 const express=require('express')
 const dotenv=require('dotenv').config()
 const PORT=process.env.PORT || 5000
+const {ErrorHandler}=require('./Middleware/ErrorMiddleware')
 const app=express()
 
 //mongodb connection
@@ -13,5 +14,8 @@ app.use(express.urlencoded({extended:false}))
 
 //Routes
 app.use('/api/v1/adminAuth/',require('./Routes/AdminAuthRoute'))
+
+//Error handler
+app.use(ErrorHandler)
 
 app.listen(PORT,()=>console.log('Server running at the PORT '+PORT))
