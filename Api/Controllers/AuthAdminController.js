@@ -27,6 +27,7 @@ const login = asyncHandler(async (req, res) => {
   if(admin && isPasswordCorrect){
     res.status(201).json({
         message:"Login successfully",
+        token:generateToken(admin._id)
     })
   }else{
     res.status(400)
