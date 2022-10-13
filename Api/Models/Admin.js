@@ -7,7 +7,7 @@ const adminSchema=mongoose.Schema({
     email:{
         type:String,
         required:[true,"Please add a email field"],
-        unique
+        unique:true
     },
     password:{
         type:String,

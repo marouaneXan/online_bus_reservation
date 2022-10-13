@@ -1,19 +1,17 @@
 const asyncHandler = require("express-async-handler");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-// @desc POST Register
-// @route /api/v1/auth/register
-// access public
-const register=async(req,res)=>{
-    res.send('register admin')
-}
+const Admin = require("../Models/Admin");
 // @desc POST Login
-// @route /api/v1/auth/login
+// @route /api/v1/adminAuth/login
 // access public
-const login=async(req,res)=>{
-    res.send('login admin')
-}
-module.exports={
-    register,
-    login
-}
+const login = asyncHandler(async (req, res) => {
+    const {email,password}=req.body
+    if(!email || !password){
+        res.status(400)
+        throw new Error('Please add all fields')
+    }
+});
+module.exports = {
+  login,
+};
