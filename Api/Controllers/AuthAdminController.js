@@ -11,6 +11,8 @@ const login = asyncHandler(async (req, res) => {
         res.status(400)
         throw new Error('Please add all fields')
     }
+    const admin=await Admin.findOne({email})
+
 });
 module.exports = {
   login,
