@@ -57,15 +57,13 @@ const register = asyncHandler(async (req, res) => {
     nationalite,
     password: hashedPassword,
   });
-  if(client){
+  if (client) {
     res.status(201).json({
-        message:"Account created successfully",
-        token:generateToken(client._id)
-    })
+      message: "Account created successfully",
+      token: generateToken(client._id),
+    });
   }
-  
 });
-
 
 // @desc POST Login
 // @route /api/v1/adminAuth/login
@@ -89,24 +87,24 @@ const login = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Password is incorrect");
   }
-  if(client && isPasswordCorrect){
+  if (client && isPasswordCorrect) {
     res.status(201).json({
-        message:"Login successfully",
-        token:generateToken(client._id)
-    })
-  }else{
-    res.status(400)
-    throw new Error('Invalid Client data')
+      message: "Login successfully",
+      token: generateToken(client._id),
+    });
+  } else {
+    res.status(400);
+    throw new Error("Invalid Client data");
   }
 });
 
-//Generate JWT 
-const generateToken=(client_id)=>{
-    return jwt.sign({client_id},process.env.JWT_SECRET,{
-        expiresIn:"30d"
-    })
-}
+//Generate JWT
+const generateToken = (client_id) => {
+  return jwt.sign({ client_id }, process.env.JWT_SECRET, {
+    expiresIn: "30d",
+  });
+};
 module.exports = {
   register,
-  login
+  login,
 };
