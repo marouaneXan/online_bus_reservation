@@ -8,9 +8,14 @@ const routeSchema=mongoose.Schema({
         type:String,
         required:[true,"Please add a city name field"]
     },
+    break_time:{
+        type:String,
+        required:[true,"Please add a break time field"]
+    },
     distance:{
         type:String,
         required:[true,"Please add a distance field"]
     },
+
 })
 module.exports = mongoose.model("Route", routeSchema);
