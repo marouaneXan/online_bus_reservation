@@ -15,7 +15,6 @@ const routeSchema=mongoose.Schema({
     distance:{
         type:String,
         required:[true,"Please add a distance field"]
-    },
-
+    }
 })
 module.exports = mongoose.model("Route", routeSchema);

@@ -1,6 +1,6 @@
 const express=require('express')
+const {getAllTrips}=require('../Controllers/TripController')
 const router = express.Router();
-router.get('/',(req,res)=>{
-    res.send('Trips')
-})
+
+router.get('/',getAllTrips)
 module.exports=router
