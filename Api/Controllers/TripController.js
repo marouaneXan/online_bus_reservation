@@ -1,4 +1,5 @@
 const asyncHandler = require("express-async-handler");
+const Trip=require('../Models/Trip')
 
 //@desc GET Trips
 //@route /api/v1/trips
@@ -20,6 +21,18 @@ const addTrip = asyncHandler(async (req, res) => {
     price,
     distance,
   } = req.body;
+  if (
+    !departure_city ||
+    !arrival_city ||
+    !departure_date ||
+    !departure_time ||
+    !arrival_time ||
+    !price ||
+    !distance
+  ) {
+    res.status(400)
+    throw new Error('Please add all fields')
+  }
 });
 module.exports = {
   getAllTrips,
