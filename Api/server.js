@@ -21,6 +21,9 @@ app.use('/api/v1/clientAuth/',require('./Routes/ClientAuthRoute'))
 //Trip Routes
 app.use('/api/v1/trips',require('./Routes/TripRoute'))
 
+//Car Routes
+app.use('/api/v1/cars',require('./Routes/CarRoute'))
+
 
 //Error handler
 app.use(ErrorHandler)
