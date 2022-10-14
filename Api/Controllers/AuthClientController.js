@@ -57,6 +57,12 @@ const register = asyncHandler(async (req, res) => {
     nationalite,
     password: hashedPassword,
   });
+  if(client){
+    res.status(201).json({
+        message:"Account created successfully",
+    })
+  }
+  
 });
 module.exports = {
   register,
