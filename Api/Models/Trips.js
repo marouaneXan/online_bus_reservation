@@ -21,7 +21,7 @@ const tripSchema = mongoose.Schema(
       type: String,
       reqired: [true, "Please add a Arrival time Field"],
     },
-    bus: {
+    car: {
       type: mongoose.Schema.Types.ObjectId,
       reqired: true,
       ref: "Bus",
