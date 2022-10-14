@@ -18,6 +18,10 @@ app.use('/api/v1/adminAuth/',require('./Routes/AdminAuthRoute'))
 //Client Routes
 app.use('/api/v1/clientAuth/',require('./Routes/ClientAuthRoute'))
 
+//Trip Routes
+app.use('/api/v1/trips',require('./Routes/TripRoute'))
+
+
 //Error handler
 app.use(ErrorHandler)
 

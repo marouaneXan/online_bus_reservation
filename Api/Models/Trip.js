@@ -24,9 +24,9 @@ const tripSchema = mongoose.Schema(
     car: {
       type: mongoose.Schema.Types.ObjectId,
       reqired: true,
-      ref: "Bus",
+      ref: "Car",
     },
-    Route: {
+    route: {
       type: mongoose.Schema.Types.ObjectId,
       reqired: true,
       ref: "Route",
