@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const Client=require('../Models/Client')
 
 //@desc POST register
 //@route /api/v1/clientAuth/register
@@ -32,6 +33,11 @@ const register = asyncHandler(async (req, res) => {
   ) {
     res.status(400);
     throw new Error("Please add all fields");
+  }
+  const clientExist=await Client.findOne({email})
+  if(clientExist){
+    res.status(400)
+    throw new Error('Oops!! Client Already exist')
   }
 });
 module.exports = {
