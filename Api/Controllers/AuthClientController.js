@@ -108,4 +108,5 @@ const generateToken=(client_id)=>{
 }
 module.exports = {
   register,
+  login
 };
