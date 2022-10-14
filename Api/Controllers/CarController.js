@@ -14,6 +14,14 @@ const addCar=asyncHandler(async(req,res)=>{
         res.status(200).json(newCar)
 })
 
+//@desc POST addCar
+//@route /api/v1/cars
+//@access private
+const getAllCars=asyncHandler(async(req,res)=>{
+    const cars=await Car.find()
+    res.status(200).json(cars)
+})
 module.exports={
-    addCar
+    addCar,
+    getAllCars
 }
