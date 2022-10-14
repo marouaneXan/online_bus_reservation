@@ -66,6 +66,40 @@ const register = asyncHandler(async (req, res) => {
   
 });
 
+
+// @desc POST Login
+// @route /api/v1/adminAuth/login
+// access public
+const login = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
+  if (!email || !password) {
+    res.status(400);
+    throw new Error("Please add all fields");
+  }
+  const client = await Client.findOne({ email });
+  if (!client) {
+    res.status(400);
+    throw new Error("Invalid Client data");
+  }
+  const isPasswordCorrect = await bcrypt.compare(
+    req.body.password,
+    client.password
+  );
+  if (!isPasswordCorrect) {
+    res.status(400);
+    throw new Error("Password is incorrect");
+  }
+  if(client && isPasswordCorrect){
+    res.status(201).json({
+        message:"Login successfully",
+        token:generateToken(client._id)
+    })
+  }else{
+    res.status(400)
+    throw new Error('Invalid Client data')
+  }
+});
+
 //Generate JWT 
 const generateToken=(client_id)=>{
     return jwt.sign({client_id},process.env.JWT_SECRET,{
