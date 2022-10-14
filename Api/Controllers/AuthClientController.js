@@ -39,6 +39,10 @@ const register = asyncHandler(async (req, res) => {
     res.status(400)
     throw new Error('Oops!! Client Already exist')
   }
+  
+   //Hash password
+   const salt = await bcrypt.genSalt(10);
+   const hashedPassword = await bcrypt.hash(password, salt);
 });
 module.exports = {
   register,
