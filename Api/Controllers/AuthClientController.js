@@ -60,6 +60,7 @@ const register = asyncHandler(async (req, res) => {
   if(client){
     res.status(201).json({
         message:"Account created successfully",
+        token:generateToken(client._id)
     })
   }
   
