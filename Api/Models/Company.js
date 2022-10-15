@@ -5,3 +5,4 @@ const companySchema=mongoose.Schema({
         required:[true,"Please add a name of company"]
     }
 })
+module.exports=mongoose.model("Company",companySchema)
