@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const routeSchema=mongoose.Schema({
+const breakPointSchema=mongoose.Schema({
     arrival_time:{
         type:String,
         required:[true,"Please add arrival time field"]
@@ -17,4 +17,4 @@ const routeSchema=mongoose.Schema({
         required:[true,"Please add a distance field"]
     }
 })
-module.exports = mongoose.model("Route", routeSchema);
+module.exports = mongoose.model("Break_Point", breakPointSchema);

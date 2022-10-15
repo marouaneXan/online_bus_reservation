@@ -12,6 +12,8 @@ connectDB()
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 
+
+//***************************************Global Routes *********************************/
 //Admin Route
 app.use('/api/v1/adminAuth/',require('./Routes/AdminAuthRoute'))
 
@@ -26,6 +28,8 @@ app.use('/api/v1/cars',require('./Routes/CarRoute'))
 
 //Break points Routes
 app.use('/api/v1/break_points',require('./Routes/BreakPointsRoute'))
+
+//*************************************************************************************/
 
 
 //Error handler
