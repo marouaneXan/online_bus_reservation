@@ -26,6 +26,9 @@ app.use('/api/v1/trips',require('./Routes/TripRoute'))
 //Car Route
 app.use('/api/v1/cars',require('./Routes/CarRoute'))
 
+//Company Route
+app.use('/api/v1/companies',require('./Routes/CompanyRoute'))
+
 //*************************************************************************************/
 
 
