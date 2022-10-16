@@ -21,7 +21,25 @@ const getAllCars=asyncHandler(async(req,res)=>{
     const cars=await Car.find()
     res.status(200).json(cars)
 })
+
+//@desc PUT  Update Car
+//@route /api/v1/cars/:car_id
+//@access private
+const updateCar = asyncHandler(async (req, res) => {
+    const car = await Car.findById(req.params.car_id);
+    if (!car) {
+      throw new Error("Car not found");
+    }
+    const updatedCar = await car.findByIdAndUpdate(req.params.car_id, req.body, {
+      new: true,
+    });
+    res.status(200).json({
+      message: "Car updated successfully",
+      updatedCar,
+    });
+  });
 module.exports={
     addCar,
-    getAllCars
+    getAllCars,
+    updateCar
 }

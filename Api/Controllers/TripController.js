@@ -69,7 +69,7 @@ const addTrip = asyncHandler(async (req, res) => {
 const updateTrip = asyncHandler(async (req, res) => {
   const trip = await Trip.findById(req.params.trip_id);
   if (!trip) {
-    throw new Error("Hotel not found");
+    throw new Error("Trip not found");
   }
   const updatedTrip = await Trip.findByIdAndUpdate(req.params.trip_id, req.body, {
     new: true,
