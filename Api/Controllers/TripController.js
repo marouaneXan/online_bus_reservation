@@ -7,10 +7,13 @@ const Company = require("../Models/Company");
 //@route /api/v1/trips
 //@access public
 const getAllTrips = asyncHandler(async (req, res) => {
-  // const time_now=new Date().toLocaleTimeString()
-  const {...others}=req.query
-  const trips = await Trip.find({...others});
-  res.status(200).json(trips);
+  const { ...others } = req.query;
+  const trips = await Trip.find({ ...others });
+  trips.length
+    ? res.status(200).json(trips)
+    : res.status(400).json({
+        message: "There is no trip",
+      });
 });
 
 //@desc GET tripDetails
@@ -28,7 +31,6 @@ const addTrip = asyncHandler(async (req, res) => {
   const {
     departure_city,
     arrival_city,
-    departure_date,
     departure_time,
     arrival_time,
     break_point,
@@ -38,7 +40,6 @@ const addTrip = asyncHandler(async (req, res) => {
   if (
     !departure_city ||
     !arrival_city ||
-    !departure_date ||
     !departure_time ||
     !arrival_time ||
     !price ||
@@ -49,23 +50,22 @@ const addTrip = asyncHandler(async (req, res) => {
   }
   const car = await Car.findById(req.params.car_id);
   const company = await Company.findById(req.params.company_id);
-  
+
   if (!car) {
     res.status(400);
     throw new Error("Car not found");
   }
-  if(!company){
+  if (!company) {
     res.status(400);
     throw new Error("Company not found");
   }
   const newTrip = await Trip.create({
     departure_city,
     arrival_city,
-    departure_date,
     departure_time,
     arrival_time,
     car: car._id,
-    company:company._id,
+    company: company._id,
     break_point,
     price,
     distance,
@@ -81,9 +81,13 @@ const updateTrip = asyncHandler(async (req, res) => {
   if (!trip) {
     throw new Error("Trip not found");
   }
-  const updatedTrip = await Trip.findByIdAndUpdate(req.params.trip_id, req.body, {
-    new: true,
-  });
+  const updatedTrip = await Trip.findByIdAndUpdate(
+    req.params.trip_id,
+    req.body,
+    {
+      new: true,
+    }
+  );
   res.status(200).json({
     message: "Trip updated successfully",
     updatedTrip,
@@ -106,5 +110,5 @@ module.exports = {
   addTrip,
   updateTrip,
   deleteTrip,
-  tripDetails
+  tripDetails,
 };

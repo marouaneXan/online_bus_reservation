@@ -32,6 +32,9 @@ app.use('/api/v1/companies',require('./Routes/CompanyRoute'))
 //Client Route
 app.use('/api/v1/clients',require('./Routes/ClientRoute'))
 
+//Reservation Route
+app.use('/api/v1/reservations',require('./Routes/ReservationRoute'))
+
 //*************************************************************************************/
 
 

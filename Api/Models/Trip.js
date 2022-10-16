@@ -9,10 +9,6 @@ const tripSchema = mongoose.Schema(
       type: String,
       reqired: [true, "Please add a Arrival city Field"],
     },
-    departure_date: {
-      type: Date,
-      reqired: [true, "Please add a Depature date Field"],
-    },
     departure_time: {
       type: String,
       reqired: [true, "Please add a Depature time Field"],
