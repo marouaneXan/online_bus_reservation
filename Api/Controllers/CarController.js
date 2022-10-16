@@ -21,6 +21,14 @@ const getAllCars = asyncHandler(async (req, res) => {
   res.status(200).json(cars);
 });
 
+//@desc GET carDetails
+//@route /api/v1/car/car_id
+//@access private
+const carDetails = asyncHandler(async (req, res) => {
+  const car = await Car.find(req.params.car_id);
+  res.status(200).json(car);
+});
+
 //@desc PUT  Update Car
 //@route /api/v1/cars/:car_id
 //@access private
@@ -52,6 +60,7 @@ const deleteCar = asyncHandler(async (req, res) => {
 module.exports = {
   addCar,
   getAllCars,
+  carDetails,
   updateCar,
   deleteCar
 };
