@@ -7,7 +7,9 @@ const Company = require("../Models/Company");
 //@route /api/v1/trips
 //@access public
 const getAllTrips = asyncHandler(async (req, res) => {
-  const trips = await Trip.find();
+  // const time_now=new Date().toLocaleTimeString()
+  const {...others}=req.query
+  const trips = await Trip.find({...others});
   res.status(200).json(trips);
 });
 
