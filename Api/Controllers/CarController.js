@@ -29,7 +29,7 @@ const updateCar = asyncHandler(async (req, res) => {
   if (!car) {
     throw new Error("Car not found");
   }
-  const updatedCar = await car.findByIdAndUpdate(req.params.car_id, req.body, {
+  const updatedCar = await Car.findByIdAndUpdate(req.params.car_id, req.body, {
     new: true,
   });
   res.status(200).json({
