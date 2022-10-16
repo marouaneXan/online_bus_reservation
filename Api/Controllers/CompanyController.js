@@ -44,8 +44,21 @@ const updateCompany = asyncHandler(async (req, res) => {
     updatedCompany,
   });
 });
+
+//@desc Delete
+//@route /api/v1/companies/company_id
+//@access private
+const deleteCompany = asyncHandler(async (req, res) => {
+    const company = await Company.findById(req.params.company_id);
+    //delete company
+    company.remove();
+    res.status(200).json({
+      message: "Company deleted successfully",
+    });
+  });
 module.exports = {
   addCompany,
   getAllCompanies,
-  updateCompany
+  updateCompany,
+  deleteCompany
 };
