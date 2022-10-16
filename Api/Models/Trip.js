@@ -30,11 +30,18 @@ const tripSchema = mongoose.Schema(
       reqired: true,
       ref: "Car",
     },
-    route: {
-      type: [mongoose.Schema.Types.ObjectId],
-      reqired: true,
-      ref: "Route",
-    },
+    route: [
+      {
+        arrival_time: {
+          type: String,
+          required: [true, "Please add arrival time field"],
+        },
+        city_name: {
+          type: String,
+          required: [true, "Please add a city name field"],
+        },
+      },
+    ],
     price: {
       type: Number,
       reqired: [true, "Please add a Price time Field"],

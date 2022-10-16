@@ -26,9 +26,6 @@ app.use('/api/v1/trips',require('./Routes/TripRoute'))
 //Car Route
 app.use('/api/v1/cars',require('./Routes/CarRoute'))
 
-//Break points Routes
-app.use('/api/v1/break_points',require('./Routes/BreakPointsRoute'))
-
 //*************************************************************************************/
 
 
