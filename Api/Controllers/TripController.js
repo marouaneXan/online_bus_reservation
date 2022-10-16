@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const Trip = require("../Models/Trip");
 const Car = require("../Models/Car");
+const Company = require("../Models/Company");
 
 //@desc GET Trips
 //@route /api/v1/trips
@@ -21,7 +22,6 @@ const addTrip = asyncHandler(async (req, res) => {
     departure_time,
     arrival_time,
     break_point,
-    company,
     price,
     distance,
   } = req.body;
@@ -32,13 +32,13 @@ const addTrip = asyncHandler(async (req, res) => {
     !departure_time ||
     !arrival_time ||
     !price ||
-    !distance ||
-    !company
+    !distance 
   ) {
     res.status(400);
     throw new Error("Please add all fields");
   }
   const car = await Car.findById(req.params.car_id);
+  const company = await Company.findById(req.params.company_id);
   if (!car) {
     res.status(400);
     throw new Error("Car not found");
