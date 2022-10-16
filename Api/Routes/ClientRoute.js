@@ -1,5 +1,6 @@
 const express=require('express')
 const router=express()
-const {deleteClient}=require('../Controllers/ClientController')
-router.post('/:client_id',deleteClient)
+const {deleteClient,getAllClients}=require('../Controllers/ClientController')
+router.delete('/:client_id',deleteClient)
+router.get('/',getAllClients)
 module.exports=router
