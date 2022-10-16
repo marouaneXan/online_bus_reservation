@@ -16,4 +16,7 @@ const addCompany=asyncHandler(async(req,res)=>{
     if(newCompany)
       res.status(200).json(newCompany)
 })
+module.exports={
+    addCompany
+}
 

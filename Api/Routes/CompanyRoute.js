@@ -1,6 +1,5 @@
 const express=require('express')
 const router = express.Router()
-router.get('/',(req,res)=>{
-    res.send('companies')
-})
+const {addCompany}=require('../Controllers/CompanyController')
+router.post('/',addCompany)
 module.exports=router
