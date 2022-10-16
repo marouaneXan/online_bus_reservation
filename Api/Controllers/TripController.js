@@ -20,7 +20,7 @@ const addTrip = asyncHandler(async (req, res) => {
     departure_date,
     departure_time,
     arrival_time,
-    route,
+    break_point,
     price,
     distance,
   } = req.body;
@@ -48,7 +48,7 @@ const addTrip = asyncHandler(async (req, res) => {
     departure_time,
     arrival_time,
     car:car._id,
-    route,
+    break_point,
     price,
     distance,
   })

@@ -30,7 +30,7 @@ const tripSchema = mongoose.Schema(
       reqired: true,
       ref: "Car",
     },
-    route: [
+    break_point: [
       {
         arrival_time: {
           type: String,
