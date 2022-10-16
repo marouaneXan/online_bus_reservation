@@ -67,11 +67,11 @@ const addTrip = asyncHandler(async (req, res) => {
 //@route /api/v1/trips/:trip_id
 //@access private
 const updateTrip = asyncHandler(async (req, res) => {
-  const trip = await Trip.findById(req.params.id);
+  const trip = await Trip.findById(req.params.trip_id);
   if (!trip) {
     throw new Error("Hotel not found");
   }
-  const updatedTrip = await Trip.findByIdAndUpdate(req.params.id, req.body, {
+  const updatedTrip = await Trip.findByIdAndUpdate(req.params.trip_id, req.body, {
     new: true,
   });
   res.status(200).json({
@@ -79,8 +79,21 @@ const updateTrip = asyncHandler(async (req, res) => {
     updatedTrip,
   });
 });
+
+//@desc DELETE Trip
+//@route /api/v1/trips/:trip_id
+//@access private
+const deleteTrip = asyncHandler(async (req, res) => {
+  const trip = await Trip.findById(req.params.trip_id);
+  //delete trip
+  trip.remove();
+  res.status(200).json({
+    message: "Trip deleted successfully",
+  });
+});
 module.exports = {
   getAllTrips,
   addTrip,
-  updateTrip
+  updateTrip,
+  deleteTrip
 };
