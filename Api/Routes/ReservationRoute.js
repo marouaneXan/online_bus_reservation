@@ -1,6 +1,6 @@
 const express=require('express')
+const { getAllReservations, makeReservation } = require('../Controllers/ReservationController')
 const router = express.Router()
-router.post('/',(req,res)=>{
-    res.send('make reservation successfully')
-})
+router.get('/',getAllReservations)
+router.post('/:trip_id/:client_id',makeReservation)
 module.exports=router
