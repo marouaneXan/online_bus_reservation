@@ -11,6 +11,14 @@ const getAllTrips = asyncHandler(async (req, res) => {
   res.status(200).json(trips);
 });
 
+//@desc GET tripDetails
+//@route /api/v1/trips/trip_id
+//@access private
+const tripDetails = asyncHandler(async (req, res) => {
+  const trip = await Trip.find(req.params.trip_id);
+  res.status(200).json(trip);
+});
+
 //@desc POST Trips
 //@route /api/v1/trips
 //@access public
@@ -95,5 +103,6 @@ module.exports = {
   getAllTrips,
   addTrip,
   updateTrip,
-  deleteTrip
+  deleteTrip,
+  tripDetails
 };
