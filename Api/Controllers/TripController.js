@@ -82,4 +82,5 @@ const updateTrip = asyncHandler(async (req, res) => {
 module.exports = {
   getAllTrips,
   addTrip,
+  updateTrip
 };
