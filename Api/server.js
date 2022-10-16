@@ -14,10 +14,10 @@ app.use(express.urlencoded({extended:false}))
 
 
 //***************************************Global Routes *********************************/
-//Admin Route
+//Admin auth Route
 app.use('/api/v1/adminAuth/',require('./Routes/AdminAuthRoute'))
 
-//Client Route
+//Client auth Route
 app.use('/api/v1/clientAuth/',require('./Routes/ClientAuthRoute'))
 
 //Trip Route
@@ -28,6 +28,9 @@ app.use('/api/v1/cars',require('./Routes/CarRoute'))
 
 //Company Route
 app.use('/api/v1/companies',require('./Routes/CompanyRoute'))
+
+//Client Route
+app.use('/api/v1/clients',require('./Routes/ClientRoute'))
 
 //*************************************************************************************/
 
