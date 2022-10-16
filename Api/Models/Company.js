@@ -1,6 +1,6 @@
 const mongoose=require('mongoose')
 const companySchema=mongoose.Schema({
-    name:{
+    company_name:{
         type:String,
         required:[true,"Please add a name of company"]
     }
