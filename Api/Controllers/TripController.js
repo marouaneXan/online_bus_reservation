@@ -43,6 +43,10 @@ const addTrip = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Car not found");
   }
+  if(!company){
+    res.status(400);
+    throw new Error("Company not found");
+  }
   const newTrip = await Trip.create({
     departure_city,
     arrival_city,
