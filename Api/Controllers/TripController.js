@@ -50,7 +50,7 @@ const addTrip = asyncHandler(async (req, res) => {
     departure_time,
     arrival_time,
     car: car._id,
-    break_point,
+    company:company._id,
     price,
     distance,
   });
