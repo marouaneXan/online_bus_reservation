@@ -32,7 +32,7 @@ const addTrip = asyncHandler(async (req, res) => {
     !departure_time ||
     !arrival_time ||
     !price ||
-    !distance 
+    !distance
   ) {
     res.status(400);
     throw new Error("Please add all fields");
@@ -51,6 +51,7 @@ const addTrip = asyncHandler(async (req, res) => {
     arrival_time,
     car: car._id,
     company:company._id,
+    break_point,
     price,
     distance,
   });
