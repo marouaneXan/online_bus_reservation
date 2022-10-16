@@ -12,6 +12,15 @@ const deleteClient = asyncHandler(async (req, res) => {
     message: "Client deleted successfully",
   });
 });
+
+//@desc GET getAllClients
+//@route /api/v1/clients
+//@access private
+const getAllClients = asyncHandler(async (req, res) => {
+    const clients = await Client.find();
+    res.status(200).json(clients);
+  });
 module.exports={
-    deleteClient
+    deleteClient,
+    getAllClients
 }

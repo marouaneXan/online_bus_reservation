@@ -13,7 +13,7 @@ const addCar = asyncHandler(async (req, res) => {
   if (newCar) res.status(200).json(newCar);
 });
 
-//@desc POST addCar
+//@desc GET getAllCar
 //@route /api/v1/cars
 //@access private
 const getAllCars = asyncHandler(async (req, res) => {
