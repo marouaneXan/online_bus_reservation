@@ -16,7 +16,16 @@ const addCompany=asyncHandler(async(req,res)=>{
     if(newCompany)
       res.status(200).json(newCompany)
 })
+
+//@desc GET getAllCompanies
+//@route /api/v1/companies
+//@access private
+const getAllCompanies = asyncHandler(async (req, res) => {
+    const companies = await Company.find();
+    res.status(200).json(companies);
+  });
 module.exports={
-    addCompany
+    addCompany,
+    getAllCompanies
 }
 
