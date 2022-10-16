@@ -18,8 +18,9 @@ const tripSchema = mongoose.Schema(
       reqired: [true, "Please add a Depature time Field"],
     },
     company: {
-      type: [mongoose.Schema.Types.ObjectId],
+      type: mongoose.Schema.Types.ObjectId,
       reqired: [true, "Please add a company Field"],
+      ref:'Company'
     },
     arrival_time: {
       type: String,

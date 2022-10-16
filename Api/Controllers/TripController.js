@@ -11,7 +11,7 @@ const getAllTrips = asyncHandler(async (req, res) => {
   res.status(200).json(trips);
 });
 
-//@desc GET Trips
+//@desc POST Trips
 //@route /api/v1/trips
 //@access public
 const addTrip = asyncHandler(async (req, res) => {
@@ -39,6 +39,7 @@ const addTrip = asyncHandler(async (req, res) => {
   }
   const car = await Car.findById(req.params.car_id);
   const company = await Company.findById(req.params.company_id);
+  
   if (!car) {
     res.status(400);
     throw new Error("Car not found");
@@ -60,6 +61,23 @@ const addTrip = asyncHandler(async (req, res) => {
     distance,
   });
   if (newTrip) res.status(201).json(newTrip);
+});
+
+//@desc PUT  Update trip
+//@route /api/v1/trips/:trip_id
+//@access private
+const updateTrip = asyncHandler(async (req, res) => {
+  const trip = await Trip.findById(req.params.id);
+  if (!trip) {
+    throw new Error("Hotel not found");
+  }
+  const updatedTrip = await Trip.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+  });
+  res.status(200).json({
+    message: "Trip updated successfully",
+    updatedTrip,
+  });
 });
 module.exports = {
   getAllTrips,
