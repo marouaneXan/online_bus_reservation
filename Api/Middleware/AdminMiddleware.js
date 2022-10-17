@@ -26,4 +26,4 @@ const protectAdmin = asyncHandler(async (req, res, next) => {
     throw new Error("Not authorized, No token");
   }
 });
-module.exports = protectAdmin;
+module.exports = {protectAdmin};
