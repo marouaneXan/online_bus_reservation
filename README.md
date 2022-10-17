@@ -1,8 +1,10 @@
 <h1 align="center">
   <br>
-  <a href="file:///C:/Users/youcode/Desktop/Capture%201.svg"><img src="file:///C:/Users/youcode/Desktop/Capture%201.svg" alt="Merkoub.ma" width="200"></a>
+  <a href="https://user-images.githubusercontent.com/93975817/196152329-958567e1-7a5d-4fb4-b5d3-e65e88146b3a.png">
+  <img src="https://user-images.githubusercontent.com/93975817/196152329-958567e1-7a5d-4fb4-b5d3-e65e88146b3a.png" alt="merkoub.ma" width="200">
+  </a>
   <br>
-  Markdownify
+  Merkoub.ma
   <br>
 </h1>
 
@@ -12,13 +14,6 @@
   <a href="https://github.com/marouaneXan/online_bus_reservation/blob/main/Api/package.json">
     <img src="https://badge.fury.io/js/electron-markdownify.svg"
          alt="Merkoub.ma">
-  </a>
-  <a href="https://gitter.im/amitmerchant1990/electron-markdownify"><img src="https://badges.gitter.im/amitmerchant1990/electron-markdownify.svg"></a>
-  <a href="https://saythanks.io/to/bullredeyes@gmail.com">
-      <img src="https://img.shields.io/badge/SayThanks.io-%E2%98%BC-1EAEDB.svg">
-  </a>
-  <a href="https://www.paypal.me/AmitMerchant">
-    <img src="https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&amp;style=flat">
   </a>
 </p>
 
@@ -73,5 +68,3 @@ MIT
 
 > GitHub [@marouaneXan](https://github.com/marouaneXan) &nbsp;&middot;&nbsp;
 > Instagram [@itsmemarouane](https://www.instagram.com/itsmemarouane)
-
-
