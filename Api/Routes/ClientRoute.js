@@ -1,7 +1,8 @@
 const express=require('express')
 const router=express()
 const {deleteClient,getAllClients, clientDetails}=require('../Controllers/ClientController')
-router.delete('/:client_id',deleteClient)
-router.get('/',getAllClients)
-router.get('/:client_id',clientDetails)
+const {protectAdmin}=require('../Middleware/AdminMiddleware')
+router.delete('/:client_id',protectAdmin,deleteClient)
+router.get('/',protectAdmin,getAllClients)
+router.get('/:client_id',protectAdmin,clientDetails)
 module.exports=router
