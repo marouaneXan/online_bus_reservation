@@ -4,7 +4,7 @@
   <img src="https://user-images.githubusercontent.com/93975817/196152329-958567e1-7a5d-4fb4-b5d3-e65e88146b3a.png" alt="merkoub.ma" width="200">
   </a>
   <br>
-  Merkoub.ma
+  Merkob.ma
   <br>
 </h1>
 
