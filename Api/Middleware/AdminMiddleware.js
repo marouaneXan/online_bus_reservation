@@ -13,8 +13,12 @@ const protectAdmin = asyncHandler(async (req, res, next) => {
       //Verify Token
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
       //Get Admin From Token
-      req.admin = await Admin.findById(decoded.id).select("-password");
-      next();
+      req.admin = await Admin.findById(decoded.admin_id).select("-password");
+      if (req.admin) next();
+      else {
+        res.status(401);
+        throw new Error("Not authorized");
+      }
     } catch (error) {
       console.log(error);
       res.status(401);
@@ -26,4 +30,4 @@ const protectAdmin = asyncHandler(async (req, res, next) => {
     throw new Error("Not authorized, No token");
   }
 });
-module.exports = {protectAdmin};
+module.exports = { protectAdmin };
