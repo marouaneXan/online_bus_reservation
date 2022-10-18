@@ -4,11 +4,23 @@ const Car = require("../Models/Car");
 const Company = require("../Models/Company");
 
 //@desc GET search Trips
-//@route /api/v1/trips
+//@route /api/v1/trips?queries
 //@access public
 const searchTrip = asyncHandler(async (req, res) => {
   const { ...others } = req.query;
   const trips = await Trip.find({ ...others });
+  trips.length
+    ? res.status(200).json(trips)
+    : res.status(400).json({
+        message: "There is no trip",
+      });
+});
+
+//@desc GET Trips
+//@route /api/v1/trips
+//@access public
+const getAllTrips = asyncHandler(async (req, res) => {
+  const trips = await Trip.find();
   trips.length
     ? res.status(200).json(trips)
     : res.status(400).json({
@@ -109,6 +121,7 @@ const deleteTrip = asyncHandler(async (req, res) => {
   });
 });
 module.exports = {
+  getAllTrips,
   searchTrip,
   addTrip,
   updateTrip,
