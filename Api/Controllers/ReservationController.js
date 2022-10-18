@@ -15,6 +15,12 @@ const getAllReservations = asyncHandler(async (req, res) => {
         message: "There is no reservations yet",
       });
 });
+//@desc GET Reservations single client
+//@route /api/v1/reservations/client_id
+//@access private
+const getClientReservations = asyncHandler(async (req, res) => {
+  const client_id=req.params.client_id
+});
 
 //@desc POST Reservations
 //@route /api/v1/reservation
