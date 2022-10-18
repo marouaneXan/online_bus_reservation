@@ -21,7 +21,7 @@ const getAllReservations = asyncHandler(async (req, res) => {
 const getClientReservations = asyncHandler(async (req, res) => {
   const client_id=req.params.client_id
   if(client_id){
-
+    const reservations=await Reservation.findById(client_id)
   }else{
     res.status(400)
     throw new Error('Client not found')
