@@ -106,4 +106,5 @@ module.exports = {
   getAllReservations,
   makeReservation,
   cancelReservation,
+  getClientReservations
 };
