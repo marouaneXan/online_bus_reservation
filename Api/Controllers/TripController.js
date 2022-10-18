@@ -31,6 +31,7 @@ const addTrip = asyncHandler(async (req, res) => {
   const {
     departure_city,
     arrival_city,
+    departure_date,
     departure_time,
     arrival_time,
     break_point,
@@ -40,6 +41,7 @@ const addTrip = asyncHandler(async (req, res) => {
   if (
     !departure_city ||
     !arrival_city ||
+    !departure_date ||
     !departure_time ||
     !arrival_time ||
     !price ||
@@ -63,6 +65,7 @@ const addTrip = asyncHandler(async (req, res) => {
     departure_city,
     arrival_city,
     departure_time,
+    departure_date,
     arrival_time,
     car: car._id,
     company: company._id,
