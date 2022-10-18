@@ -19,17 +19,17 @@ const getAllReservations = asyncHandler(async (req, res) => {
 //@route /api/v1/reservations/client_id
 //@access private
 const getClientReservations = asyncHandler(async (req, res) => {
-  const client_id=req.params.client_id
-  if(client_id){
-    const reservations=await Reservation.findById(client_id)
-    reservations.length
-    ? res.status(200).json(reservations)
-    : res.status(400).json({
-        message: "There is no reservations for this client",
-      });
-  }else{
-    res.status(400)
-    throw new Error('Client not found')
+  const client_id = req.params.client_id;
+  if (client_id) {
+    const reservations = await Reservation.findById(client_id);
+    reservations
+      ? res.status(200).json(reservations)
+      : res.status(400).json({
+          message: "There is no reservations for this client",
+        });
+  } else {
+    res.status(400);
+    throw new Error("Client not found");
   }
 });
 
@@ -106,5 +106,5 @@ module.exports = {
   getAllReservations,
   makeReservation,
   cancelReservation,
-  getClientReservations
+  getClientReservations,
 };
