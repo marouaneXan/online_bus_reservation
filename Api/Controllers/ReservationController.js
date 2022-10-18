@@ -20,6 +20,12 @@ const getAllReservations = asyncHandler(async (req, res) => {
 //@access private
 const getClientReservations = asyncHandler(async (req, res) => {
   const client_id=req.params.client_id
+  if(client_id){
+
+  }else{
+    res.status(400)
+    throw new Error('Client not found')
+  }
 });
 
 //@desc POST Reservations
