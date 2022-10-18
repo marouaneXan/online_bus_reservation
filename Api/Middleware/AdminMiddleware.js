@@ -20,7 +20,6 @@ const protectAdmin = asyncHandler(async (req, res, next) => {
         throw new Error("Not authorized");
       }
     } catch (error) {
-      console.log(error);
       res.status(401);
       throw new Error("Not authorized");
     }
