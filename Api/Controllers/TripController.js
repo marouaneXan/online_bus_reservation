@@ -3,10 +3,10 @@ const Trip = require("../Models/Trip");
 const Car = require("../Models/Car");
 const Company = require("../Models/Company");
 
-//@desc GET Trips
+//@desc GET search Trips
 //@route /api/v1/trips
 //@access public
-const getAllTrips = asyncHandler(async (req, res) => {
+const searchTrip = asyncHandler(async (req, res) => {
   const { ...others } = req.query;
   const trips = await Trip.find({ ...others });
   trips.length
@@ -109,7 +109,7 @@ const deleteTrip = asyncHandler(async (req, res) => {
   });
 });
 module.exports = {
-  getAllTrips,
+  searchTrip,
   addTrip,
   updateTrip,
   deleteTrip,
