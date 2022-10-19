@@ -15,6 +15,14 @@ const getAllReservations = asyncHandler(async (req, res) => {
         message: "There is no reservations yet",
       });
 });
+
+//@desc GET Reservations
+//@route /api/v1/reservation
+//@access private
+const getReservationDetails = asyncHandler(async (req, res) => {
+  const reservation = await Reservation.findById(req.params.reservation_id);
+  res.status(400).json(reservation)
+});
 //@desc GET Reservations single client
 //@route /api/v1/reservations/client_id
 //@access private
@@ -116,4 +124,5 @@ module.exports = {
   makeReservation,
   cancelReservation,
   getClientReservations,
+  getReservationDetails
 };
