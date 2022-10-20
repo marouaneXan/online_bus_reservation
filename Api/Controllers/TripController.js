@@ -8,7 +8,7 @@ const Company = require("../Models/Company");
 //@access public
 const searchTrip = asyncHandler(async (req, res) => {
   const { ...others } = req.query;
-  const trips = await Trip.find({ ...others });
+  const trips = await Trip.find({ ...others }).populate(["car","company"]);
   trips.length
     ? res.status(200).json(trips)
     : res.status(400).json({
@@ -20,7 +20,7 @@ const searchTrip = asyncHandler(async (req, res) => {
 //@route /api/v1/trips
 //@access public
 const getAllTrips = asyncHandler(async (req, res) => {
-  const trips = await Trip.find();
+  const trips = await Trip.find().populate(["car","company"]);
   trips.length
     ? res.status(200).json(trips)
     : res.status(400).json({
@@ -32,7 +32,7 @@ const getAllTrips = asyncHandler(async (req, res) => {
 //@route /api/v1/trips/trip_id
 //@access private
 const tripDetails = asyncHandler(async (req, res) => {
-  const trip = await Trip.find(req.params.trip_id);
+  const trip = await Trip.find(req.params.trip_id).populate(["car","company"]);
   res.status(200).json(trip);
 });
 
