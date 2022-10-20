@@ -8,7 +8,7 @@ const Car = require("../Models/Car");
 //@route /api/v1/reservation
 //@access private
 const getAllReservations = asyncHandler(async (req, res) => {
-  const reservations = await Reservation.find().populate([{path:"trip",populate:{path:"cars"}},"client"]);
+  const reservations = await Reservation.find().populate([{path:"trip",populate:{path:"car"}},"client"]);
   reservations.length
     ? res.status(200).json(reservations)
     : res.status(400).json({
