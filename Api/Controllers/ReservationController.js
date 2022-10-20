@@ -8,7 +8,7 @@ const Car = require("../Models/Car");
 //@route /api/v1/reservation
 //@access private
 const getAllReservations = asyncHandler(async (req, res) => {
-  const reservations = await Reservation.find().populate(["trip","client"]);
+  const reservations = await Reservation.find().populate(["trip", "client"]);
   reservations.length
     ? res.status(200).json(reservations)
     : res.status(400).json({
@@ -20,8 +20,10 @@ const getAllReservations = asyncHandler(async (req, res) => {
 //@route /api/v1/reservation
 //@access private
 const getReservationDetails = asyncHandler(async (req, res) => {
-  const reservation = await Reservation.findById(req.params.reservation_id).populate(["trip","client"]);
-  res.status(400).json(reservation)
+  const reservation = await Reservation.findById(
+    req.params.reservation_id
+  ).populate(["trip", "client"]);
+  res.status(400).json(reservation);
 });
 //@desc GET Reservations single client
 //@route /api/v1/reservations/client_id
@@ -29,7 +31,9 @@ const getReservationDetails = asyncHandler(async (req, res) => {
 const getClientReservations = asyncHandler(async (req, res) => {
   const client_id = req.params.client_id;
   if (client_id) {
-    const reservations = await Reservation.find({ client: client_id }).populate(["trip","client"]);
+    const reservations = await Reservation.find({ client: client_id }).populate(
+      ["trip", "client"]
+    );
     reservations.length
       ? res.status(200).json(reservations)
       : res.status(400).json({
@@ -53,18 +57,20 @@ const makeReservation = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Reservation failed");
   }
-  const reservation = await Reservation.create({
-    reservation_date: date_now,
-    reservation_time: time_now,
-    trip: trip._id,
-    client: client._id,
-  });
-  if (reservation) {
-    res.status(200).json(reservation);
-    const car = await Car.findById(trip.car);
-    await Car.findByIdAndUpdate(trip.car, {
-      nbr_places: car.nbr_places - 1,
+  const car = await Car.findById(trip.car);
+  if (car.nbr_places !== 0) {
+    const reservation = await Reservation.create({
+      reservation_date: date_now,
+      reservation_time: time_now,
+      trip: trip._id,
+      client: client._id,
     });
+    if (reservation) {
+      res.status(200).json(reservation);
+      await Car.findByIdAndUpdate(trip.car, {
+        nbr_places: car.nbr_places - 1,
+      });
+    }
   } else res.status(400).json({ message: "Reservation failed" });
 });
 
@@ -124,5 +130,5 @@ module.exports = {
   makeReservation,
   cancelReservation,
   getClientReservations,
-  getReservationDetails
+  getReservationDetails,
 };
