@@ -8,7 +8,7 @@ const Car = require("../Models/Car");
 //@route /api/v1/reservation
 //@access private
 const getAllReservations = asyncHandler(async (req, res) => {
-  const reservations = await Reservation.find();
+  const reservations = await Reservation.find().populate(["trip","client"]);
   reservations.length
     ? res.status(200).json(reservations)
     : res.status(400).json({
@@ -20,7 +20,7 @@ const getAllReservations = asyncHandler(async (req, res) => {
 //@route /api/v1/reservation
 //@access private
 const getReservationDetails = asyncHandler(async (req, res) => {
-  const reservation = await Reservation.findById(req.params.reservation_id);
+  const reservation = await Reservation.findById(req.params.reservation_id).populate(["trip","client"]);
   res.status(400).json(reservation)
 });
 //@desc GET Reservations single client
@@ -29,7 +29,7 @@ const getReservationDetails = asyncHandler(async (req, res) => {
 const getClientReservations = asyncHandler(async (req, res) => {
   const client_id = req.params.client_id;
   if (client_id) {
-    const reservations = await Reservation.find({ client: client_id });
+    const reservations = await Reservation.find({ client: client_id }).populate(["trip","client"]);
     reservations.length
       ? res.status(200).json(reservations)
       : res.status(400).json({
