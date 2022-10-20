@@ -24,6 +24,8 @@
   <a href="#resources">Resources</a> •
 </p>
 
+![Class_Diagram](https://user-images.githubusercontent.com/93975817/196899186-b0cfad35-8365-4e32-acd0-345117e0d3f4.png)
+
 ## How To Use
 
 To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
