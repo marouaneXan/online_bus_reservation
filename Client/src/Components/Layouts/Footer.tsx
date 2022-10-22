@@ -14,7 +14,9 @@ const Footer = () => {
   const location: any = useLocation();
   return (
     <>
-      {location.pathname === "/register" || "/login" || "/results_availabilities" ? (
+      {location.pathname === "/register" ||
+      location.pathname === "/login" ||
+      location.pathname === "/results_availabilities" ? (
         ""
       ) : (
         <div className="w-full bg-gray-200 py-16">

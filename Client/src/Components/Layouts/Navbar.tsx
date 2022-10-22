@@ -15,7 +15,7 @@ import {
 import logoNav from "../../assets/merkob.png";
 
 const Navbar = () => {
-  const location : any = useLocation()
+  const location: any = useLocation();
   const [nav, setNav] = useState<boolean>(false);
   const [logo, setLogo] = useState<boolean>(false);
   const handleNav = () => {
@@ -25,7 +25,9 @@ const Navbar = () => {
 
   return (
     <>
-      {location.pathname === ("/register" || "/login") ? (
+      {location.pathname === "/register" ||
+      location.pathname === "/login" ||
+      location.pathname === "/results_availabilities" ? (
         ""
       ) : (
         <div className="flex w-full justify-between items-center h-20 px-4 absolute z-10 text-white">
