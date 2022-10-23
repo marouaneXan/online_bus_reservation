@@ -1,4 +1,4 @@
-import React from "react";
+import React,{InputHTMLAttributes} from "react";
 import { ErrorMessage, useField } from "formik";
 interface InputProps extends InputHTMLAttributes<HTMLInputElement>{
     label?:string
