@@ -2,7 +2,7 @@ import React from "react";
 
 const FilterTrips = () => {
   return (
-    <div className="mx-auto w-full border p-8 rounded-md text-black bg-gray-100/90">
+    <div className="mx-auto w-full md:w-[500px] border p-8 rounded-md text-black bg-gray-100/90">
       <h1 className="text-center text-xl font-semibold">Filter Trips</h1>
       <div className="mb-4">
         <h1 className="py-4 text-[14px] font-medium">COMPANIES</h1>
