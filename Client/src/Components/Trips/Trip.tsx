@@ -16,7 +16,7 @@ const Trip = ({setShowModal}:{setShowModal:React.Dispatch<React.SetStateAction<B
         </div>
         <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none p-4 flex flex-col justify-between leading-normal">
           <div className="mb-8">
-            <p className="text-sm text-gray-600 bg-gray-200 flex p-1 rounded-full items-center">
+            <p className="text-sm text-gray-600 bg-gray-200 flex p-2 w-[120px] rounded text-center">
               Company name
             </p>
             <div className="flex space-x-4 md:space-x-6 items-center">
