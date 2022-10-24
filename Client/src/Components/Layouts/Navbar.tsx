@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { BsPerson } from "react-icons/bs";
 import { AiOutlineClose } from "react-icons/ai";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+
 import {
   FaFacebook,
   FaTwitter,
@@ -13,8 +14,10 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import logoNav from "../../assets/merkob.png";
+import { AuthContext } from "../../Context/AuthContext";
 
 const Navbar = () => {
+  const { connected }: any = useContext(AuthContext);
   const location: any = useLocation();
   const [nav, setNav] = useState<boolean>(false);
   const [logo, setLogo] = useState<boolean>(false);
@@ -42,15 +45,21 @@ const Navbar = () => {
               <li className="p-4">Contact</li>
             </Link>
             <Link to="/register">
-              <li className="p-4">Register</li>
+              <li className="p-4">Services</li>
             </Link>
-            <Link to="/register">
-              <li className="p-4">Login</li>
-            </Link>
+            {!connected && (
+              <>
+                <Link to="/register">
+                  <li className="p-4">Register</li>
+                </Link>
+                <Link to="/register">
+                  <li className="p-4">Login</li>
+                </Link>
+              </>
+            )}
           </ul>
           <div className="hidden md:flex">
             <AiOutlineShoppingCart className="" size={20} />
-            <BsPerson size={20} />
           </div>
 
           {/* Hamburger */}
@@ -80,16 +89,18 @@ const Navbar = () => {
                 <li className="p-4">Contact</li>
               </Link>
               <Link to="/register" className="border-b">
-                <li className="p-4">Register</li>
+                <li className="p-4">Services</li>
               </Link>
-              <Link to="/register" className="border-b">
-                <li className="p-4">Login</li>
-              </Link>
-              <div className="flex flex-col">
-                <button className="p-3 border bg-gradient-to-r text-white rounded-md from-[#5651e5] to-[#709dff]">
-                  Account
-                </button>
-              </div>
+              {connected && (
+                <>
+                  <Link to="/register" className="border-b">
+                    <li className="p-4">Register</li>
+                  </Link>
+                  <Link to="/register" className="border-b">
+                    <li className="p-4">Login</li>
+                  </Link>
+                </>
+              )}
               <div className="flex justify-between my-6">
                 <FaFacebook className="text-2xl cursor-pointer" />
                 <FaTwitter className="text-2xl cursor-pointer" />

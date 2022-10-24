@@ -1,13 +1,15 @@
 import React, { useContext } from "react";
 import busVid from "../assets/landing_page_vd.mp4";
 import { Link } from "react-router-dom";
-import { Formik, Form,ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
 import TextField from "../Components/Formik/TextField";
 import { RegisterSchema } from "../Validation/Register";
 import RadioField from "../Components/Formik/RadioField";
 import { AuthContext } from "../Context/AuthContext";
+import Alert from "../Components/Layouts/Alert";
+import Spinner from "../Components/Layouts/Spinner";
 const Register = () => {
-  const {register}:any=useContext(AuthContext)
+  const { register, success, error, loading }: any = useContext(AuthContext);
   const values: object = {
     genre: "",
     nom: "",
@@ -21,8 +23,8 @@ const Register = () => {
     password: "",
   };
   const onSubmit = (values: object) => {
-    const {...data}=values
-    register(data)
+    const { ...data } = values;
+    register(data);
   };
   return (
     <Formik
@@ -41,8 +43,13 @@ const Register = () => {
           />
           <div className="absolute w-full h-full top-0 left-0 bg-gray-900/30"></div>
           <div className="absolute top-0 w-full h-full flex flex-col space-y-6 justify-center text-center text-white p-4">
-            <h1 className="text-3xl md:text-4xl font-bold">Register</h1>
+            {/* <h1 className="text-3xl md:text-4xl font-bold">Register</h1> */}
             <Form className="flex flex-col space-y-2 items-center max-w-[500px] mx-auto w-full border p-8 rounded-md text-black bg-gray-100/90">
+              {success && (
+                <Alert textColor="green" message={success} bgcolor="green" />
+              )}
+              {error && <Alert textColor="red" message={error} bgcolor="red" />}
+
               <div className="flex">
                 <div className="flex items-center mr-4">
                   <RadioField
@@ -94,7 +101,7 @@ const Register = () => {
                 <TextField
                   name="date_naissance"
                   className="border rounded-md p-2 w-full"
-                  type="text"
+                  type="date"
                   placeholder="Birthday"
                 />
                 <TextField
@@ -135,10 +142,11 @@ const Register = () => {
                 placeholder="password"
               />
               <button
+                disabled={loading}
                 type="submit"
                 className="p-3 w-full border bg-gradient-to-r text-white rounded-md from-[#5651e5] to-[#709dff]"
               >
-                Register
+                {loading ? <Spinner /> : "Register"}
               </button>
               <div className="mt-6 text-grey-dark">
                 Already have an account?

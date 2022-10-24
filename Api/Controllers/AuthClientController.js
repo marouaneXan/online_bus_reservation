@@ -37,7 +37,7 @@ const register = asyncHandler(async (req, res) => {
   const clientExist = await Client.findOne({ email });
   if (clientExist) {
     res.status(400);
-    throw new Error("Oops!! Client Already exist");
+    throw new Error("Oops!! Email already taken");
   }
 
   //Hash password
