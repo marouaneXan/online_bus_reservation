@@ -52,7 +52,7 @@ const AuthContextProvider = ({ children }: any) => {
 
 
   
-  const values = useMemo(
+  const values:any = useMemo(
     () => ({
       connected,
       setConnected,
