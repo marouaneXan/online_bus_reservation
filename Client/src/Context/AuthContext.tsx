@@ -1,5 +1,6 @@
 import { createContext, useState,useMemo } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios'
 export const AuthContext = createContext(null);
 
 const AuthContextProvider = ({ children }: any) => {
@@ -11,6 +12,22 @@ const AuthContextProvider = ({ children }: any) => {
   const [success, setSuccess] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
+
+
+
+  //Register for client
+
+  const register=async(data:object)=>{
+  }
+
+
+
+
+
+
+
+
+
   const values = useMemo(
     () => ({
       connected,
