@@ -25,9 +25,11 @@ const login = asyncHandler(async (req, res) => {
     throw new Error("Password is incorrect");
   }
   if(admin && isPasswordCorrect){
-    res.status(201).json({
+    res.cookie("access_token", generateToken(admin._id), {
+      httpOnly: true,
+    }).status(201).json({
         message:"Login successfully",
-        token:generateToken(admin._id)
+        admin:admin._id
     })
   }else{
     res.status(400)

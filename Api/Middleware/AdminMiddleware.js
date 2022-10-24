@@ -2,14 +2,11 @@ const jwt = require("jsonwebtoken");
 const asyncHandler = require("express-async-handler");
 const Admin = require("../Models/Admin");
 const protectAdmin = asyncHandler(async (req, res, next) => {
-  let token;
-  if (
-    req.headers.authorization &&
-    req.headers.authorization.startsWith("Bearer")
-  ) {
+  let token = req.headers.cookie;
+  if (token) {
     try {
       //Get Token from Header
-      token = req.headers.authorization.split(" ")[1];
+      token = req.headers.cookie.split("access_token=")[1];
       //Verify Token
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
       //Get Admin From Token
