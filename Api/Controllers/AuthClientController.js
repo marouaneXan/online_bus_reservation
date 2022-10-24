@@ -88,10 +88,15 @@ const login = asyncHandler(async (req, res) => {
     throw new Error("Password is incorrect");
   }
   if (client && isPasswordCorrect) {
-    res.status(201).json({
-      message: "Login successfully",
-      token: generateToken(client._id),
-    });
+    res
+      .cookie("access_token", generateToken(client._id), {
+        httpOnly: true,
+      })
+      .status(201)
+      .json({
+        message: "Login successfully",
+        client: client._id,
+      });
   } else {
     res.status(400);
     throw new Error("Invalid Client data");

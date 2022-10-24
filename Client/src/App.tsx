@@ -4,13 +4,13 @@ import Navbar from "./Components/Layouts/Navbar";
 import Register from "./Pages/Register";
 import Home from "./Pages/Home";
 import Footer from "./Components/Layouts/Footer";
-import AuthContextProvider from './Context/AuthContext'
+import AuthContextProvider from "./Context/AuthContext";
 import Trips from "./Pages/Trips";
 
 function App() {
   return (
-    <AuthContextProvider>
-      <Router>
+    <Router>
+      <AuthContextProvider>
         <div className="App">
           <Navbar />
           <Routes>
@@ -20,8 +20,8 @@ function App() {
           </Routes>
           <Footer />
         </div>
-      </Router>
-    </AuthContextProvider>
+      </AuthContextProvider>
+    </Router>
   );
 }
 
