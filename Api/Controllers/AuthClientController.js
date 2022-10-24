@@ -58,10 +58,15 @@ const register = asyncHandler(async (req, res) => {
     password: hashedPassword,
   });
   if (client) {
-    res.status(201).json({
-      message: "Account created successfully",
-      token: generateToken(client._id),
-    });
+    res
+      .cookie("access_token", generateToken(client._id), {
+        httpOnly: true,
+      })
+      .status(201)
+      .json({
+        message: "Account created successfully",
+        client: client._id,
+      });
   }
 });
 

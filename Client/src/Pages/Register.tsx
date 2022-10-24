@@ -1,25 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
 import busVid from "../assets/landing_page_vd.mp4";
 import { Link } from "react-router-dom";
 import { Formik, Form,ErrorMessage } from "formik";
 import TextField from "../Components/Formik/TextField";
 import { RegisterSchema } from "../Validation/Register";
 import RadioField from "../Components/Formik/RadioField";
+import { AuthContext } from "../Context/AuthContext";
 const Register = () => {
+  const {register}:any=useContext(AuthContext)
   const values: object = {
-    gendar: "",
-    first_name: "",
-    last_name: "",
-    birthday: "",
-    city: "",
-    nationality: "",
-    phone: "",
-    adress: "",
+    genre: "",
+    nom: "",
+    prenom: "",
     email: "",
+    date_naissance: "",
+    tel: "",
+    adress: "",
+    ville: "",
+    nationalite: "",
     password: "",
   };
   const onSubmit = (values: object) => {
-    alert(JSON.stringify(values));
+    const {...data}=values
+    register(data)
   };
   return (
     <Formik
@@ -45,7 +48,7 @@ const Register = () => {
                   <RadioField
                     id="inline-radio"
                     type="radio"
-                    name="gendar"
+                    name="genre"
                     value="madame"
                     className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                   />
@@ -60,7 +63,7 @@ const Register = () => {
                   <RadioField
                     id="inline-2-radio"
                     type="radio"
-                    name="gendar"
+                    name="genre"
                     value="mister"
                     className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                   />
@@ -75,13 +78,13 @@ const Register = () => {
 
               <div className="w-full flex space-x-1">
                 <TextField
-                  name="first_name"
+                  name="nom"
                   className="border rounded-md p-2 w-full"
                   type="text"
                   placeholder="First name"
                 />
                 <TextField
-                  name="last_name"
+                  name="prenom"
                   className="border rounded-md p-2 w-full"
                   type="text"
                   placeholder="Last name"
@@ -89,26 +92,26 @@ const Register = () => {
               </div>
               <div className="w-full flex space-x-1">
                 <TextField
-                  name="birthday"
+                  name="date_naissance"
                   className="border rounded-md p-2 w-full"
-                  type="type"
+                  type="text"
                   placeholder="Birthday"
                 />
                 <TextField
-                  name="phone"
+                  name="tel"
                   className="border rounded-md p-2 w-full"
                   type="text"
                   placeholder="Phone"
                 />
               </div>
               <TextField
-                name="nationality"
+                name="nationalite"
                 className="border rounded-md p-2 w-full"
                 type="text"
                 placeholder="Nationality"
               />
               <TextField
-                name="city"
+                name="ville"
                 className="border rounded-md p-2 w-full"
                 type="text"
                 placeholder="City"

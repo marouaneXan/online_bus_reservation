@@ -6,7 +6,9 @@ export const AuthContext = createContext(null);
 
 const AuthContextProvider = ({ children }: any) => {
   const navigate = useNavigate();
-  const [connected, setConnected] = useState(localStorage.getItem("logged"));
+  const [connected, setConnected] = useState<boolean>(
+    localStorage.getItem("logged") ? false : true
+  );
   const [id, setId] = useState<string | null>(
     localStorage.getItem("client_id")
   );
@@ -17,10 +19,12 @@ const AuthContextProvider = ({ children }: any) => {
   //Register for client
 
   const register = async (data: object) => {
-    const res = await axios.post(Proxy + "clientAuth/register").catch((err) => {
-      const message:string =
+    setLoading(true);
+    const res = await axios.post("http://localhost:5000/api/v1/clientAuth/register",data).catch((err) => {
+      const message: string =
         (err.res && err.res.data && err.res.data.message) || err || err.message;
       if (message) {
+        console.log(message)
         setLoading(false);
         setError(message);
         setTimeout(() => {
@@ -28,23 +32,17 @@ const AuthContextProvider = ({ children }: any) => {
           setLoading(false);
         }, 4000);
       }
-      if (res && res.data) {
-        setLoading(false);
-        setSuccess("Account created successfully");
-        setTimeout(() => {
-          setSuccess(null);
-          navigate("/dashboard");
-          // .cookie("access_token", generateToken(user.id, user.isAdmin), {
-          //   httpOnly: true,
-          // })
-          
-          
-          setUser(localStorage.setItem("access_token", res.data.token));
-          localStorage.setItem("logged", true);
-          setConnected(true);
-        }, 4000);
-      }
     });
+    if (res && res.data) {
+      setLoading(false);
+      setSuccess(res.data.message);
+      setTimeout(() => {
+        setSuccess(null);
+        navigate("/");
+        // localStorage.setItem("logged", true);
+        setConnected(true);
+      }, 4000);
+    }
   };
 
   const values = useMemo(
@@ -59,6 +57,7 @@ const AuthContextProvider = ({ children }: any) => {
       setSuccess,
       error,
       setError,
+      register,
     }),
     [
       connected,
@@ -71,6 +70,7 @@ const AuthContextProvider = ({ children }: any) => {
       setSuccess,
       error,
       setError,
+      register,
     ]
   );
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
