@@ -4,6 +4,11 @@ import { Formik, Form } from "formik";
 import TextField from "../Formik/TextField";
 
 const Search = () => {
+  const values:any={
+    departure_city:"",
+    arrival_city:"",
+    departure_date:"",
+  }
   return (
     <form
       className="flex flex-col space-y-6 justify-between items-center max-w-[800px] mx-auto w-full border p-8
