@@ -1,17 +1,21 @@
-import React from "react";
+import React,{useContext} from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { Formik, Form } from "formik";
 import TextField from "../Formik/TextField";
 import { SearchTripSchema } from "../../Validation/SearchTrip";
+import { TripContext } from "../../Context/TripContext";
 
 const Search = () => {
-  const values: any = {
+  const {searchTrips}:any=useContext(TripContext)
+  const values: object = {
     departure_city: "",
     arrival_city: "",
     departure_date: "",
   };
-  const onSubmit = (values:any) => {
-    alert(JSON.stringify(values))
+  const onSubmit = (values:object) => {
+    const {...data}=values
+    console.log(data);
+    searchTrips(data)
   };
 
   return (
@@ -40,7 +44,7 @@ const Search = () => {
           <TextField
             className="bg-transparent w-[300px] sm:w-[400px] font-[Poppins] focus:outline-none"
             placeholder="Check in"
-            type="date"
+            type="text"
             name="departure_date"
           />
           <button type="submit" className="p-3 w-full md:w-[50px] border bg-gradient-to-r text-white rounded-md from-[#5651e5] to-[#709dff]">

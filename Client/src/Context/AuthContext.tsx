@@ -21,7 +21,7 @@ const AuthContextProvider = ({ children }: any) => {
   const register = async (data: object) => {
     setLoading(true);
     const res = await axios
-      .post(Proxy+"clientAuth/register", data)
+      .post(Proxy+"/clientAuth/register", data)
       .catch((err) => {
         const message: any =
           (err.res && err.res.data && err.res.data.message) ||
