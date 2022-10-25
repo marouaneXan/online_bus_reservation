@@ -1,7 +1,7 @@
 import { Company } from "./Company"
 import { Car } from "./Car"
 import { BreakPoint } from "./BreakPoint"
-export interface Trip{
+export interface Tripe{
     departure_city:string,
     arrival_city:string,
     departure_date:string,

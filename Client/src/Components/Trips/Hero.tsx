@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import bus from "../../assets/bus.webp";
 import Search from "../Home/Search";
-
+import { TripContext } from "../../Context/TripContext";
 const Hero = () => {
+  const { trips }: any = useContext(TripContext);
   return (
     <div className="w-full h-[400px] relative">
       <img className="w-full h-[400px] object-cover" src={bus} />
@@ -11,11 +12,11 @@ const Hero = () => {
         <h1 className="text-3xl md:text-4xl font-bold">
           Your Trip from{" "}
           <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-600">
-            Safi
+            {trips[0].departure_city}
           </span>{" "}
           to{" "}
           <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-600">
-            Casa
+          {trips[0].arrival_city}
           </span>
         </h1>
         <Search />

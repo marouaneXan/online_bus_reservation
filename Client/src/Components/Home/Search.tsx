@@ -1,4 +1,4 @@
-import React,{useContext} from "react";
+import React,{useContext,useEffect} from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { Formik, Form } from "formik";
 import TextField from "../Formik/TextField";
@@ -14,9 +14,9 @@ const Search = () => {
   };
   const onSubmit = (values:object) => {
     const {...data}=values
-    console.log(data);
     searchTrips(data)
   };
+  
 
   return (
     <Formik
@@ -44,7 +44,7 @@ const Search = () => {
           <TextField
             className="bg-transparent w-[300px] sm:w-[400px] font-[Poppins] focus:outline-none"
             placeholder="Check in"
-            type="text"
+            type="date"
             name="departure_date"
           />
           <button type="submit" className="p-3 w-full md:w-[50px] border bg-gradient-to-r text-white rounded-md from-[#5651e5] to-[#709dff]">
