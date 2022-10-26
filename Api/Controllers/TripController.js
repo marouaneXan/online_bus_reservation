@@ -32,7 +32,7 @@ const getAllTrips = asyncHandler(async (req, res) => {
 //@route /api/v1/trips/trip_id
 //@access private
 const tripDetails = asyncHandler(async (req, res) => {
-  const trip = await Trip.find(req.params.trip_id).populate(["car","company"]);
+  const trip = await Trip.findById(req.params.trip_id).populate(["car","company"]);
   res.status(200).json(trip);
 });
 

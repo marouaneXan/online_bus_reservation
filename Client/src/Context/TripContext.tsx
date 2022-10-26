@@ -12,6 +12,7 @@ interface Data {
 }
 const TripContextProvider = ({ children }: any) => {
   const [trips, setTrips] = useState<[]>();
+  const [trip, setTrip] = useState<[]>();
   const { setSuccess, setError, setLoading }: any = useContext(AuthContext);
   //Search for Trips available
   const navigate = useNavigate();
@@ -42,15 +43,39 @@ const TripContextProvider = ({ children }: any) => {
         setSuccess(null);
         navigate("/results_availabilities");
         setTrips(res.data);
-      },4000);
+      }, 4000);
+    }
+  };
+
+  //get Trip by id
+  const getTripDetails = async (trip_id: string) => {
+    setLoading(true);
+    const res = await axios.get(`${Proxy}/trips/${trip_id}`).catch((err) => {
+      const message: any =
+        (err.res && err.res.data && err.res.data.message) || err || err.message;
+      if (message) {
+        console.log(message.response.data.message);
+        setLoading(false);
+        setError(message.response.data.message);
+        setTimeout(() => {
+          setError(null);
+          setLoading(false);
+        }, 4000);
+      }
+    });
+    if (res && res.data) {
+      setLoading(false);
+      setTrip(res.data);
     }
   };
   const values: any = useMemo(
     () => ({
       trips,
+      trip,
       searchTrips,
+      getTripDetails,
     }),
-    [searchTrips, trips]
+    [searchTrips, trips, trip, getTripDetails]
   );
   return <TripContext.Provider value={values}>{children}</TripContext.Provider>;
 };

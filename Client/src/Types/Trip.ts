@@ -2,6 +2,7 @@ import { Company } from "./Company"
 import { Car } from "./Car"
 import { BreakPoint } from "./BreakPoint"
 export interface Tripe{
+    _id:object,
     departure_city:string,
     arrival_city:string,
     departure_date:string,

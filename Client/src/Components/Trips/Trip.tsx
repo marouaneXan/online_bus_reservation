@@ -1,7 +1,8 @@
-import React from "react";
+import React,{useContext} from "react";
 import casablanca from "../../assets/casa.webp";
 import { BsClockHistory } from "react-icons/bs";
 import { Tripe } from '../../Types/Trip';
+import { TripContext } from "../../Context/TripContext";
 const Trip = ({
   setShowModal,
   trip,
@@ -9,6 +10,7 @@ const Trip = ({
   setShowModal: React.Dispatch<React.SetStateAction<Boolean>>;
   trip: Tripe;
 }) => {
+  const {getTripDetails}:any=useContext(TripContext)
   return (
     <div className=" w-full lg:max-w-full lg:flex">
       <div
@@ -68,7 +70,7 @@ const Trip = ({
           {trip.price}DH
         </h1>
         <button
-          onClick={() => {setShowModal(true)}}
+          onClick={() => {getTripDetails(trip._id),setShowModal(true)}}
           className="px-6 py-2 w-full border bg-gradient-to-r text-white rounded-md from-[#5651e5] to-[#709dff]"
         >
           Book
