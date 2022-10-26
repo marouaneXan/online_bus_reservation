@@ -6,7 +6,6 @@ import TextField from "../Components/Formik/TextField";
 import { RegisterSchema } from "../Validation/Register";
 import RadioField from "../Components/Formik/RadioField";
 import { AuthContext } from "../Context/AuthContext";
-import Alert from "../Components/Layouts/Alert";
 import Spinner from "../Components/Layouts/Spinner";
 const Register = () => {
   const { register, success, error, loading }: any = useContext(AuthContext);

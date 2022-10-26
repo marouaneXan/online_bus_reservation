@@ -1,9 +1,8 @@
 import { createContext, useState, useMemo, useContext } from "react";
 import axios from "axios";
 import { Proxy } from "../Config/Proxy";
-import { Tripe } from "../Types/Trip";
+import { toast } from 'react-toastify'
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "./AuthContext";
 export const TripContext = createContext(null);
 interface Data {
   departure_city: string;
@@ -14,7 +13,6 @@ const TripContextProvider = ({ children }: any) => {
   const [trips, setTrips] = useState<[]>();
   const [trip, setTrip] = useState<[]>();
   const [loading, setLoading] = useState(false);
-  const { setError }: any = useContext(AuthContext);
 
   //Search for Trips available
   const navigate = useNavigate();
@@ -31,9 +29,8 @@ const TripContextProvider = ({ children }: any) => {
           err.message;
         if (message) {
           setLoading(false);
-          setError(message.response.data.message);
+          toast.error(message.response.data.message)
           setTimeout(() => {
-            setError(null);
             setLoading(false);
           }, 4000);
         }
@@ -53,10 +50,7 @@ const TripContextProvider = ({ children }: any) => {
       const message: any =
         (err.res && err.res.data && err.res.data.message) || err || err.message;
       if (message) {
-        setError(message.response.data.message);
-        setTimeout(() => {
-          setError(null);
-        }, 4000);
+        toast.error(message.response.data.message);
       }
     });
     if (res && res.data) {

@@ -19,10 +19,10 @@ const searchTrip = asyncHandler(async (req, res) => {
     }
     searchTrips.length
       ? res.status(200).json(searchTrips)
-      : res.status(404).json({ message: "There is no trip" });
+      : res.status(404).json({ message: "No bus are available for this trip"});
   } else {
     res.status(404).json({
-      message: "There is no trip",
+      message: "No bus are available for this trip",
     });
   }
 });
