@@ -68,7 +68,7 @@ const Trip = ({
           {trip.price}DH
         </h1>
         <button
-          onClick={() => setShowModal(true)}
+          onClick={() => {setShowModal(true)}}
           className="px-6 py-2 w-full border bg-gradient-to-r text-white rounded-md from-[#5651e5] to-[#709dff]"
         >
           Book

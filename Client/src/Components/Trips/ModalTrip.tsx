@@ -1,6 +1,7 @@
 import React from 'react'
 import casablanca from "../../assets/casa.webp";
 import { BiBus } from "react-icons/bi";
+import { Tripe } from '../../Types/Trip';
 
 
 const ModalTrip = ({setShowModal}:{setShowModal:React.Dispatch<React.SetStateAction<Boolean>>}) => {
