@@ -17,7 +17,9 @@ const searchTrip = asyncHandler(async (req, res) => {
         searchTrips.push(trips[i]);
       }
     }
-    res.status(200).json(searchTrips);
+    searchTrips.length
+      ? res.status(200).json(searchTrips)
+      : res.status(404).json({ message: "There is no trip" });
   } else {
     res.status(404).json({
       message: "There is no trip",
