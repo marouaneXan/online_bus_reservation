@@ -19,7 +19,7 @@ const searchTrip = asyncHandler(async (req, res) => {
     }
     res.status(200).json(searchTrips);
   } else {
-    res.json({
+    res.status(404).json({
       message: "There is no trip",
     });
   }
@@ -30,7 +30,7 @@ const searchTrip = asyncHandler(async (req, res) => {
 //@access public
 const getAllTrips = asyncHandler(async (req, res) => {
   const trips = await Trip.find().populate(["car", "company"]);
-  
+
   trips.length
     ? res.status(200).json(trips)
     : res.status(400).json({
