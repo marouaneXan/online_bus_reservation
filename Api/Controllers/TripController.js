@@ -7,20 +7,30 @@ const Company = require("../Models/Company");
 //@route /api/v1/trips?queries
 //@access public
 const searchTrip = asyncHandler(async (req, res) => {
+  const time_now = new Date().toLocaleTimeString();
   const { ...others } = req.query;
-  const trips = await Trip.find({ ...others }).populate(["car","company"]);
-  trips.length
-    ? res.status(200).json(trips)
-    : res.status(400).json({
-        message: "There is no trip",
-      });
+  const trips = await Trip.find({ ...others }).populate(["car", "company"]);
+  const searchTrips = [];
+  if (trips.length) {
+    for (let i = 0; i < trips.length; i++) {
+      if (trips[i].departure_time > time_now) {
+        searchTrips.push(trips[i]);
+      }
+    }
+    res.status(200).json(searchTrips);
+  } else {
+    res.json({
+      message: "There is no trip",
+    });
+  }
 });
 
 //@desc GET Trips
 //@route /api/v1/trips
 //@access public
 const getAllTrips = asyncHandler(async (req, res) => {
-  const trips = await Trip.find().populate(["car","company"]);
+  const trips = await Trip.find().populate(["car", "company"]);
+  
   trips.length
     ? res.status(200).json(trips)
     : res.status(400).json({
@@ -32,7 +42,10 @@ const getAllTrips = asyncHandler(async (req, res) => {
 //@route /api/v1/trips/trip_id
 //@access private
 const tripDetails = asyncHandler(async (req, res) => {
-  const trip = await Trip.findById(req.params.trip_id).populate(["car","company"]);
+  const trip = await Trip.findById(req.params.trip_id).populate([
+    "car",
+    "company",
+  ]);
   res.status(200).json(trip);
 });
 

@@ -3,7 +3,7 @@ const {searchTrip,getAllTrips, addTrip,updateTrip,deleteTrip, tripDetails}=requi
 const {protectAdmin}=require('../Middleware/AdminMiddleware')
 const router = express.Router();
 router.get('/',searchTrip)
-router.get('/',protectAdmin,getAllTrips)
+router.get('/all',protectAdmin,getAllTrips)
 router.post('/:car_id/:company_id',protectAdmin,addTrip)
 router.put('/:trip_id',protectAdmin,updateTrip)
 router.delete('/:trip_id',protectAdmin,deleteTrip)
