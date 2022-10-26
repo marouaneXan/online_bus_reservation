@@ -43,12 +43,8 @@ const Register = () => {
           />
           <div className="absolute w-full h-full top-0 left-0 bg-gray-900/30"></div>
           <div className="absolute top-0 w-full h-full flex flex-col space-y-6 justify-center text-center text-white p-4">
-            {/* <h1 className="text-3xl md:text-4xl font-bold">Register</h1> */}
+            <h1 className="text-3xl md:text-4xl font-bold">Register</h1>
             <Form className="flex flex-col space-y-2 items-center max-w-[500px] mx-auto w-full border p-8 rounded-md text-black bg-gray-100/90">
-              {success && (
-                <Alert textColor="green" message={success} bgcolor="green" />
-              )}
-              {error && <Alert textColor="red" message={error} bgcolor="red" />}
 
               <div className="flex">
                 <div className="flex items-center mr-4">

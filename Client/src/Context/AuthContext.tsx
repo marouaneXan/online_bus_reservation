@@ -2,6 +2,7 @@ import { createContext, useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import {Proxy} from "../Config/Proxy";
+import { toast } from 'react-toastify'
 export const AuthContext = createContext(null);
 
 const AuthContextProvider = ({ children }: any) => {
@@ -29,18 +30,16 @@ const AuthContextProvider = ({ children }: any) => {
           err.message;
         if (message) {
           setLoading(false);
-          setError(message.response.data.message);
+          toast.error(message.response.data.message)
           setTimeout(() => {
-            setError(null);
             setLoading(false);
           }, 4000);
         }
       });
     if (res && res.data) {
       setLoading(false);
-      setSuccess(res.data.message);
+      toast.success(res.data.message)
       setTimeout(() => {
-        setSuccess(null);
         navigate("/");
         localStorage.setItem("logged", true as any);
         localStorage.setItem("client_id", res.data.client);
@@ -49,9 +48,6 @@ const AuthContextProvider = ({ children }: any) => {
     }
   };
 
-
-
-  
   const values:any = useMemo(
     () => ({
       connected,

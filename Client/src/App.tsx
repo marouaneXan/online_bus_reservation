@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Layouts/Navbar";
 import Register from "./Pages/Register";
 import Home from "./Pages/Home";
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import Footer from "./Components/Layouts/Footer";
 import AuthContextProvider from "./Context/AuthContext";
 import TripContextProvider from "./Context/TripContext";
@@ -22,6 +24,7 @@ function App() {
             </Routes>
             <Footer />
           </div>
+          <ToastContainer />
         </TripContextProvider>
       </AuthContextProvider>
     </Router>
