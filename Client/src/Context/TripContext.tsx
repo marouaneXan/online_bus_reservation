@@ -15,6 +15,7 @@ const TripContextProvider = ({ children }: any) => {
   const [trip, setTrip] = useState<[]>();
   const [loading, setLoading] = useState(false);
   const { setError }: any = useContext(AuthContext);
+
   //Search for Trips available
   const navigate = useNavigate();
   const searchTrips = async (data: Data) => {
@@ -29,7 +30,6 @@ const TripContextProvider = ({ children }: any) => {
           err ||
           err.message;
         if (message) {
-          console.log(message.response.data.message);
           setLoading(false);
           setError(message.response.data.message);
           setTimeout(() => {
@@ -53,7 +53,6 @@ const TripContextProvider = ({ children }: any) => {
       const message: any =
         (err.res && err.res.data && err.res.data.message) || err || err.message;
       if (message) {
-        console.log(message.response.data.message);
         setError(message.response.data.message);
         setTimeout(() => {
           setError(null);

@@ -7,6 +7,8 @@ interface props {
   className: string;
   type: string;
   placeholder: string;
+  min?:any,
+  max?:any,
 }
 
 const TextField = (props: props) => {

@@ -42,6 +42,7 @@ const Search = () => {
             placeholder="To"
           />
           <TextField
+            min={new Date().toISOString().split('T')[0]}
             className="bg-transparent w-[300px] sm:w-[400px] font-[Poppins] focus:outline-none"
             placeholder="Check in"
             type="date"
