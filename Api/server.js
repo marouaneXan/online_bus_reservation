@@ -1,6 +1,8 @@
 const express=require('express')
 const dotenv=require('dotenv').config()
 const PORT=process.env.PORT || 5000
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
 const {ErrorHandler}=require('./Middleware/ErrorMiddleware')
 const app=express()
 
@@ -11,7 +13,6 @@ connectDB()
 //body parser
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
-
 
 //***************************************Global Routes *********************************/
 //Admin auth Route
@@ -36,9 +37,10 @@ app.use('/api/v1/clients',require('./Routes/ClientRoute'))
 app.use('/api/v1/reservations',require('./Routes/ReservationRoute'))
 
 //*************************************************************************************/
-
+app.use(cors({credentials: true}));
 
 //Error handler
 app.use(ErrorHandler)
+app.use(cookieParser())
 
 app.listen(PORT,()=>console.log('Server running at the PORT '+PORT))

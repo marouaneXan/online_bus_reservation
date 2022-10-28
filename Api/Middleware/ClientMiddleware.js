@@ -6,7 +6,7 @@ const protectClient = asyncHandler(async (req, res, next) => {
   if (token) {
     try {
       //Get Token from Header
-      token = req.headers.cookie.split("access_token=")[1];
+      token = req.headers.cookie.split("token=")[1];
       //Verify Token
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
       //Get Client From Token

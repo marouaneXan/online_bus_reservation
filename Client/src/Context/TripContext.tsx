@@ -1,7 +1,7 @@
 import { createContext, useState, useMemo, useContext } from "react";
 import axios from "axios";
 import { Proxy } from "../Config/Proxy";
-import { toast } from 'react-toastify'
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 export const TripContext = createContext(null);
 interface Data {
@@ -13,9 +13,10 @@ const TripContextProvider = ({ children }: any) => {
   const [trips, setTrips] = useState<[]>();
   const [trip, setTrip] = useState<[]>();
   const [loading, setLoading] = useState(false);
+  const [reservations, setReservations] = useState<[]>();
 
-  //Search for Trips available
   const navigate = useNavigate();
+  //Search for Trips available
   const searchTrips = async (data: Data) => {
     setLoading(true);
     const res = await axios
@@ -29,7 +30,7 @@ const TripContextProvider = ({ children }: any) => {
           err.message;
         if (message) {
           setLoading(false);
-          toast.error(message.response.data.message)
+          toast.error(message.response.data.message);
           setTimeout(() => {
             setLoading(false);
           }, 4000);
@@ -41,6 +42,31 @@ const TripContextProvider = ({ children }: any) => {
         setTrips(res.data);
         navigate("/results_availabilities");
       }, 4000);
+    }
+  };
+
+  //Search for Trips available
+  const makeReservation = async (trip_id: string, client_id: string) => {
+    // axios.defaults.withCredentials = true;
+    // setLoading(true);
+    const res: any = await axios
+      .post(`${Proxy}/reservations/${trip_id}/${client_id}`,{credentials: "include"})
+      .catch((err) => {
+        const message: any =
+          (err.res && err.res.data && err.res.data.message) ||
+          err ||
+          err.message;
+        if (message) {
+          setLoading(false);
+          console.log(message);
+          // toast.error(message.response.data.message);
+          setTimeout(() => {
+            setLoading(false);
+          }, 4000);
+        }
+      });
+    if (res && res.data) {
+      toast.success(res.data.message);
     }
   };
 
@@ -61,12 +87,13 @@ const TripContextProvider = ({ children }: any) => {
   const values: any = useMemo(
     () => ({
       loading,
+      makeReservation,
       trips,
       trip,
       searchTrips,
       getTripDetails,
     }),
-    [searchTrips, loading, trips, trip, getTripDetails]
+    [searchTrips, makeReservation, loading, trips, trip, getTripDetails]
   );
   return <TripContext.Provider value={values}>{children}</TripContext.Provider>;
 };

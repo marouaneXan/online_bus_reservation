@@ -37,8 +37,10 @@ const AuthContextProvider = ({ children }: any) => {
         }
       });
     if (res && res.data) {
+      
       setLoading(false);
       toast.success(res.data.message)
+      console.log(res)
       setTimeout(() => {
         navigate("/");
         localStorage.setItem("logged", true as any);

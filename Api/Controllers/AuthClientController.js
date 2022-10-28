@@ -59,7 +59,8 @@ const register = asyncHandler(async (req, res) => {
   });
   if (client) {
     res
-      .cookie("access_token", generateToken(client._id), {
+      .cookie("token", generateToken(client._id), {
+        secure: false,
         httpOnly: true,
       })
       .status(201)
@@ -94,10 +95,10 @@ const login = asyncHandler(async (req, res) => {
   }
   if (client && isPasswordCorrect) {
     res
-      .cookie("access_token", generateToken(client._id), {
+      .status(201)
+      .cookie("token", generateToken(client._id), {
         httpOnly: true,
       })
-      .status(201)
       .json({
         message: "Login successfully",
         client: client._id,
@@ -111,7 +112,7 @@ const login = asyncHandler(async (req, res) => {
 //Generate JWT
 const generateToken = (client_id) => {
   return jwt.sign({ client_id }, process.env.JWT_SECRET, {
-    expiresIn: "30d",
+    expiresIn: "1h",
   });
 };
 module.exports = {

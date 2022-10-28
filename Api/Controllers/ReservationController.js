@@ -66,7 +66,7 @@ const makeReservation = asyncHandler(async (req, res) => {
       client: client._id,
     });
     if (reservation) {
-      res.status(200).json(reservation);
+      res.status(200).json({message:"Your reservation has been confirmed successfully"});
       await Car.findByIdAndUpdate(trip.car, {
         nbr_places: car.nbr_places - 1,
       });
