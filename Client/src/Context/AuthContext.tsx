@@ -45,6 +45,7 @@ const AuthContextProvider = ({ children }: any) => {
         navigate("/");
         localStorage.setItem("logged", true as any);
         localStorage.setItem("client_id", res.data.client);
+        localStorage.setItem("token", res.data.token);
         setConnected(true);
       }, 5000);
     }

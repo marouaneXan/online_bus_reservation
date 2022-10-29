@@ -59,14 +59,18 @@ const register = asyncHandler(async (req, res) => {
   });
   if (client) {
     res
-      .cookie("token", generateToken(client._id), {
-        secure: false,
-        httpOnly: true,
-      })
+      // .cookie("access_token", generateToken(client._id), {
+      //   {
+      //     httpOnly: true,
+      //     secure: true,
+      //     sameSite: "none",
+      //   }
+      // })
       .status(201)
       .json({
         message: "Account created successfully",
         client: client._id,
+        token: generateToken(client._id),
       });
   }
 });
@@ -95,13 +99,14 @@ const login = asyncHandler(async (req, res) => {
   }
   if (client && isPasswordCorrect) {
     res
+      // .cookie("access_token", generateToken(client._id), {
+      //   httpOnly: true,
+      // })
       .status(201)
-      .cookie("token", generateToken(client._id), {
-        httpOnly: true,
-      })
       .json({
         message: "Login successfully",
         client: client._id,
+        token: generateToken(client._id),
       });
   } else {
     res.status(400);
@@ -112,7 +117,7 @@ const login = asyncHandler(async (req, res) => {
 //Generate JWT
 const generateToken = (client_id) => {
   return jwt.sign({ client_id }, process.env.JWT_SECRET, {
-    expiresIn: "1h",
+    expiresIn: "30d",
   });
 };
 module.exports = {
