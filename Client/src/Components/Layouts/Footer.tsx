@@ -16,7 +16,8 @@ const Footer = () => {
     <>
       {location.pathname === "/register" ||
       location.pathname === "/login" ||
-      location.pathname === "/results_availabilities" ? (
+      location.pathname === "/results_availabilities" ||
+      location.pathname === "/reservations" ? (
         ""
       ) : (
         <div className="w-full bg-gray-200 py-16">

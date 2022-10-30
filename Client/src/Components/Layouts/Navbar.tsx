@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import { BsPerson } from "react-icons/bs";
 import { AiOutlineClose } from "react-icons/ai";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
@@ -33,10 +32,10 @@ const Navbar = () => {
       location.pathname === "/results_availabilities" ? (
         ""
       ) : (
-        <div className="flex w-full justify-between items-center h-20 px-4 absolute z-10 text-white">
-          <div className="w-[110px]">
+        <div className={`flex w-full justify-between items-center h-20 px-4 ${location.pathname === "/reservations" ? "text-black" : "absolute z-10 text-white"}`}>
+          <Link to="/" className="w-[110px]">
             <img src={logoNav} alt="merkob.ma" />
-          </div>
+          </Link>
           <ul className="hidden md:flex">
             <Link to="/register">
               <li className="p-4">Home</li>
@@ -58,9 +57,9 @@ const Navbar = () => {
               </>
             )}
           </ul>
-          <div className="hidden md:flex">
+          <Link to="/reservations" className="hidden md:flex">
             <AiOutlineShoppingCart className="" size={20} />
-          </div>
+          </Link>
 
           {/* Hamburger */}
           <div onClick={handleNav} className="md:hidden z-10">

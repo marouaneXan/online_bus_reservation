@@ -9,6 +9,7 @@ import Footer from "./Components/Layouts/Footer";
 import AuthContextProvider from "./Context/AuthContext";
 import TripContextProvider from "./Context/TripContext";
 import Trips from "./Pages/Trips";
+import Reservations from "./Pages/Reservations";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
               <Route path="/register" element={<Register />} />
               <Route path="/" element={<Home />} />
               <Route path="/results_availabilities" element={<Trips />} />
+              <Route path="/reservations" element={<Reservations />} />
             </Routes>
             <Footer />
           </div>
