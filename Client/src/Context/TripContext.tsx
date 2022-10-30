@@ -83,16 +83,46 @@ const TripContextProvider = ({ children }: any) => {
       setTrip(res.data);
     }
   };
+
+  //Search for Trips available
+  const getClientReservations = async (client_id:string) => {
+    setLoading(true);
+    const res = await axios
+      .get(
+        `${Proxy}/reservations/${client_id}`
+      )
+      .catch((err) => {
+        const message: any =
+          (err.res && err.res.data && err.res.data.message) ||
+          err ||
+          err.message;
+        if (message) {
+          setLoading(false);
+          toast.error(message.response.data.message);
+          setTimeout(() => {
+            setLoading(false);
+          }, 4000);
+        }
+      });
+    if (res && res.data) {
+      setTimeout(() => {
+        setLoading(false);
+        setReservations(res.data);
+      }, 4000);
+    }
+  };
   const values: any = useMemo(
     () => ({
       loading,
       makeReservation,
+      getClientReservations,
       trips,
+      reservations,
       trip,
       searchTrips,
       getTripDetails,
     }),
-    [searchTrips, makeReservation, loading, trips, trip, getTripDetails]
+    [searchTrips,getClientReservations,reservations, makeReservation, loading, trips, trip, getTripDetails]
   );
   return <TripContext.Provider value={values}>{children}</TripContext.Provider>;
 };
