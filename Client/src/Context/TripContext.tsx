@@ -14,6 +14,7 @@ const TripContextProvider = ({ children }: any) => {
   const [trip, setTrip] = useState<[]>();
   const [loading, setLoading] = useState(false);
   const [reservations, setReservations] = useState<[]>();
+  const [error, setError] = useState<string | null>();
 
   const navigate = useNavigate();
 
@@ -84,7 +85,7 @@ const TripContextProvider = ({ children }: any) => {
     }
   };
 
-  //Search for Trips available
+  //Get all reservations for client
   const getClientReservations = async (client_id:string) => {
     setLoading(true);
     const res = await axios
@@ -98,13 +99,14 @@ const TripContextProvider = ({ children }: any) => {
           err.message;
         if (message) {
           setLoading(false);
-          toast.error(message.response.data.message);
+          setError(message.response.data.message);
           setTimeout(() => {
             setLoading(false);
           }, 4000);
         }
       });
     if (res && res.data) {
+      setError(null)
       setTimeout(() => {
         setLoading(false);
         setReservations(res.data);
@@ -113,6 +115,7 @@ const TripContextProvider = ({ children }: any) => {
   };
   const values: any = useMemo(
     () => ({
+      error,
       loading,
       makeReservation,
       getClientReservations,
@@ -122,7 +125,7 @@ const TripContextProvider = ({ children }: any) => {
       searchTrips,
       getTripDetails,
     }),
-    [searchTrips,getClientReservations,reservations, makeReservation, loading, trips, trip, getTripDetails]
+    [searchTrips,error,getClientReservations,reservations, makeReservation, loading, trips, trip, getTripDetails]
   );
   return <TripContext.Provider value={values}>{children}</TripContext.Provider>;
 };
