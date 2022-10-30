@@ -113,19 +113,49 @@ const TripContextProvider = ({ children }: any) => {
       }, 4000);
     }
   };
+
+  //Cancel reservations
+  const cancelReservation = async (reservation_id:string,trip_id:string,client_id:string) => {
+    setLoading(true);
+    const res = await axios
+      .delete(
+        `${Proxy}/reservations/${reservation_id}/${trip_id}/${client_id}`
+      )
+      .catch((err) => {
+        const message: any =
+          (err.res && err.res.data && err.res.data.message) ||
+          err ||
+          err.message;
+        if (message) {
+          setLoading(false);
+          setError(message.response.data.message);
+          setTimeout(() => {
+            setLoading(false);
+          }, 4000);
+        }
+      });
+    if (res && res.data) {
+      setError(null)
+      setTimeout(() => {
+        setLoading(false);
+        toast.success(res.data.message)
+      }, 4000);
+    }
+  };
   const values: any = useMemo(
     () => ({
       error,
       loading,
       makeReservation,
       getClientReservations,
+      cancelReservation,
       trips,
       reservations,
       trip,
       searchTrips,
       getTripDetails,
     }),
-    [searchTrips,error,getClientReservations,reservations, makeReservation, loading, trips, trip, getTripDetails]
+    [searchTrips,error,cancelReservation,getClientReservations,reservations, makeReservation, loading, trips, trip, getTripDetails]
   );
   return <TripContext.Provider value={values}>{children}</TripContext.Provider>;
 };

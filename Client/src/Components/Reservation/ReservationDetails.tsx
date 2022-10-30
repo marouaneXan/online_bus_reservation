@@ -1,8 +1,10 @@
-import React from "react";
+import React,{useContext} from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import { BsClockHistory } from "react-icons/bs";
+import { TripContext } from "../../Context/TripContext";
 
 const ReservationDetails = ({reservation}:any) => {
+  const {cancelReservation}:any=useContext(TripContext)
   return (
     <div className="flex flex-col space-y-6 p-6">
       <div className="flex justify-between items-center w-full text-[21.8181px] font-semibold">
@@ -12,7 +14,7 @@ const ReservationDetails = ({reservation}:any) => {
           </span>{" "}
           {reservation.trip.departure_date}
         </h3>
-        <AiOutlineDelete className="text-red-500 cursor-pointer" />
+        <AiOutlineDelete onClick={cancelReservation(reservation._id,reservation.trip._id,reservation.client._id)}  className="text-red-500 cursor-pointer" />
       </div>
       <div className=" w-full lg:max-w-full lg:flex">
         <div className="border-r border-dashed border-b border-l border-gray-400 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none p-4 flex flex-col justify-between leading-normal">
