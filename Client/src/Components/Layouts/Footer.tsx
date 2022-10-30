@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import {
   FaFacebook,
@@ -9,9 +9,11 @@ import {
 } from "react-icons/fa";
 import logoNav from "../../assets/merkob.png";
 import { useLocation } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthContext";
 
 const Footer = () => {
   const location: any = useLocation();
+  const { connected }: any = useContext(AuthContext);
   return (
     <>
       {location.pathname === "/register" ||
@@ -49,18 +51,25 @@ const Footer = () => {
             </div>
             <div className="flex justify-between">
               <ul className="lg:flex">
-                <Link to="/register">
+                <Link to="/">
                   <li className="p-4 hover:text-gray-500">Home</li>
                 </Link>
                 <Link to="/register">
                   <li className="p-4 hover:text-gray-500">Contact</li>
                 </Link>
                 <Link to="/register">
-                  <li className="p-4 hover:text-gray-500">Register</li>
+                  <li className="p-4 hover:text-gray-500">Services</li>
                 </Link>
-                <Link to="/register">
-                  <li className="p-4 hover:text-gray-500">Login</li>
-                </Link>
+                {!connected && (
+                  <>
+                    <Link to="/register">
+                      <li className="p-4 hover:text-gray-500">Register</li>
+                    </Link>
+                    <Link to="/register">
+                      <li className="p-4 hover:text-gray-500">Login</li>
+                    </Link>
+                  </>
+                )}
               </ul>
             </div>
           </div>
