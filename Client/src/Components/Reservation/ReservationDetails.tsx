@@ -1,7 +1,6 @@
-import React, { useContext,useEffect } from "react";
+import React from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import { BsClockHistory } from "react-icons/bs";
-import { TripContext } from "../../Context/TripContext";
 
 const ReservationDetails = ({reservation}:any) => {
   return (
@@ -11,7 +10,7 @@ const ReservationDetails = ({reservation}:any) => {
           <span className="text-transparent bg-clip-text bg-gradient-to-r font-bold from-purple-400 to-blue-600">
             GO
           </span>{" "}
-          {reservation.departure_date}
+          {reservation.trip.departure_date}
         </h3>
         <AiOutlineDelete className="text-red-500 cursor-pointer" />
       </div>
@@ -19,7 +18,7 @@ const ReservationDetails = ({reservation}:any) => {
         <div className="border-r border-dashed border-b border-l border-gray-400 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none p-4 flex flex-col justify-between leading-normal">
           <div className="mb-2">
             <p className="text-sm text-gray-600 bg-gray-200 p-2 rounded text-center">
-              Bus name: ASSIR
+              Bus name: {reservation.trip.car.car_name}
             </p>
             <div className="flex space-x-4 md:space-x-6 items-center">
               <div className="flex flex-col md:p-2 mt-5">

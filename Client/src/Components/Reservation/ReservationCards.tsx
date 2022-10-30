@@ -1,10 +1,12 @@
 import React, { useContext, useEffect } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 import ReservationDetails from "./ReservationDetails";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 import { TripContext } from "../../Context/TripContext";
+import Spinner from "../Layouts/Spinner";
 const ReservationCards = () => {
-  const { reservations, getClientReservations }: any = useContext(TripContext);
+  const { reservations, getClientReservations, loading }: any =
+    useContext(TripContext);
   const client_id = localStorage.getItem("client_id");
   useEffect(() => {
     getClientReservations(client_id);
@@ -23,9 +25,18 @@ const ReservationCards = () => {
           Pay anouther Tickets
         </Link>{" "}
       </div>
-      {reservations?.map((reservation:any)=>(
-        <ReservationDetails reservation={reservation} key={reservation._id} />
-      ))}
+      {loading ? (
+        <Spinner />
+      ) : (
+        <>
+          {reservations?.map((reservation: any) => (
+            <ReservationDetails
+              reservation={reservation}
+              key={reservation._id}
+            />
+          ))}
+        </>
+      )}
     </div>
   );
 };
