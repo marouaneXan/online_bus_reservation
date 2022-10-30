@@ -1,15 +1,17 @@
 import React, { useContext } from "react";
 import casablanca from "../../assets/casa.webp";
 import { BiBus } from "react-icons/bi";
-import { Tripe } from "../../Types/Trip";
+import { Link } from "react-router-dom";
 import { TripContext } from "../../Context/TripContext";
+import { AuthContext } from "../../Context/AuthContext";
 
 const ModalTrip = ({
   setShowModal,
 }: {
   setShowModal: React.Dispatch<React.SetStateAction<Boolean>>;
 }) => {
-  const { trip,makeReservation }: any = useContext(TripContext);
+  const { trip, makeReservation }: any = useContext(TripContext);
+  const { connected }: any = useContext(AuthContext);
   return (
     <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
       <div className="relative w-auto my-6 mx-auto max-w-3xl">
@@ -71,7 +73,7 @@ const ModalTrip = ({
               <p className="font-semibold">
                 Number of places:{" "}
                 <span className="font-bold text-[#5651e5]">
-                    {trip?.car?.nbr_places}
+                  {trip?.car?.nbr_places}
                 </span>
               </p>
               <p className="font-semibold">
@@ -91,13 +93,24 @@ const ModalTrip = ({
             >
               Close
             </button>
-            <button
-              className="bg-emerald-500 bg-gradient-to-r from-[#5651e5] to-[#709dff] text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-              type="button"
-              onClick={() => makeReservation(trip?._id,localStorage?.getItem('client_id'))}
-            >
-              book now
-            </button>
+            {connected ? (
+              <button
+                className="bg-emerald-500 bg-gradient-to-r from-[#5651e5] to-[#709dff] text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                type="button"
+                onClick={() =>
+                  makeReservation(trip?._id, localStorage?.getItem("client_id"))
+                }
+              >
+                book now
+              </button>
+            ) : (
+              <Link
+                className="bg-emerald-500 bg-gradient-to-r from-[#5651e5] to-[#709dff] text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                to="/register"
+              >
+                book now
+              </Link>
+            )}
           </div>
         </div>
       </div>
