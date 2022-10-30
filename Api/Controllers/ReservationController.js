@@ -37,7 +37,7 @@ const getClientReservations = asyncHandler(async (req, res) => {
     reservations.length
       ? res.status(200).json(reservations)
       : res.status(400).json({
-          message: "There is no reservations for this client",
+          message: "You don't have any reservations",
         });
   } else {
     res.status(400);
