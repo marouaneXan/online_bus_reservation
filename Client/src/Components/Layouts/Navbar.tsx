@@ -32,7 +32,13 @@ const Navbar = () => {
       location.pathname === "/results_availabilities" ? (
         ""
       ) : (
-        <div className={`flex w-full justify-between items-center h-20 px-4 ${location.pathname === "/reservations" ? "text-black" : "absolute z-10 text-white"}`}>
+        <div
+          className={`flex w-full justify-between items-center h-20 px-8 ${
+            location.pathname === "/reservations"
+              ? "text-black"
+              : "absolute z-10 text-white"
+          }`}
+        >
           <Link to="/" className="w-[110px]">
             <img src={logoNav} alt="merkob.ma" />
           </Link>
@@ -46,20 +52,19 @@ const Navbar = () => {
             <Link to="/register">
               <li className="p-4">Services</li>
             </Link>
-            {!connected && (
-              <>
-                <Link to="/register">
-                  <li className="p-4">Register</li>
-                </Link>
-                <Link to="/register">
-                  <li className="p-4">Login</li>
-                </Link>
-              </>
-            )}
           </ul>
-          <Link to="/reservations" className="hidden md:flex">
-            <AiOutlineShoppingCart className="" size={20} />
-          </Link>
+          {!connected ? (
+            <>
+              <Link to="/register">Register</Link>
+            </>
+          ) : (
+            <Link
+              to="/reservations"
+              className="hidden md:flex lg:flex bg-emerald-500 bg-gradient-to-r from-[#5651e5] to-[#709dff] text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+            >
+              reservations
+            </Link>
+          )}
 
           {/* Hamburger */}
           <div onClick={handleNav} className="md:hidden z-10">
@@ -90,7 +95,7 @@ const Navbar = () => {
               <Link to="/register" className="border-b">
                 <li className="p-4">Services</li>
               </Link>
-              {connected && (
+              {!connected ? (
                 <>
                   <Link to="/register" className="border-b">
                     <li className="p-4">Register</li>
@@ -99,6 +104,13 @@ const Navbar = () => {
                     <li className="p-4">Login</li>
                   </Link>
                 </>
+              ) : (
+                <Link
+                  to="/reservations"
+                  className="bg-emerald-500 bg-gradient-to-r from-[#5651e5] to-[#709dff] text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                >
+                  reservations
+                </Link>
               )}
               <div className="flex justify-between my-6">
                 <FaFacebook className="text-2xl cursor-pointer" />
