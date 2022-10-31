@@ -128,14 +128,13 @@ const TripContextProvider = ({ children }: any) => {
           err.message;
         if (message) {
           setLoading(false);
-          setError(message.response.data.message);
+          toast.error(message.response.data.message);
           setTimeout(() => {
             setLoading(false);
           }, 4000);
         }
       });
     if (res && res.data) {
-      setError(null)
       setTimeout(() => {
         setLoading(false);
         toast.success(res.data.message)
