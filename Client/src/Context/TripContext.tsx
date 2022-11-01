@@ -86,12 +86,10 @@ const TripContextProvider = ({ children }: any) => {
   };
 
   //Get all reservations for client
-  const getClientReservations = async (client_id:string) => {
+  const getClientReservations = async (client_id: string) => {
     setLoading(true);
     const res = await axios
-      .get(
-        `${Proxy}/reservations/${client_id}`
-      )
+      .get(`${Proxy}/reservations/${client_id}`)
       .catch((err) => {
         const message: any =
           (err.res && err.res.data && err.res.data.message) ||
@@ -106,7 +104,7 @@ const TripContextProvider = ({ children }: any) => {
         }
       });
     if (res && res.data) {
-      setError(null)
+      setError(null);
       setTimeout(() => {
         setLoading(false);
         setReservations(res.data);
@@ -115,12 +113,14 @@ const TripContextProvider = ({ children }: any) => {
   };
 
   //Cancel reservations
-  const cancelReservation = async (reservation_id:string,trip_id:string,client_id:string) => {
+  const cancelReservation = async (
+    reservation_id: string,
+    trip_id: string,
+    client_id: string
+  ) => {
     setLoading(true);
     const res = await axios
-      .delete(
-        `${Proxy}/reservations/${reservation_id}/${trip_id}/${client_id}`
-      )
+      .delete(`${Proxy}/reservations/${reservation_id}/${trip_id}/${client_id}`)
       .catch((err) => {
         const message: any =
           (err.res && err.res.data && err.res.data.message) ||
@@ -137,9 +137,10 @@ const TripContextProvider = ({ children }: any) => {
     if (res && res.data) {
       setTimeout(() => {
         setLoading(false);
-        toast.success(res.data.message)
+        toast.success(res.data.message);
       }, 4000);
     }
+    getClientReservations(client_id);
   };
   const values: any = useMemo(
     () => ({
@@ -154,7 +155,18 @@ const TripContextProvider = ({ children }: any) => {
       searchTrips,
       getTripDetails,
     }),
-    [searchTrips,error,cancelReservation,getClientReservations,reservations, makeReservation, loading, trips, trip, getTripDetails]
+    [
+      searchTrips,
+      error,
+      cancelReservation,
+      getClientReservations,
+      reservations,
+      makeReservation,
+      loading,
+      trips,
+      trip,
+      getTripDetails,
+    ]
   );
   return <TripContext.Provider value={values}>{children}</TripContext.Provider>;
 };
