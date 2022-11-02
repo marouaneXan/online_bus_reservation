@@ -43,7 +43,7 @@ const TripContextProvider = ({ children }: any) => {
         setLoading(false);
         setTrips(res.data);
         navigate("/results_availabilities");
-      }, 2000);
+      }, 4000);
     }
   };
 
@@ -65,6 +65,7 @@ const TripContextProvider = ({ children }: any) => {
       });
     if (res && res.data) {
       toast.success(res.data.message);
+      navigate("/reservations")
     }
   };
 

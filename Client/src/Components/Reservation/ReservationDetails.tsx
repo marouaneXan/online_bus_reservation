@@ -1,10 +1,11 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import { BsClockHistory } from "react-icons/bs";
 import ModalDelete from "./ModalDelete";
 
-const ReservationDetails = ({reservation}:any) => {
+const ReservationDetails = ({ reservation }: any) => {
   const [showModalDelete, setShowModalDelete] = useState<boolean>(false);
+  const time_now = new Date().toLocaleTimeString();
   return (
     <div className="flex flex-col space-y-6 p-6">
       <div className="flex justify-between items-center w-full text-[21.8181px] font-semibold">
@@ -14,10 +15,20 @@ const ReservationDetails = ({reservation}:any) => {
           </span>{" "}
           {reservation.trip.departure_date}
         </h3>
-        <AiOutlineDelete onClick={()=>{setShowModalDelete(true)}}  className="text-red-500 cursor-pointer" />
+        <AiOutlineDelete
+          onClick={() => {
+            setShowModalDelete(true);
+          }}
+          className="text-red-500 cursor-pointer"
+        />
         {showModalDelete && (
-        <ModalDelete reservation_id={reservation._id} trip_id={reservation.trip._id} client_id={reservation.client._id}  setShowModalDelete={setShowModalDelete}/>
-      )}
+          <ModalDelete
+            reservation_id={reservation._id}
+            trip_id={reservation.trip._id}
+            client_id={reservation.client._id}
+            setShowModalDelete={setShowModalDelete}
+          />
+        )}
       </div>
       <div className=" w-full lg:max-w-full lg:flex">
         <div className="border-r border-dashed border-b border-l border-gray-400 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none p-4 flex flex-col justify-between leading-normal">
@@ -75,6 +86,8 @@ const ReservationDetails = ({reservation}:any) => {
           </h1>
         </div>
       </div>
+      {/* {time_now}
+      <p className="text-center text-red-500">You cannot cancel this reservation beacause u depass time</p> */}
     </div>
   );
 };
