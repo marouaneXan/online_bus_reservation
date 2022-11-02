@@ -43,19 +43,24 @@ const Navbar = () => {
             <img src={logoNav} alt="merkob.ma" />
           </Link>
           <ul className="hidden md:flex">
-            <Link to="/register">
+            <Link to="/">
               <li className="p-4">Home</li>
             </Link>
-            <Link to="/register">
+            <Link to="/">
               <li className="p-4">Contact</li>
             </Link>
-            <Link to="/register">
+            <Link to="/">
               <li className="p-4">Services</li>
             </Link>
           </ul>
           {!connected ? (
             <>
-              <Link to="/register">Register</Link>
+              <Link
+                to="/register"
+                className="hidden md:flex lg:flex bg-emerald-500 bg-gradient-to-r from-[#5651e5] to-[#709dff] text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 rounded-[12px]"
+              >
+                Register
+              </Link>
             </>
           ) : (
             <Link
