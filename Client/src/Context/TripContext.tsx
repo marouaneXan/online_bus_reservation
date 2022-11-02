@@ -43,7 +43,7 @@ const TripContextProvider = ({ children }: any) => {
         setLoading(false);
         setTrips(res.data);
         navigate("/results_availabilities");
-      }, 4000);
+      }, 2000);
     }
   };
 
@@ -60,9 +60,7 @@ const TripContextProvider = ({ children }: any) => {
           setLoading(false);
           console.log(message);
           toast.error(message.response.data.message);
-          setTimeout(() => {
             setLoading(false);
-          }, 4000);
         }
       });
     if (res && res.data) {
@@ -98,17 +96,13 @@ const TripContextProvider = ({ children }: any) => {
         if (message) {
           setLoading(false);
           setError(message.response.data.message);
-          setTimeout(() => {
-            setLoading(false);
-          }, 4000);
+          setLoading(false);
         }
       });
     if (res && res.data) {
       setError(null);
-      setTimeout(() => {
-        setLoading(false);
-        setReservations(res.data);
-      }, 1000);
+      setLoading(false);
+      setReservations(res.data);
     }
   };
 
@@ -129,9 +123,7 @@ const TripContextProvider = ({ children }: any) => {
         if (message) {
           setLoading(false);
           toast.error(message.response.data.message);
-          setTimeout(() => {
             setLoading(false);
-          }, 4000);
         }
       });
     if (res && res.data) {
