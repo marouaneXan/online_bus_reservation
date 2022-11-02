@@ -8,7 +8,10 @@ const Car = require("../Models/Car");
 //@route /api/v1/reservation
 //@access private
 const getAllReservations = asyncHandler(async (req, res) => {
-  const reservations = await Reservation.find().populate([{path:"trip",populate:{path:"car"}},"client"]);
+  const reservations = await Reservation.find().populate([
+    { path: "trip", populate: { path: "car" } },
+    "client",
+  ]);
   reservations.length
     ? res.status(200).json(reservations)
     : res.status(400).json({
@@ -22,7 +25,11 @@ const getAllReservations = asyncHandler(async (req, res) => {
 const getReservationDetails = asyncHandler(async (req, res) => {
   const reservation = await Reservation.findById(
     req.params.reservation_id
-  ).populate([{path:"trip",populate:{path:"car"}},{path:"trip",populate:{path:"company"}},"client"]);
+  ).populate([
+    { path: "trip", populate: { path: "car" } },
+    { path: "trip", populate: { path: "company" } },
+    "client",
+  ]);
   res.status(400).json(reservation);
 });
 //@desc GET Reservations single client
@@ -32,7 +39,11 @@ const getClientReservations = asyncHandler(async (req, res) => {
   const client_id = req.params.client_id;
   if (client_id) {
     const reservations = await Reservation.find({ client: client_id }).populate(
-      [{path:"trip",populate:{path:"car"}},{path:"trip",populate:{path:"company"}},"client"]
+      [
+        { path: "trip", populate: { path: "car" } },
+        { path: "trip", populate: { path: "company" } },
+        "client",
+      ]
     );
     reservations.length
       ? res.status(200).json(reservations)
@@ -50,7 +61,7 @@ const getClientReservations = asyncHandler(async (req, res) => {
 //@access public
 const makeReservation = asyncHandler(async (req, res) => {
   const time_now = new Date().toLocaleTimeString();
-  const date_now = new Date().toLocaleDateString();
+  const date_now = new Date().toLocaleDateString("sv");
   const trip = await Trip.findById(req.params.trip_id);
   const client = await Client.findById(req.params.client_id);
   if (!trip || !client) {
@@ -66,7 +77,9 @@ const makeReservation = asyncHandler(async (req, res) => {
       client: client._id,
     });
     if (reservation) {
-      res.status(200).json({message:"Your reservation has been confirmed successfully"});
+      res
+        .status(200)
+        .json({ message: "Your reservation has been confirmed successfully" });
       await Car.findByIdAndUpdate(trip.car, {
         nbr_places: car.nbr_places - 1,
       });
@@ -106,7 +119,7 @@ const cancelReservation = asyncHandler(async (req, res) => {
     res.status(200).json({ message: "Canceling reservation successffuly" });
   } else {
     res.status(400);
-    throw new Error("You cannot cancel this reservation");
+    res.json({ message: "You cannot cancel this reservation :(" });
   }
 });
 

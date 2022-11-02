@@ -49,6 +49,7 @@ const TripContextProvider = ({ children }: any) => {
 
   //Search for Trips available
   const makeReservation = async (trip_id: string, client_id: string) => {
+    setLoading(true)
     const res: object | any = await axios
       .post(`${Proxy}/reservations/${trip_id}/${client_id}`)
       .catch((err) => {
@@ -65,7 +66,9 @@ const TripContextProvider = ({ children }: any) => {
       });
     if (res && res.data) {
       toast.success(res.data.message);
-      navigate("/reservations")
+      setTimeout(()=>{
+        navigate("/reservations")
+      },2000)
     }
   };
 

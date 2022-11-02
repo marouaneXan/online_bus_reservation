@@ -4,13 +4,14 @@ import { BiBus } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { TripContext } from "../../Context/TripContext";
 import { AuthContext } from "../../Context/AuthContext";
+import Spinner from "../Layouts/Spinner";
 
 const ModalTrip = ({
   setShowModal,
 }: {
   setShowModal: React.Dispatch<React.SetStateAction<Boolean>>;
 }) => {
-  const { trip, makeReservation }: any = useContext(TripContext);
+  const { trip, makeReservation,loading }: any = useContext(TripContext);
   const { connected }: any = useContext(AuthContext);
   return (
     <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
@@ -101,7 +102,7 @@ const ModalTrip = ({
                   makeReservation(trip?._id, localStorage?.getItem("client_id"))
                 }
               >
-                book now
+                book now {loading && <Spinner/>}
               </button>
             ) : (
               <Link
