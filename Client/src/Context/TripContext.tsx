@@ -108,7 +108,7 @@ const TripContextProvider = ({ children }: any) => {
       setTimeout(() => {
         setLoading(false);
         setReservations(res.data);
-      }, 4000);
+      }, 1000);
     }
   };
 
@@ -135,12 +135,10 @@ const TripContextProvider = ({ children }: any) => {
         }
       });
     if (res && res.data) {
-      setTimeout(() => {
-        setLoading(false);
-        toast.success(res.data.message);
-      }, 4000);
+      setLoading(false);
+      getClientReservations(client_id);
+      toast.success(res.data.message);
     }
-    getClientReservations(client_id);
   };
   const values: any = useMemo(
     () => ({
