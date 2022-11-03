@@ -1,5 +1,6 @@
 import React from "react";
 import { sidebarLinks } from "../../constant/SidebarLinks";
+import {Link} from 'react-router-dom'
 
 const Sidebar = () => {
   return (
@@ -15,7 +16,8 @@ const Sidebar = () => {
               <ul className="pb-2 space-y-2 pt-1">
                 {sidebarLinks.map((link,index)=>(
                   <li key={index}>
-                  <a
+                  <Link
+                  to={link.path}
                     className="flex items-center py-2.5 px-4 text-base font-normal text-dark-500 rounded-lg hover:bg-gray-200  bg-white shadow-lg shadow-gray-200 hover:!bg-white group transition-all duration-200"
                     sidebar-toggle-collapse
                   >
@@ -28,7 +30,7 @@ const Sidebar = () => {
                     >
                       {link.content}
                     </span>
-                  </a>
+                  </Link>
                 </li>
                 ))}
               </ul>

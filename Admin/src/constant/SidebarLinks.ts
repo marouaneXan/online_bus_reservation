@@ -8,32 +8,38 @@ export const sidebarLinks=[
     {
         id:"1",
         content:"Dashboard",
-        icon:AiOutlineHome
+        icon:AiOutlineHome,
+        path:"/"
     },
     {
         id:"2",
         content:"Trips",
-        icon:SiYourtraveldottv
+        icon:SiYourtraveldottv,
+        path:"/trips"
     },
     {
         id:"3",
         content:"Clients",
-        icon:FiUsers
+        icon:FiUsers,
+        path:"/clients"
     },
     {
         id:"4",
         content:"Bookings",
-        icon:FaRegMoneyBillAlt
+        icon:FaRegMoneyBillAlt,
+        path:"/bookings"
     },
     {
         id:"5",
         content:"Buses",
-        icon:BiBus
+        icon:BiBus,
+        path:"/buses"
     },
     {
         id:"6",
         content:"Companies",
-        icon:SiGithubsponsors
+        icon:SiGithubsponsors,
+        path:"/companies"
     },
 
 ]
