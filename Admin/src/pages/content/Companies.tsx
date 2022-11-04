@@ -1,4 +1,5 @@
 import React from "react";
+import CompayCard from "../../components/Company/CompanyCard";
 
 const Companies = () => {
   return (
@@ -26,7 +27,7 @@ const Companies = () => {
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
-                    {/* <ReservationCard /> */}
+                    <CompayCard />
                   </tbody>
                 </table>
               </div>
