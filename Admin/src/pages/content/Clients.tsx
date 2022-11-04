@@ -1,4 +1,5 @@
-import React from 'react'
+import React from "react";
+import ClientCard from "../../components/Clients/ClientCard";
 
 const Clients = () => {
   return (
@@ -74,7 +75,7 @@ const Clients = () => {
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
-                    {/* <TripCard /> */}
+                    <ClientCard />
                   </tbody>
                 </table>
               </div>
@@ -83,7 +84,7 @@ const Clients = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Clients
+export default Clients;
