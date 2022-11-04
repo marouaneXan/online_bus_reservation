@@ -1,7 +1,7 @@
 import React from "react";
 import ReservationCard from "../../components/Reservation/ReservationCard";
 
-const Reservations = () => {
+const Buses = () => {
   return (
     <div className="flex overflow-hidden bg-white pt-16">
       <div className="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
@@ -51,4 +51,4 @@ const Reservations = () => {
   );
 };
 
-export default Reservations;
+export default Buses;
