@@ -27,7 +27,7 @@ export const sidebarLinks=[
         id:"4",
         content:"Bookings",
         icon:FaRegMoneyBillAlt,
-        path:"/bookings"
+        path:"/reservations"
     },
     {
         id:"5",
