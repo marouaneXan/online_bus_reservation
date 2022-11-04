@@ -23,7 +23,7 @@ const ReservationCard = () => {
       <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap lg:p-5">
         Price
       </td>
-      <td className="p-4 flex items-center justify-between mt-1 space-x-2 whitespace-nowrap lg:p-5">
+      <td className="p-4 flex items-center mt-1 space-x-2 whitespace-nowrap lg:p-5">
         <AiFillDelete className="text-[18px] cursor-pointer" />
         <GrEdit className="text-[18px] cursor-pointer" />
       </td>
