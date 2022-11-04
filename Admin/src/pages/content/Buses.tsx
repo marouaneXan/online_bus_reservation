@@ -1,5 +1,5 @@
 import React from "react";
-import ReservationCard from "../../components/Reservation/ReservationCard";
+import BusCard from "../../components/Bus/BusCard";
 
 const Buses = () => {
   return (
@@ -39,7 +39,7 @@ const Buses = () => {
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
-                    {/* <ReservationCard /> */}
+                    <BusCard />
                   </tbody>
                 </table>
               </div>
