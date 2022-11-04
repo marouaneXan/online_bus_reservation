@@ -5,6 +5,7 @@ import Sidebar from "./components/Layouts/Sidebar";
 import Dashboard from "./pages/content/Dashboard";
 import Trips from "./pages/content/Trips";
 import Clients from "./pages/content/Clients";
+import Reservations from "./pages/content/Reservations";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path={"/"} element={<Dashboard />} />
             <Route path={"/trips"} element={<Trips />} />
             <Route path={"/clients"} element={<Clients />} />
+            <Route path={"/reservations"} element={<Reservations />} />
           </Routes>
           <Sidebar />
         </div>
