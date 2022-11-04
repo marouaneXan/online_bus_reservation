@@ -7,6 +7,7 @@ import Trips from "./pages/content/Trips";
 import Clients from "./pages/content/Clients";
 import Reservations from "./pages/content/Reservations";
 import Buses from "./pages/content/Buses";
+import Companies from "./pages/content/Companies";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path={"/clients"} element={<Clients />} />
             <Route path={"/reservations"} element={<Reservations />} />
             <Route path={"/buses"} element={<Buses />} />
+            <Route path={"/companies"} element={<Companies />} />
           </Routes>
           <Sidebar />
         </div>
