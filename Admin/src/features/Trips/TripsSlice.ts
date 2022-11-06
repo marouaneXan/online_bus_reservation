@@ -1,24 +1,56 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import type { RootState } from "../../app/store";
-interface Bus {
-  car_name: string;
-  nbr_places: Number;
-  car_image: string;
+import {TripState} from '../../types/index'
+
+interface typeState{
+  trips:any,
+  isError: boolean,
+  isSuccess: boolean,
+  isLoading: boolean,
+  message: any,
 }
-interface BreakPoint {
-  arrival_time: string;
-  city_name: string;
-}
-interface Company {
-  company_name: string;
-}
-interface TripState {
-  departure_city: string;
-  arrival_city: string;
-  departure_date: Date;
-  departure_time: string;
-  arrival_time: string;
-  car: Bus;
-  break_points: BreakPoint;
-  company: Company;
-}
+
+const initialState:typeState = {
+  trips : [],
+  isError: false,
+  isSuccess: false,
+  isLoading: false,
+  message: "",
+};
+
+//get all trips
+const getAllTrips = createAsyncThunk("trips", async (_, thunkAPI) => {
+  try {
+  } catch (error: any) {
+    const message =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
+      error.toString();
+    return thunkAPI.rejectWithValue(message);
+  }
+});
+const tripSlice = createSlice({
+  name: "trips",
+  initialState,
+  reducers: {
+    reset: (state) => initialState,
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getAllTrips.pending,(state)=>{
+        state.isLoading=true
+      })
+      .addCase(getAllTrips.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.isSuccess = true
+        state.trips = action.payload
+      })
+      .addCase(getAllTrips.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
+      })
+  },
+});
+export const { reset } = tripSlice.actions;
+export default tripSlice.reducer;
