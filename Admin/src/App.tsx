@@ -13,8 +13,8 @@ import TripContextProvider from "./Context/Trip";
 function App() {
   return (
     <>
-      <TripContextProvider>
-        <Router>
+      <Router>
+        <TripContextProvider>
           <div className="App">
             <Navbar />
             <Routes>
@@ -28,8 +28,8 @@ function App() {
             </Routes>
             <Sidebar />
           </div>
-        </Router>
-      </TripContextProvider>
+        </TripContextProvider>
+      </Router>
     </>
   );
 }

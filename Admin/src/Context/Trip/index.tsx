@@ -30,10 +30,10 @@ const TripContextProvider = ({ children }: any) => {
       setTrips(res.data);
     }
   };
-  const values: any = useMemo(() => {
-    getTrips;
-    trips;
-  }, [getTrips,trips]);
-  return <TripContext.Provider value={values}></TripContext.Provider>;
+  const values: any = useMemo(() => ({
+    getTrips,
+    trips
+  }), [getTrips,trips]);
+  return <TripContext.Provider value={values}>{children}</TripContext.Provider>;
 };
 export default TripContextProvider;

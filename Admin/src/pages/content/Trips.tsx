@@ -1,8 +1,13 @@
-import React,{useEffect} from "react";
+import React, { useContext, useEffect } from "react";
 import TripCard from "../../components/Trip/TripCard";
+import { TripContext } from "../../Context/Trip";
+import { TripState } from "../../types";
 
 const Trips = () => {
-
+  const { trips, getTrips }: any = useContext(TripContext);
+  useEffect(() => {
+    getTrips();
+  });
   return (
     <div className="flex overflow-hidden bg-white pt-16">
       <div className="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
@@ -82,7 +87,9 @@ const Trips = () => {
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
-                    <TripCard />
+                    {trips?.map((trip:TripState) => (
+                      <TripCard key={trip._id} trip={trip} />
+                    ))}
                   </tbody>
                 </table>
               </div>
