@@ -5,6 +5,8 @@ import Sidebar from "./components/Layouts/Sidebar";
 import Dashboard from "./pages/content/Dashboard";
 import Trips from "./pages/content/Trips";
 import Clients from "./pages/content/Clients";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Reservations from "./pages/content/Reservations";
 import Buses from "./pages/content/Buses";
 import Companies from "./pages/content/Companies";
@@ -28,6 +30,7 @@ function App() {
             </Routes>
             <Sidebar />
           </div>
+          <ToastContainer />
         </TripContextProvider>
       </Router>
     </>

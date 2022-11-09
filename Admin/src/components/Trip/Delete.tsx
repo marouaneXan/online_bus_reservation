@@ -1,11 +1,14 @@
-import React from "react";
-interface Prop{
-  message:string
-  close:()=>void
+import React, { useContext } from "react";
+import { TripContext } from "../../Context/Trip";
+interface Prop {
+  message: string;
+  close: () => void;
+  trip_id:string
 }
-const Delete = (props:Prop) => {
+const Delete = (props: Prop) => {
+  const {deleteTrip}:any=useContext(TripContext)
   return (
-    <div className="flex overflow-y-auto overflow-x-hidden fixed right-0 left-0 top-4 z-50 justify-center items-center md:inset-0 h-modal sm:h-full">
+    <div className="flex overflow-y-auto overflow-x-hidden fixed right-0 left-0 top-4 z-50 justify-center items-center md:inset-0 sm:h-full">
       <div className="relative px-4 w-full max-w-md h-full md:h-auto">
         <div className="relative bg-white rounded-2xl shadow-lg">
           <div className="flex justify-end p-2">
@@ -21,9 +24,9 @@ const Delete = (props:Prop) => {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
+                  clipRule="evenodd"
                 ></path>
               </svg>
             </button>
@@ -37,9 +40,9 @@ const Delete = (props:Prop) => {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
               ></path>
             </svg>
@@ -47,6 +50,8 @@ const Delete = (props:Prop) => {
               Are you sure you want to delete this {props.message}?
             </h3>
             <button
+            type="button"
+              onClick={()=>{deleteTrip(props.trip_id)}}
               className="text-white bg-gradient-to-br from-red-400 to-red-600 font-medium rounded-lg text-base inline-flex items-center px-3 py-2.5 text-center mr-2 shadow-md shadow-gray-300 hover:scale-[1.02] transition-transform"
             >
               Yes, I'm sure

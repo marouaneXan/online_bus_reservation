@@ -2,13 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import TripCard from "../../components/Trip/TripCard";
 import { TripContext } from "../../Context/Trip";
 import { TripState } from "../../types";
-import Delete from "../../components/Modals/Delete";
+import Delete from "../../components/Trip/Delete";
 
 const Trips = () => {
-  //Close modall delete
-  const closeModalDelete = () => {
-    setShowModalDelete(false);
-  };
   const { trips, getTrips }: any = useContext(TripContext);
   const [showModalDelete, setShowModalDelete] = useState<boolean>(false);
   useEffect(() => {
@@ -110,12 +106,7 @@ const Trips = () => {
           </div>
         </div>
       </div>
-      {showModalDelete && (
-        <>
-          <Delete close={closeModalDelete} message="Trip"  />
-          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-        </>
-      )}
+      
     </>
   );
 };
