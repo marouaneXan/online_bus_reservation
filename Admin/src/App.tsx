@@ -8,7 +8,7 @@ import Clients from "./pages/content/Clients";
 import Reservations from "./pages/content/Reservations";
 import Buses from "./pages/content/Buses";
 import Companies from "./pages/content/Companies";
-import TripContextProvider from "./Context/TripContext";
+import TripContextProvider from "./Context/Trip";
 
 function App() {
   return (
