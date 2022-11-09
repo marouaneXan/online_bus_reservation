@@ -7,11 +7,12 @@ const TripContextProvider = ({ children }: any) => {
   const [trips, setTrips] = useState<TripState[] | null>();
   const [trip, setTrip] = useState<[]>();
   const [loading, setLoading] = useState<boolean>(false);
+
   // get all trips
   const getTrips = async () => {
     setLoading(true);
     const res = await axios
-      .get(`http://localhost:5000/api/v1/trips/all`)
+      .get(`/api/v1/trips/all`)
       .catch((err) => {
         const message: any =
           (err.res && err.res.data && err.res.data.message) ||
