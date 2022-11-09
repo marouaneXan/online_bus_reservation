@@ -1,7 +1,8 @@
-import React from "react";
+import React,{useEffect} from "react";
 import TripCard from "../../components/Trip/TripCard";
 
 const Trips = () => {
+
   return (
     <div className="flex overflow-hidden bg-white pt-16">
       <div className="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
