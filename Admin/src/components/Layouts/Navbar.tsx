@@ -1,8 +1,13 @@
-import React from "react";
-import { useLocation,Link } from "react-router-dom";
+import React, { useState } from "react";
+import { useLocation, Link } from "react-router-dom";
+import logo from "../../assets/merkob.png";
 
 const Navbar = () => {
   const location = useLocation();
+  const [showDropdown, setShowDropdown] = useState<boolean>(false);
+  const displayDropdown = () => {
+    setShowDropdown((prev) => !prev);
+  };
   return (
     <>
       {location.pathname !== "/login" && (
@@ -16,7 +21,6 @@ const Navbar = () => {
                   className="p-2 mr-2 text-gray-600 rounded cursor-pointer lg:hidden hover:text-gray-900 hover:bg-gray-100 focus:bg-gray-100 focus:ring-2 focus:ring-gray-100"
                 >
                   <svg
-
                     className="w-6 h-6"
                     fill="currentColor"
                     viewBox="0 0 20 20"
@@ -29,7 +33,6 @@ const Navbar = () => {
                     ></path>
                   </svg>
                   <svg
-
                     className="hidden w-6 h-6"
                     fill="currentColor"
                     viewBox="0 0 20 20"
@@ -42,14 +45,15 @@ const Navbar = () => {
                     ></path>
                   </svg>
                 </button>
-                <Link to="/" className="text-md font-semibold flex items-center lg:mr-1.5">
+                <Link
+                  to="/"
+                  className="text-md font-semibold flex items-center lg:mr-1.5"
+                >
                   <span className="hidden md:inline-block self-center text-xl font-bold whitespace-nowrap">
                     Merkob.ma
                   </span>
                 </Link>
-                <form
-                  className="hidden lg:block lg:pl-8"
-                >
+                <form className="hidden lg:block lg:pl-8">
                   <label htmlFor="topbar-search" className="sr-only">
                     Search
                   </label>
@@ -71,7 +75,6 @@ const Navbar = () => {
                     <input
                       type="text"
                       name="email"
-  
                       className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-2 focus:ring-fuchsia-50 focus:border-fuchsia-300 block w-full pl-10 p-2.5"
                       placeholder="Search"
                     />
@@ -99,21 +102,60 @@ const Navbar = () => {
                     ></path>
                   </svg>
                 </button>
-                <a
-                  href="https://www.creative-tim.com/product/soft-ui-dashboard-pro-flowbite"
-                  target="_blank"
-                  className="sm:inline-flex ml-5 text-white bg-gradient-to-br from-pink-500 to-voilet-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-3 shadow-md shadow-gray-300 hover:scale-[1.02] transition-transform"
-                >
-                  <svg
-                    className="mr-2 -ml-1 w-5 h-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
-                  </svg>
-                  Upgrade to Pro
-                </a>
+
+                
+                  
+                    {/* <div className="">
+                      <button
+                        onClick={displayDropdown}
+                        className="text-white font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 "
+                        type="button"
+                      ></button>
+                      {showDropdown && (
+                        <div
+                          className={
+                            "text-base z-50 float-left py-2 list-none text-left rounded shadow-lg mt-1"
+                          }
+                          style={{ minWidth: "12rem" }}
+                        >
+                          <a
+                            href="#pablo"
+                            className={
+                              "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent "
+                            }
+                          >
+                            Action
+                          </a>
+                          <a
+                            href="#pablo"
+                            className={
+                              "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent "
+                            }
+                          >
+                            Another action
+                          </a>
+                          <a
+                            href="#pablo"
+                            className={
+                              "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent "
+                            }
+                          >
+                            Something else here
+                          </a>
+                          <div className="h-0 my-2 border border-solid border-t-0 border-slate-800 opacity-25" />
+                          <a
+                            href="#pablo"
+                            className={
+                              "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent "
+                            }
+                          >
+                            Seprated link
+                          </a>
+                        </div>
+                      )}
+                    </div> */}
+                  
+                
               </div>
             </div>
           </div>
