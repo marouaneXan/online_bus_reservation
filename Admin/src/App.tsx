@@ -11,6 +11,7 @@ import Reservations from "./pages/content/Reservations";
 import Buses from "./pages/content/Buses";
 import Companies from "./pages/content/Companies";
 import TripContextProvider from "./Context/Trip";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
               <Route path={"/reservations"} element={<Reservations />} />
               <Route path={"/buses"} element={<Buses />} />
               <Route path={"/companies"} element={<Companies />} />
+              <Route path={"*"} element={<NotFound />} />
             </Routes>
             <Sidebar />
           </div>
