@@ -6,7 +6,7 @@ const NotFound = () => {
   const location = useLocation();
   return (
     <>
-      <section className="flex items-center h-full sm:p-16 dark:text-gray-400">
+      <section className="flex items-center justify-center sm:p-16 dark:text-gray-400">
         <div className="container flex flex-col items-center justify-center px-5 mx-auto my-8 space-y-8 text-center sm:max-w-md">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -36,13 +36,13 @@ const NotFound = () => {
           <p className="text-3xl">
             Looks like our services are currently offline
           </p>
-          <a
+          <Link
+          to="/"
             rel="noopener noreferrer"
-            href="#"
             className="px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900"
           >
             Back to Dashboard
-          </a>
+          </Link>
         </div>
       </section>
     </>
