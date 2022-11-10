@@ -5,12 +5,12 @@ import { TripContext } from "../../Context/Trip";
 import { TripState } from "../../types";
 import Empty from "../../components/Trip/Empty";
 import ReactPaginate from "react-paginate";
-import "../../App.css"
+import "../../App.css";
 
 const Trips = () => {
   const { trips, getTrips, loading, empty }: any = useContext(TripContext);
 
-  //**********Pagination */
+  //**********Pagination ******/
   const [pageNumber, setPageNumber] = useState(0);
   const tripsPerPage = 5;
   const pagesVisited = pageNumber * tripsPerPage;
@@ -27,7 +27,7 @@ const Trips = () => {
     <>
       <div className="flex overflow-hidden bg-white pt-16">
         <div className="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
-          <div className="flex flex-col my-6 mx-4 rounded-2xl shadow-xl shadow-gray-200">
+          <div className="flex flex-col my-2 mx-4 rounded-2xl shadow-xl shadow-gray-200">
             {loading ? (
               <Spinner />
             ) : (
@@ -36,6 +36,11 @@ const Trips = () => {
                   <Empty empty={empty} />
                 ) : (
                   <>
+                    <div className="flex justify-end">
+                    <button className="my-1 w-[130px] text-white bg-gradient-to-br from-pink-500 to-voilet-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-[1.02] transition-transform">
+                      Add new trip
+                    </button>
+                    </div>
                     <div className="overflow-x-auto rounded-2xl">
                       <div className="inline-block min-w-full align-middle">
                         <div className="overflow-hidden">
