@@ -25,7 +25,7 @@ const TripContextProvider = ({ children }: any) => {
   };
   //show modal Add
   const displayModalAdd = () => {
-    setShowModalDelete(true);
+    setShowModalAdd(true);
   };
   // get all trips
   const getTrips = async () => {

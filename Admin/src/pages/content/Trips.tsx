@@ -6,9 +6,10 @@ import { TripState } from "../../types";
 import Empty from "../../components/Trip/Empty";
 import ReactPaginate from "react-paginate";
 import "../../App.css";
+import Add from "../../components/Trip/Add";
 
 const Trips = () => {
-  const { trips, getTrips, loading, empty }: any = useContext(TripContext);
+  const { trips, getTrips, loading, empty,showModalAdd,closeModalAdd,displayModalAdd }: any = useContext(TripContext);
 
   //**********Pagination ******/
   const [pageNumber, setPageNumber] = useState(0);
@@ -37,9 +38,10 @@ const Trips = () => {
                 ) : (
                   <>
                     <div className="p-4">
-                    <button className="my-1 w-[130px] text-white bg-slate-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-[1.02] transition-transform">
+                    <button onClick={displayModalAdd} className="my-1 w-[130px] text-white bg-slate-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-[1.02] transition-transform">
                       Add new trip
                     </button>
+                    {showModalAdd && <Add closeModalAdd={closeModalAdd}/>}
                     </div>
                     <div className="overflow-x-auto rounded-2xl">
                       <div className="inline-block min-w-full align-middle">
