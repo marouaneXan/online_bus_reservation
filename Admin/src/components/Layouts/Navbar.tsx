@@ -1,13 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { useLocation, Link } from "react-router-dom";
-import logo from "../../assets/merkob.png";
+import { CiLogout } from "react-icons/ci";
 
 const Navbar = () => {
   const location = useLocation();
-  const [showDropdown, setShowDropdown] = useState<boolean>(false);
-  const displayDropdown = () => {
-    setShowDropdown((prev) => !prev);
-  };
   return (
     <>
       {location.pathname !== "/login" && (
@@ -102,60 +98,10 @@ const Navbar = () => {
                     ></path>
                   </svg>
                 </button>
-
-                
-                  
-                    {/* <div className="">
-                      <button
-                        onClick={displayDropdown}
-                        className="text-white font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 "
-                        type="button"
-                      ></button>
-                      {showDropdown && (
-                        <div
-                          className={
-                            "text-base z-50 float-left py-2 list-none text-left rounded shadow-lg mt-1"
-                          }
-                          style={{ minWidth: "12rem" }}
-                        >
-                          <a
-                            href="#pablo"
-                            className={
-                              "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent "
-                            }
-                          >
-                            Action
-                          </a>
-                          <a
-                            href="#pablo"
-                            className={
-                              "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent "
-                            }
-                          >
-                            Another action
-                          </a>
-                          <a
-                            href="#pablo"
-                            className={
-                              "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent "
-                            }
-                          >
-                            Something else here
-                          </a>
-                          <div className="h-0 my-2 border border-solid border-t-0 border-slate-800 opacity-25" />
-                          <a
-                            href="#pablo"
-                            className={
-                              "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent "
-                            }
-                          >
-                            Seprated link
-                          </a>
-                        </div>
-                      )}
-                    </div> */}
-                  
-                
+                <button className="sm:inline-flex ml-5 text-white  font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-3 shadow-md shadow-gray-300 bg-slate-700 hover:scale-[1.02] transition-transform">
+                  <CiLogout className="mr-2 -ml-1 w-5 h-5" />
+                  Logout
+                </button>
               </div>
             </div>
           </div>
