@@ -36,8 +36,8 @@ const Trips = () => {
                   <Empty empty={empty} />
                 ) : (
                   <>
-                    <div className="flex justify-end">
-                    <button className="my-1 w-[130px] text-white bg-gradient-to-br from-pink-500 to-voilet-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-[1.02] transition-transform">
+                    <div className="p-4">
+                    <button className="my-1 w-[130px] text-white bg-slate-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:scale-[1.02] transition-transform">
                       Add new trip
                     </button>
                     </div>
