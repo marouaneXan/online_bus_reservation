@@ -7,15 +7,24 @@ export const TripContext = createContext(null);
 const TripContextProvider = ({ children }: any) => {
   const [trips, setTrips] = useState<TripState[] | null>();
   const [showModalDelete, setShowModalDelete] = useState<boolean>(false);
+  const [showModalAdd, setShowModalAdd] = useState<boolean>(false);
   const [trip, setTrip] = useState<[]>();
   const [loading, setLoading] = useState<boolean>(false);
   const [empty, setEmpty] = useState<boolean>(false);
-  //Close modall delete
+  //Close modal delete
   const closeModalDelete = () => {
     setShowModalDelete(false);
   };
-  //show modall delete
+  //show modal delete
   const displayModalDelete = () => {
+    setShowModalDelete(true);
+  };
+  //Close modal Add
+  const closeModalAdd = () => {
+    setShowModalAdd(false);
+  };
+  //show modal Add
+  const displayModalAdd = () => {
     setShowModalDelete(true);
   };
   // get all trips
@@ -67,6 +76,9 @@ const TripContextProvider = ({ children }: any) => {
       closeModalDelete,
       displayModalDelete,
       empty,
+      closeModalAdd,
+      displayModalAdd,
+      showModalAdd
     }),
     [
       getTrips,
@@ -77,6 +89,9 @@ const TripContextProvider = ({ children }: any) => {
       closeModalDelete,
       displayModalDelete,
       empty,
+      closeModalAdd,
+      displayModalAdd,
+      showModalAdd
     ]
   );
   return <TripContext.Provider value={values}>{children}</TripContext.Provider>;
