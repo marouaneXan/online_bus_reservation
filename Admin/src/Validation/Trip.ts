@@ -7,7 +7,10 @@ export const Trip = yup.object().shape({
   company: yup.string().required(),
   arrival_time: yup.string().required(),
   car: yup.string().required(),
-  break_point: yup.string().required(),
+  break_point: yup.object({
+    arrival_time:yup.string().required(),
+    city_name:yup.string().required()
+  }).required(),
   price: yup.number().required(),
   distance: yup.string().required(),
 });
