@@ -1,5 +1,5 @@
 import * as yup from "yup";
-export const Trip = yup.object().shape({
+export const tripSchema = yup.object().shape({
   departure_city: yup.string().required(),
   arrival_city: yup.string().required(),
   departure_date: yup.string().required(),

@@ -1,20 +1,35 @@
 import React from "react";
 import { Formik, Form } from "formik";
-interface Prop{
-  closeModalAdd:()=>void
+import TextField from "../Formik/TextField";
+import { tripSchema } from "../../Validation/Trip";
+interface Prop {
+  closeModalAdd: () => void;
 }
 
-const Add = (props:Prop) => {
+const Add = (props: Prop) => {
+  const values: object = {
+    departure_city: "",
+    arrival_city: "",
+    departure_date: "",
+    departure_time: "",
+    company: "",
+    arrival_time: "",
+    car: "",
+    break_point: {
+      arrival_time: "",
+      city_name: "",
+    },
+    price: "",
+    distance: "",
+  };
   return (
-    <div
-      className="flex overflow-y-auto overflow-x-hidden fixed right-0 left-0 top-4 z-50 justify-center items-center md:inset-0 h-modal sm:h-full"
-    >
+    <div className="flex overflow-y-auto overflow-x-hidden fixed right-0 left-0 top-4 z-50 justify-center items-center md:inset-0 h-modal sm:h-full">
       <div className="relative px-4 w-full max-w-2xl h-full md:h-auto">
         <div className="relative bg-white rounded-2xl shadow-lg">
           <div className="flex justify-between items-start p-5 rounded-t border-b">
             <h3 className="text-xl font-semibold">Add product</h3>
             <button
-            onClick={props.closeModalAdd}
+              onClick={props.closeModalAdd}
               type="button"
               className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-2xl text-sm p-1.5 ml-auto inline-flex items-center"
               data-modal-toggle="add-product-modal"
