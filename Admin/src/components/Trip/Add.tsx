@@ -99,19 +99,6 @@ const Add = (props:Prop) => {
                     required
                   />
                 </div>
-                <div className="col-span-full">
-                  <label
-                    htmlFor="product-details"
-                    className="block mb-2 text-sm font-medium text-gray-900"
-                  >
-                    Product Details
-                  </label>
-                  <textarea
-                    id="product-details"
-                    className="block p-4 w-full text-gray-900 border border-gray-300 sm:text-sm rounded-lg focus:ring-2 focus:ring-fuchsia-50 focus:border-fuchsia-300"
-                    placeholder="e.g. 3.8GHz 8-core 10th-generation Intel Core i7 processor, Turbo Boost up to 5.0GHz, Ram 16 GB DDR4 2300Mhz"
-                  ></textarea>
-                </div>
               </div>
             </div>
             <div className="p-6 rounded-b border-t border-gray-200">
