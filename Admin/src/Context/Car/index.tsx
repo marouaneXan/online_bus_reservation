@@ -10,7 +10,7 @@ const BusContextProvider = ({ children }: any) => {
   // get all buses
   const getBuses = async () => {
     setLoading(true);
-    const res = await axios.get(`${Proxy}/buses`).catch((err) => {
+    const res = await axios.get(`${Proxy}/cars`).catch((err) => {
       const message: any =
         (err.res && err.res.data && err.res.data.message) || err || err.message;
       if (message) {

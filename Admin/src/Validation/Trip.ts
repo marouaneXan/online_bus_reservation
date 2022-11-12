@@ -6,7 +6,7 @@ export const tripSchema = yup.object().shape({
   departure_time: yup.string().required(),
   company: yup.string().required(),
   arrival_time: yup.string().required(),
-//   car: yup.string().required(),
+  car: yup.string().required(),
 //   break_point: yup.object({
 //     arrival_time:yup.string().required(),
 //     city_name:yup.string().required()

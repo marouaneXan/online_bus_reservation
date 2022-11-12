@@ -1,4 +1,5 @@
 export interface Bus {
+  _id:string;
   car_name: string;
   nbr_places: Number;
   car_image: string;
