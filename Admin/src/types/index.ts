@@ -8,6 +8,7 @@ interface BreakPoint {
   city_name: string;
 }
 export interface Company {
+  _id:string;
   company_name: string;
 }
 export interface TripState {

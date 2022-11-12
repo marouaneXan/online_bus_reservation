@@ -1,18 +1,25 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Formik, Form } from "formik";
 import TextField from "../Formik/TextField";
 import { tripSchema } from "../../Validation/Trip";
+import { Company } from "../../types";
+// import SelectField from "../Formik/SelectField";
+import { CompanyContext } from "../../Context/Company";
 interface Prop {
   closeModalAdd: () => void;
 }
 
 const Add = (props: Prop) => {
-  const values:object = {
+  const { companies, getCompanies }: any = useContext(CompanyContext);
+  useEffect(() => {
+    getCompanies();
+  }, []);
+  const values: object = {
     departure_city: "",
     arrival_city: "",
     departure_date: "",
     departure_time: "",
-    // company: "",
+    company: "",
     arrival_time: "",
     // car: "",
     // break_point: {
@@ -22,8 +29,8 @@ const Add = (props: Prop) => {
     // price: "",
     // distance: "",
   };
-  const onSubmit = (values:object) => {
-    alert(JSON.stringify(values))
+  const onSubmit = (values: object) => {
+    alert(JSON.stringify(values));
   };
   return (
     <Formik
@@ -61,19 +68,61 @@ const Add = (props: Prop) => {
                 <div>
                   <div className="grid grid-cols-6 gap-6">
                     <div className="col-span-6 sm:col-span-3">
-                      <TextField label="From" name="departure_city"  type="text" />
+                      <TextField
+                        label="From"
+                        name="departure_city"
+                        type="text"
+                      />
                     </div>
                     <div className="col-span-6 sm:col-span-3">
-                      <TextField label="To" name="arrival_city"  type="text" />
+                      <TextField label="To" name="arrival_city" type="text" />
                     </div>
                     <div className="col-span-6 sm:col-span-3">
-                      <TextField label="Departure date" name="departure_date" id="Departure date" type="date" />
+                      <TextField
+                        label="Departure date"
+                        name="departure_date"
+                        id="Departure date"
+                        type="date"
+                      />
                     </div>
                     <div className="col-span-6 sm:col-span-3">
-                      <TextField label="Departure time" name="departure_time" id="Departure time" type="time" />
+                      <TextField
+                        label="Departure time"
+                        name="departure_time"
+                        id="Departure time"
+                        type="time"
+                      />
                     </div>
                     <div className="col-span-6 sm:col-span-3">
-                      <TextField label="Arrival time" name="arrival_time" id="Arrival time" type="time" />
+                      <TextField
+                        label="Arrival time"
+                        name="arrival_time"
+                        id="Arrival time"
+                        type="time"
+                      />
+                    </div>
+                    <div className="col-span-6 sm:col-span-3">
+                      <label
+                        htmlFor="companies"
+                        className="block mb-2 text-sm font-medium text-gray-900"
+                      >
+                        Select an option
+                      </label>
+                      <select
+                        onChange={formik.handleChange}
+                        name="company"
+                        id="companies"
+                        className="shadow-lg-sm border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-2 focus:ring-fuchsia-50 focus:border-fuchsia-300 block w-full p-2.5"
+                      >
+                        <option selected disabled>
+                          Choose a country
+                        </option>
+                        {companies?.map((company: Company) => (
+                          <option key={company._id} value={company._id}>
+                            {company.company_name}
+                          </option>
+                        ))}
+                      </select>
                     </div>
                   </div>
                 </div>
