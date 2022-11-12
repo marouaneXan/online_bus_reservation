@@ -7,7 +7,7 @@ interface BreakPoint {
   arrival_time: string;
   city_name: string;
 }
-interface Company {
+export interface Company {
   company_name: string;
 }
 export interface TripState {
