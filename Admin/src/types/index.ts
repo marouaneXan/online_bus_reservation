@@ -1,4 +1,4 @@
-interface Bus {
+export interface Bus {
   car_name: string;
   nbr_places: Number;
   car_image: string;
