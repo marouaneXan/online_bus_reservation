@@ -5,6 +5,7 @@ export interface Bus {
   car_image: string;
 }
 interface BreakPoint {
+  _id:string,
   arrival_time: string;
   city_name: string;
 }

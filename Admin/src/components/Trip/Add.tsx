@@ -16,7 +16,7 @@ const Add = (props: Prop) => {
   const { buses, getBuses }: any = useContext(BusContext);
   useEffect(() => {
     getCompanies();
-    getBuses()
+    getBuses();
   }, []);
   const values: object = {
     departure_city: "",
@@ -26,11 +26,13 @@ const Add = (props: Prop) => {
     company: "",
     arrival_time: "",
     car: "",
-    // break_point: {
-    //   arrival_time: "",
-    //   city_name: "",
-    // },
-    // price: "",
+    break_point: [
+      {
+        arrival_time: "",
+        city_name: "",
+      },
+    ],
+    price: "",
     // distance: "",
   };
   const onSubmit = (values: object) => {
@@ -150,6 +152,14 @@ const Add = (props: Prop) => {
                           </option>
                         ))}
                       </select>
+                    </div>
+                    <div className="col-span-6 sm:col-span-3">
+                      <TextField
+                        label="Price"
+                        name="price"
+                        id="Price"
+                        type="number"
+                      />
                     </div>
                   </div>
                 </div>
