@@ -47,6 +47,28 @@ const TripContextProvider = ({ children }: any) => {
     }
   };
 
+  //Add trip
+  const addTrip = async (bus_id: string, company_id: string) => {
+    setLoading(true);
+    const res = await axios
+      .post(`${Proxy}/trips/${bus_id}/${company_id}`)
+      .catch((err) => {
+        const message: any =
+          (err.res && err.res.data && err.res.data.message) ||
+          err ||
+          err.message;
+        if (message) {
+          setLoading(false);
+          console.log(message);
+          toast.error(message.response.data.message);
+          setLoading(false);
+        }
+      });
+    if (res && res.data) {
+      toast.success(res.data.message);
+    }
+  };
+
   //delete trip
   const deleteTrip = async (trip_id: string) => {
     // setLoading(true);
@@ -78,7 +100,8 @@ const TripContextProvider = ({ children }: any) => {
       empty,
       closeModalAdd,
       displayModalAdd,
-      showModalAdd
+      showModalAdd,
+      addTrip
     }),
     [
       getTrips,
@@ -91,7 +114,8 @@ const TripContextProvider = ({ children }: any) => {
       empty,
       closeModalAdd,
       displayModalAdd,
-      showModalAdd
+      showModalAdd,
+      addTrip
     ]
   );
   return <TripContext.Provider value={values}>{children}</TripContext.Provider>;
