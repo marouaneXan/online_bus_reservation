@@ -65,7 +65,7 @@ const Trips = () => {
                           <table className="min-w-full divide-y divide-gray-200 table-fixed">
                             <thead className="bg-white">
                               <tr>
-                              <th
+                                <th
                                   scope="col"
                                   className="p-4 text-xs font-medium text-left text-gray-500 uppercase lg:p-5"
                                 >
@@ -146,8 +146,12 @@ const Trips = () => {
                                     pagesVisited,
                                     pagesVisited + tripsPerPage
                                   )
-                                  .map((trip: TripState,index:number) => (
-                                    <TripCard key={trip._id} trip={trip} index={index} />
+                                  .map((trip: TripState, index: number) => (
+                                    <TripCard
+                                      key={trip._id}
+                                      trip={trip}
+                                      index={index}
+                                    />
                                   ))}
                               </>
                             </tbody>
@@ -155,17 +159,19 @@ const Trips = () => {
                         </div>
                       </div>
                     </div>
-                    <ReactPaginate
-                      previousLabel={"Previous"}
-                      nextLabel={"Next"}
-                      pageCount={pageCount}
-                      onPageChange={changePage}
-                      containerClassName={"paginationBttns"}
-                      previousLinkClassName={"previousBttn"}
-                      nextLinkClassName={"nextBttn"}
-                      disabledClassName={"paginationDisabled"}
-                      activeClassName={"paginationActive"}
-                    />
+                    {trips?.length > 5 && (
+                      <ReactPaginate
+                        previousLabel={"Previous"}
+                        nextLabel={"Next"}
+                        pageCount={pageCount}
+                        onPageChange={changePage}
+                        containerClassName={"paginationBttns"}
+                        previousLinkClassName={"previousBttn"}
+                        nextLinkClassName={"nextBttn"}
+                        disabledClassName={"paginationDisabled"}
+                        activeClassName={"paginationActive"}
+                      />
+                    )}
                   </>
                 )}
               </>
