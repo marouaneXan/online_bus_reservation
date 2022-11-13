@@ -2,6 +2,7 @@ import { createContext, useState, useMemo } from "react";
 import axios from "axios";
 import { Bus } from "../../types";
 import { Proxy } from "../../Config/Proxy";
+import { toast } from "react-toastify";
 export const BusContext=createContext(null)
 const BusContextProvider = ({ children }: any) => {
   const [buses, setBuses] = useState<Bus[] | null>();
@@ -26,18 +27,35 @@ const BusContextProvider = ({ children }: any) => {
       setBuses(res.data);
     }
   };
+  //delete Bus
+  const deleteBus = async (bus_id: string) => {
+    const res = await axios.delete(`${Proxy}/trips/${bus_id}`).catch((err) => {
+      const message: any =
+        (err.res && err.res.data && err.res.data.message) || err || err.message;
+      if (message) {
+        toast.error(message.response.data.message);
+        setLoading(false);
+      }
+    });
+    if (res && res.data) {
+      getBuses();
+      toast.success(res.data.message);
+    }
+  };
   const values: any = useMemo(
     () => ({
       getBuses,
       buses,
       loading,
-      empty
+      empty,
+      deleteBus
     }),
     [
       getBuses,
       buses,
       loading,
-      empty
+      empty,
+      deleteBus
     ]
   );
   return <BusContext.Provider value={values} >{children}</BusContext.Provider>
