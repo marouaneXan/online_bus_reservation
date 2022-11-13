@@ -18,7 +18,7 @@ const BusCard = (props:Prop) => {
       <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap lg:p-5">
         image
       </td>
-      <td className="p-4 flex items-center justify-between mt-1 space-x-2 whitespace-nowrap lg:p-5">
+      <td className="p-4 flex items-center mt-1 space-x-4 whitespace-nowrap lg:p-5">
         <AiFillDelete className="text-[18px] cursor-pointer" />
         <GrEdit className="text-[18px] cursor-pointer" />
       </td>
