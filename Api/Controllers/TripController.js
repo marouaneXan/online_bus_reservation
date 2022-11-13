@@ -100,7 +100,9 @@ const addTrip = asyncHandler(async (req, res) => {
     price,
     distance,
   });
-  if (newTrip) res.status(201).json(newTrip);
+  if (newTrip) res.status(201).json({
+    message:"Add new trip successfully"
+  });
 });
 
 //@desc PUT  Update trip
