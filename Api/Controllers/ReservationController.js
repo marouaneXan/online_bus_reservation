@@ -123,6 +123,29 @@ const cancelReservation = asyncHandler(async (req, res) => {
   }
 });
 
+//@desc GET Statistic
+//@route /api/v1/statistics
+//@access private
+const statistic = asyncHandler(async (req, res) => {
+  const date_now = new Date().toLocaleDateString("sv");
+  const reservations = await Reservation.find().populate([
+    { path: "trip", populate: { path: "car" } },
+    "client",
+  ]);
+  //todays money
+  let today_money=0
+  for(let i=0;i<reservations.length;i++){
+    if(reservations[i].reservation_date===date_now){
+      today_money+=reservations[i].trip.price
+    }
+  }
+  res.status(200).json({
+    today_money,
+    date_now
+  })
+
+});
+
 // difference btween two times
 function diff(start, end) {
   start = start.split(":");
@@ -144,4 +167,5 @@ module.exports = {
   cancelReservation,
   getClientReservations,
   getReservationDetails,
+  statistic
 };

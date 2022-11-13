@@ -5,10 +5,12 @@ const {
   cancelReservation,
   getClientReservations,
   getReservationDetails,
+  statistic
 } = require("../Controllers/ReservationController");
 const { protectClient } = require("../Middleware/ClientMiddleware");
 const { protectAdmin } = require("../Middleware/AdminMiddleware");
 const router = express.Router();
+router.get("/statistics", statistic);
 router.get("/", getAllReservations);
 router.get("/:client_id", getClientReservations);
 router.get("/:reservation_id", getReservationDetails);
