@@ -48,10 +48,10 @@ const TripContextProvider = ({ children }: any) => {
   };
 
   //Add trip
-  const addTrip = async (bus_id: string, company_id: string) => {
+  const addTrip = async (bus_id: string, company_id: string,data:TripState) => {
     setLoading(true);
     const res = await axios
-      .post(`${Proxy}/trips/${bus_id}/${company_id}`)
+      .post(`${Proxy}/trips/${bus_id}/${company_id}`,data)
       .catch((err) => {
         const message: any =
           (err.res && err.res.data && err.res.data.message) ||
@@ -65,7 +65,9 @@ const TripContextProvider = ({ children }: any) => {
         }
       });
     if (res && res.data) {
+      setShowModalAdd(false);
       toast.success(res.data.message);
+      getTrips()
     }
   };
 

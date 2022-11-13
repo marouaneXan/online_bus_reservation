@@ -4,11 +4,11 @@ export interface Bus {
   nbr_places: Number;
   car_image: string;
 }
-interface BreakPoint {
-  _id:string,
-  arrival_time: string;
-  city_name: string;
-}
+// interface BreakPoint {
+//   _id:string,
+//   arrival_time: string;
+//   city_name: string;
+// }
 export interface Company {
   _id:string;
   company_name: string;
@@ -21,7 +21,7 @@ export interface TripState {
   departure_time: string;
   arrival_time: string;
   car: Bus;
-  break_points: BreakPoint;
+  // break_points: BreakPoint;
   company: Company;
   price:number,
   distance:string

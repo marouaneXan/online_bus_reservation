@@ -2,11 +2,12 @@ import React, { useContext, useEffect } from "react";
 import { Formik, Form, FieldArray } from "formik";
 import TextField from "../Formik/TextField";
 import { tripSchema } from "../../Validation/Trip";
-import { Company } from "../../types";
+import { Company, TripState } from "../../types";
 // import SelectField from "../Formik/SelectField";
 import { CompanyContext } from "../../Context/Company";
 import { BusContext } from "../../Context/Car";
 import { Bus } from "../../types";
+import { TripContext } from "../../Context/Trip";
 interface Prop {
   closeModalAdd: () => void;
 }
@@ -14,11 +15,12 @@ interface Prop {
 const Add = (props: Prop) => {
   const { companies, getCompanies }: any = useContext(CompanyContext);
   const { buses, getBuses }: any = useContext(BusContext);
+  const { addTrip }: any = useContext(TripContext);
   useEffect(() => {
     getCompanies();
     getBuses();
   }, []);
-  const values = {
+  const values:any = {
     departure_city: "",
     arrival_city: "",
     departure_date: "",
@@ -35,8 +37,9 @@ const Add = (props: Prop) => {
     price: "",
     distance: "",
   };
-  const onSubmit = (values: object) => {
-    alert(JSON.stringify(values));
+  const onSubmit = (values: any) => {
+    const {...data}=values
+    addTrip(values.car,values.company,data)
   };
   return (
     <Formik
