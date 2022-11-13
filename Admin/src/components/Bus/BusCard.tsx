@@ -1,15 +1,19 @@
 import React from "react";
 import { GrEdit } from "react-icons/gr";
 import { AiFillDelete } from "react-icons/ai";
+import { Bus } from "../../types";
+interface Prop{
+  bus:Bus
+}
 
-const BusCard = () => {
+const BusCard = (props:Prop) => {
   return (
     <tr className="hover:bg-gray-100">
       <td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap lg:p-5">
-        <div className="text-base font-semibold text-gray-900">Safari</div>
+        <div className="text-base font-semibold text-gray-900">{props.bus.car_name}</div>
       </td>
       <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap lg:p-5">
-        188 place
+      <>{props.bus.nbr_places}</>
       </td>
       <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap lg:p-5">
         image

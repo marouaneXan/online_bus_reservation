@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import BusCard from "../../components/Bus/BusCard";
+import { Bus } from "../../types";
+import { BusContext } from "../../Context/Car";
 
 const Buses = () => {
+  const { buses, getBuses }: any = useContext(BusContext);
+  useEffect(() => {
+    getBuses();
+  }, []);
+
   return (
     <div className="flex overflow-hidden bg-white pt-16">
       <div className="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
@@ -39,7 +46,9 @@ const Buses = () => {
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
-                    <BusCard />
+                    {buses?.map((bus:Bus) => (
+                      <BusCard key={bus._id} bus={bus}  />
+                    ))}
                   </tbody>
                 </table>
               </div>
