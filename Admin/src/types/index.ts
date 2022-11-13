@@ -26,3 +26,20 @@ export interface TripState {
   price:number,
   distance:string
 }
+export interface Client{
+  genre:string
+  nom:string
+  prenom:string
+  email:string
+  date_naissance:string
+  tel:string
+  adress:string
+  ville:string
+  nationality:string
+}
+export interface Reservation{
+  reservation_date:string
+  reservation_time:string
+  trip:TripState
+  client:Client
+}
