@@ -22,12 +22,15 @@ const ReservationDetails = ({ reservation }: any) => {
           className="text-red-500 cursor-pointer"
         />
         {showModalDelete && (
-          <ModalDelete
-            reservation_id={reservation._id}
-            trip_id={reservation.trip._id}
-            client_id={reservation.client._id}
-            setShowModalDelete={setShowModalDelete}
-          />
+          <>
+            <ModalDelete
+              reservation_id={reservation._id}
+              trip_id={reservation.trip._id}
+              client_id={reservation.client._id}
+              setShowModalDelete={setShowModalDelete}
+            />
+            <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+          </>
         )}
       </div>
       <div className=" w-full lg:max-w-full lg:flex">
