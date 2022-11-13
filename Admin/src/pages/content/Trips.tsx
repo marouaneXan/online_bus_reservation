@@ -65,6 +65,12 @@ const Trips = () => {
                           <table className="min-w-full divide-y divide-gray-200 table-fixed">
                             <thead className="bg-white">
                               <tr>
+                              <th
+                                  scope="col"
+                                  className="p-4 text-xs font-medium text-left text-gray-500 uppercase lg:p-5"
+                                >
+                                  #
+                                </th>
                                 <th
                                   scope="col"
                                   className="p-4 text-xs font-medium text-left text-gray-500 uppercase lg:p-5"
@@ -140,8 +146,8 @@ const Trips = () => {
                                     pagesVisited,
                                     pagesVisited + tripsPerPage
                                   )
-                                  .map((trip: TripState) => (
-                                    <TripCard key={trip._id} trip={trip} />
+                                  .map((trip: TripState,index:number) => (
+                                    <TripCard key={trip._id} trip={trip} index={index} />
                                   ))}
                               </>
                             </tbody>

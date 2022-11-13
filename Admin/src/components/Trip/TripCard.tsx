@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext,useState } from "react";
 import { GrEdit } from "react-icons/gr";
 import { AiFillDelete } from "react-icons/ai";
 import { TripState } from "../../types";
@@ -6,6 +6,7 @@ import Delete from "./Delete";
 import { TripContext } from "../../Context/Trip";
 interface Prop {
   trip: TripState;
+  index:number
 }
 
 const TripCard = (props: Prop) => {
@@ -23,6 +24,11 @@ const TripCard = (props: Prop) => {
         </>
       )}
         <tr className="hover:bg-gray-100">
+        <td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap lg:p-5">
+            <div className="text-base font-semibold text-gray-900">
+              {props.index+1}
+            </div>
+          </td>
           <td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap lg:p-5">
             <div className="text-base font-semibold text-gray-900">
               {props.trip?.departure_city}
