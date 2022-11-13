@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { Formik, Form } from "formik";
+import { Formik, Form, FieldArray } from "formik";
 import TextField from "../Formik/TextField";
 import { tripSchema } from "../../Validation/Trip";
 import { Company } from "../../types";
@@ -18,7 +18,7 @@ const Add = (props: Prop) => {
     getCompanies();
     getBuses();
   }, []);
-  const values: object = {
+  const values = {
     departure_city: "",
     arrival_city: "",
     departure_date: "",
@@ -26,14 +26,14 @@ const Add = (props: Prop) => {
     company: "",
     arrival_time: "",
     car: "",
-    break_point: [
-      {
-        arrival_time: "",
-        city_name: "",
-      },
-    ],
+    // break_point: [
+    //   {
+    //     arrival_time: "",
+    //     city_name: "",
+    //   },
+    // ],
     price: "",
-    // distance: "",
+    distance: "",
   };
   const onSubmit = (values: object) => {
     alert(JSON.stringify(values));
@@ -70,7 +70,7 @@ const Add = (props: Prop) => {
                   </svg>
                 </button>
               </div>
-              <Form className="p-6 space-y-6">
+              <Form className="px-6 py-2 space-y-6">
                 <div>
                   <div className="grid grid-cols-6 gap-6">
                     <div className="col-span-6 sm:col-span-3">
@@ -161,6 +161,56 @@ const Add = (props: Prop) => {
                         type="number"
                       />
                     </div>
+                    <div className="col-span-6 sm:col-span-3">
+                      <TextField
+                        label="Distance"
+                        name="distance"
+                        id="Distance"
+                        type="number"
+                      />
+                    </div>
+                    {/* <FieldArray name="break_point">
+                      {(arrayHelper) => (
+                        <>
+                          <button
+                          type="button"
+                            onClick={() => {
+                              arrayHelper.push({
+                                arrival_time:"",
+                                city_name:""
+                              })
+                            }}
+                            className="text-white bg-slate-700 font-medium rounded-lg text-sm px-2 py-1 text-center"
+                          >
+                            Add
+                          </button>
+                          {values.break_point.map((item, index) => {
+                            return (
+                              <div
+                                className="col-span-6 sm:col-span-3 space-x-2 flex"
+                              >
+                                <div className="w-full">
+                                  <TextField
+                                    label="City"
+                                    name={`break_point.${index}.city_name`}
+                                    id="City"
+                                    type="text"
+                                  />
+                                </div>
+                                <div className="w-full">
+                                  <TextField
+                                    label="Arrival time"
+                                    name={`break_point.${index}.arrival_time`}
+                                    id="Arrival time"
+                                    type="time"
+                                  />
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </>
+                      )}
+                    </FieldArray> */}
                   </div>
                 </div>
                 <div className="p-6 rounded-b border-t border-gray-200">

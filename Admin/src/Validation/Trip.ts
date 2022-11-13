@@ -7,10 +7,12 @@ export const tripSchema = yup.object().shape({
   company: yup.string().required(),
   arrival_time: yup.string().required(),
   car: yup.string().required(),
-  break_point: yup.object({
-    arrival_time:yup.string().required(),
-    city_name:yup.string().required()
-  }).required(),
+  // break_point: yup.array().of(
+  //   yup.object({
+  //     arrival_time: yup.string().required(),
+  //     city_nale: yup.string().required(),
+  //   })
+  // ),
   price: yup.number().required(),
-//   distance: yup.string().required(),
+    distance: yup.string().required(),
 });
