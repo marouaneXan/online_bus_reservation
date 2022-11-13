@@ -135,9 +135,11 @@ const statistic = asyncHandler(async (req, res) => {
   const clients = await Client.find();
   //todays money
   let today_money = 0;
+  let today_reservations = 0;
   for (let i = 0; i < reservations.length; i++) {
     if (reservations[i].reservation_date === date_now) {
       today_money += reservations[i].trip.price;
+      today_reservations++
     }
   }
   //today clients
