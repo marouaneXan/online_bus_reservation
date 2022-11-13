@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation, Link } from "react-router-dom";
 import { CiLogout } from "react-icons/ci";
+import logoNav from "../../assets/merkob.png";
 
 const Navbar = () => {
   const location = useLocation();
@@ -46,7 +47,9 @@ const Navbar = () => {
                   className="text-md font-semibold flex items-center lg:mr-1.5"
                 >
                   <span className="hidden md:inline-block self-center text-xl font-bold whitespace-nowrap">
-                    Merkob.ma
+                    <Link to="/">
+                      <img src={logoNav} alt="merkob.ma" className="w-[68px]" />
+                    </Link>
                   </span>
                 </Link>
                 <form className="hidden lg:block lg:pl-8">
