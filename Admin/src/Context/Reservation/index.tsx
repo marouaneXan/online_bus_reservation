@@ -1,4 +1,4 @@
-import { createContext, useState, useMemo } from "react";
+import { createContext, useState, useMemo,useEffect } from "react";
 import axios from "axios";
 import { Bus } from "../../types";
 import { Proxy } from "../../Config/Proxy";
@@ -26,6 +26,10 @@ const ReservationContextProvider = ({ children }: any) => {
       setReservations(res.data);
     }
   };
+  useEffect(() => {
+    getReservation()
+  }, [])
+  
   const values: any = useMemo(
     () => ({
       getReservation,

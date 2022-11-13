@@ -38,6 +38,7 @@ export interface Client{
   nationality:string
 }
 export interface Reservation{
+  _id:string
   reservation_date:string
   reservation_time:string
   trip:TripState

@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import ReservationCard from "../../components/Reservation/ReservationCard";
+import { ReservationContext } from "../../Context/Reservation";
+import { Reservation } from "../../types";
 
 const Reservations = () => {
+  const { reservations }: any = useContext(ReservationContext);
+  console.log(reservations)
   return (
     <div className="flex overflow-hidden bg-white pt-16">
       <div className="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
@@ -57,7 +61,9 @@ const Reservations = () => {
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
-                    <ReservationCard />
+                    {reservations?.map((reservation:Reservation) => (
+                      <ReservationCard key={reservation._id} reservation={reservation} />
+                    ))}
                   </tbody>
                 </table>
               </div>
