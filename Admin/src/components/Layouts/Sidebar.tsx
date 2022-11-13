@@ -22,7 +22,7 @@ const Sidebar = () => {
                       className="flex items-center py-2.5 px-4 text-base font-normal text-dark-500 rounded-lg hover:bg-gray-200  bg-white shadow-lg shadow-gray-200 hover:!bg-white group transition-all duration-200"
                       // sidebar-toggle-collapse
                     >
-                      <div className="bg-white shadow-lg shadow-gray-300 bg-fuchsia-500 !text-white  text-dark-700 w-8 h-8 p-2 mr-1 rounded-lg">
+                      <div className="bg-white shadow-lg shadow-gray-300 bg-slate-700 !text-white  text-dark-700 w-8 h-8 p-2 mr-1 rounded-lg">
                         <link.icon />
                       </div>
                       <span
