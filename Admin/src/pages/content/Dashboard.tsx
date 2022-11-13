@@ -10,7 +10,7 @@ const Dashboard = () => {
             {StatisticCard.map((statistic, index) => (
               <div className="bg-white shadow-lg shadow-gray-200 rounded-2xl p-4 ">
                 <div key={index} className="flex items-center">
-                  <div className="inline-flex flex-shrink-0 justify-center items-center w-12 h-12 text-white bg-gradient-to-br from-pink-500 to-voilet-500 rounded-lg shadow-md shadow-gray-300">
+                  <div className="inline-flex flex-shrink-0 justify-center items-center w-12 h-12 text-white bg-emerald-500 bg-gradient-to-r from-[#5651e5] to-[#709dff] rounded-lg shadow-md shadow-gray-300">
                     <statistic.icon className="text-[20px]" />
                   </div>
                   <div className="flex-shrink-0 ml-3">
