@@ -14,6 +14,7 @@ import TripContextProvider from "./Context/Trip";
 import NotFound from "./pages/NotFound";
 import CompanyContextProvider from "./Context/Company";
 import BusContextProvider from "./Context/Car";
+import ReservationContextProvider from "./Context/Reservation";
 
 function App() {
   return (
@@ -22,21 +23,23 @@ function App() {
         <TripContextProvider>
           <CompanyContextProvider>
             <BusContextProvider>
-              <div className="App">
-                <Navbar />
-                <Routes>
-                  <Route path="/login" element={<Login />} />
-                  <Route path={"/"} element={<Dashboard />} />
-                  <Route path={"/trips"} element={<Trips />} />
-                  <Route path={"/clients"} element={<Clients />} />
-                  <Route path={"/reservations"} element={<Reservations />} />
-                  <Route path={"/buses"} element={<Buses />} />
-                  <Route path={"/companies"} element={<Companies />} />
-                  <Route path={"*"} element={<NotFound />} />
-                </Routes>
-                <Sidebar />
-              </div>
-              <ToastContainer />
+              <ReservationContextProvider>
+                <div className="App">
+                  <Navbar />
+                  <Routes>
+                    <Route path="/login" element={<Login />} />
+                    <Route path={"/"} element={<Dashboard />} />
+                    <Route path={"/trips"} element={<Trips />} />
+                    <Route path={"/clients"} element={<Clients />} />
+                    <Route path={"/reservations"} element={<Reservations />} />
+                    <Route path={"/buses"} element={<Buses />} />
+                    <Route path={"/companies"} element={<Companies />} />
+                    <Route path={"*"} element={<NotFound />} />
+                  </Routes>
+                  <Sidebar />
+                </div>
+                <ToastContainer />
+              </ReservationContextProvider>
             </BusContextProvider>
           </CompanyContextProvider>
         </TripContextProvider>
