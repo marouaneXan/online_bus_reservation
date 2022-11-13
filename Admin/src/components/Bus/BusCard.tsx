@@ -1,12 +1,14 @@
-import React from "react";
+import React,{useContext} from "react";
 import { GrEdit } from "react-icons/gr";
 import { AiFillDelete } from "react-icons/ai";
 import { Bus } from "../../types";
+import { BusContext } from "../../Context/Car";
 interface Prop{
   bus:Bus
 }
 
 const BusCard = (props:Prop) => {
+  const {deleteBus}:any=useContext(BusContext)
   return (
     <tr className="hover:bg-gray-100">
       <td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap lg:p-5">
@@ -19,7 +21,7 @@ const BusCard = (props:Prop) => {
         image
       </td>
       <td className="p-4 flex items-center mt-1 space-x-4 whitespace-nowrap lg:p-5">
-        <AiFillDelete className="text-[18px] cursor-pointer" />
+        <AiFillDelete onClick={()=>{deleteBus(props.bus._id)}} className="text-[18px] cursor-pointer" />
         <GrEdit className="text-[18px] cursor-pointer" />
       </td>
     </tr>

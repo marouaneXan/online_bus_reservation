@@ -29,7 +29,7 @@ const BusContextProvider = ({ children }: any) => {
   };
   //delete Bus
   const deleteBus = async (bus_id: string) => {
-    const res = await axios.delete(`${Proxy}/trips/${bus_id}`).catch((err) => {
+    const res = await axios.delete(`${Proxy}/cars/${bus_id}`).catch((err) => {
       const message: any =
         (err.res && err.res.data && err.res.data.message) || err || err.message;
       if (message) {
