@@ -218,10 +218,10 @@ const Add = (props: Prop) => {
                 </div>
                 <div className="p-6 rounded-b border-t border-gray-200">
                   <button
-                    className="text-white font-medium text-sm px-5 py-2.5 text-center rounded-lg bg-gradient-to-br from-pink-500 to-voilet-500 shadow-md shadow-gray-300 hover:scale-[1.02] transition-transform"
+                    className="my-1 text-white bg-slate-700 font-medium rounded-lg text-sm px-8 py-2 text-center hover:scale-[1.02] transition-transform"
                     type="submit"
                   >
-                    Add trip
+                    Add
                   </button>
                 </div>
               </Form>
