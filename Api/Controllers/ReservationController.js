@@ -132,6 +132,7 @@ const statistic = asyncHandler(async (req, res) => {
     { path: "trip", populate: { path: "car" } },
     "client",
   ]);
+  const clients = await Client.find()
   //todays money
   let today_money=0
   for(let i=0;i<reservations.length;i++){
@@ -139,9 +140,12 @@ const statistic = asyncHandler(async (req, res) => {
       today_money+=reservations[i].trip.price
     }
   }
+  //today clients
+  let today_clients=0
+  
   res.status(200).json({
     today_money,
-    date_now
+    clients
   })
 
 });
