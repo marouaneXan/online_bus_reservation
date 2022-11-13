@@ -132,22 +132,27 @@ const statistic = asyncHandler(async (req, res) => {
     { path: "trip", populate: { path: "car" } },
     "client",
   ]);
-  const clients = await Client.find()
+  const clients = await Client.find();
   //todays money
-  let today_money=0
-  for(let i=0;i<reservations.length;i++){
-    if(reservations[i].reservation_date===date_now){
-      today_money+=reservations[i].trip.price
+  let today_money = 0;
+  for (let i = 0; i < reservations.length; i++) {
+    if (reservations[i].reservation_date === date_now) {
+      today_money += reservations[i].trip.price;
     }
   }
   //today clients
-  let today_clients=0
-  
+  let today_clients = 0;
+  for (let i = 0; i < clients.length; i++) {
+    const createdAtdate = new Date(clients[i].createdAt).toLocaleDateString(
+      "sv"
+    );
+    if (createdAtdate === date_now) today_clients++;
+  }
+
   res.status(200).json({
     today_money,
-    clients
-  })
-
+    today_clients,
+  });
 });
 
 // difference btween two times
@@ -171,5 +176,5 @@ module.exports = {
   cancelReservation,
   getClientReservations,
   getReservationDetails,
-  statistic
+  statistic,
 };
