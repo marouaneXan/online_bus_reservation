@@ -3,8 +3,14 @@ import axios from "axios";
 import { Bus } from "../../types";
 import { Proxy } from "../../Config/Proxy";
 export const ReservationContext=createContext(null)
+interface Statistic{
+  today_money:number
+  today_clients:number
+  today_reservations:number
+}
 const ReservationContextProvider = ({ children }: any) => {
   const [reservations, setReservations] = useState<Bus[] | null>();
+  const [statistics, setStatistics] = useState<Statistic | null>();
   const [loading, setLoading] = useState<boolean>(false);
   const [empty, setEmpty] = useState<boolean>(false);
   // get all Reservations
@@ -26,6 +32,15 @@ const ReservationContextProvider = ({ children }: any) => {
       setReservations(res.data);
     }
   };
+
+  //get statistic
+  const statistic=async()=>{
+    const res = await axios.get(`${Proxy}/reservations`)
+    if (res && res.data) {
+      setLoading(false);
+      setStatistics(res.data);
+    }
+  }
   useEffect(() => {
     getReservation()
   }, [])
@@ -35,13 +50,15 @@ const ReservationContextProvider = ({ children }: any) => {
       getReservation,
       reservations,
       loading,
-      empty
+      empty,
+      statistic
     }),
     [
       getReservation,
       reservations,
       loading,
-      empty
+      empty,
+      statistic
     ]
   );
   return <ReservationContext.Provider value={values} >{children}</ReservationContext.Provider>
