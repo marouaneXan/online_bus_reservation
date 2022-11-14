@@ -34,9 +34,9 @@ const ReservationContextProvider = ({ children }: any) => {
     }
   };
 
-  //delete Bus
-  const deleteBus = async (reservation_id: string) => {
-    const res = await axios.delete(`${Proxy}/reservations/${reservation_id}`).catch((err) => {
+  //delete Reservation
+  const deleteReservation = async (reservation_id: string,trip_id: string,client_id: string) => {
+    const res = await axios.delete(`${Proxy}/reservations/${reservation_id}/${trip_id}/${client_id}`).catch((err) => {
       const message: any =
         (err.res && err.res.data && err.res.data.message) || err || err.message;
       if (message) {
@@ -71,7 +71,7 @@ const ReservationContextProvider = ({ children }: any) => {
       empty,
       statistic,
       statistics,
-      deleteBus
+      deleteReservation
     }),
     [
       getReservation,
@@ -80,7 +80,7 @@ const ReservationContextProvider = ({ children }: any) => {
       empty,
       statistic,
       statistics,
-      deleteBus
+      deleteReservation
     ]
   );
   return <ReservationContext.Provider value={values} >{children}</ReservationContext.Provider>
