@@ -3,11 +3,21 @@ import axios from "axios";
 import { Bus } from "../../types";
 import { Proxy } from "../../Config/Proxy";
 import { toast } from "react-toastify";
-export const BusContext=createContext(null)
+export const BusContext = createContext(null);
 const BusContextProvider = ({ children }: any) => {
   const [buses, setBuses] = useState<Bus[] | null>();
   const [loading, setLoading] = useState<boolean>(false);
   const [empty, setEmpty] = useState<boolean>(false);
+  const [showModalAdd, setShowModalAdd] = useState<boolean>(false);
+  //Close modal Add
+  const closeModalAdd = () => {
+    setShowModalAdd(false);
+  };
+  //show modal Add
+  const displayModalAdd = () => {
+    setShowModalAdd(true);
+  };
+
   // get all buses
   const getBuses = async () => {
     setLoading(true);
@@ -48,16 +58,22 @@ const BusContextProvider = ({ children }: any) => {
       buses,
       loading,
       empty,
-      deleteBus
+      deleteBus,
+      showModalAdd,
+      closeModalAdd,
+      displayModalAdd,
     }),
     [
       getBuses,
       buses,
       loading,
       empty,
-      deleteBus
+      deleteBus,
+      showModalAdd,
+      closeModalAdd,
+      displayModalAdd,
     ]
   );
-  return <BusContext.Provider value={values} >{children}</BusContext.Provider>
+  return <BusContext.Provider value={values}>{children}</BusContext.Provider>;
 };
 export default BusContextProvider;
