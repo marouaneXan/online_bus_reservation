@@ -10,7 +10,7 @@ const ReservationCard = (props:Prop) => {
   return (
     <tr className="hover:bg-gray-100">
       <td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap lg:p-5">
-        <div className="text-base font-semibold text-gray-900">{props.reservation?.client.nom}</div>
+        <div className="text-base font-semibold text-gray-900">{props.reservation?.client?.nom}</div>
       </td>
       <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap lg:p-5">
         {props.reservation?.reservation_date}
