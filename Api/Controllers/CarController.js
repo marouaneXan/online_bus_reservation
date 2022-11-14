@@ -18,8 +18,7 @@ const addCar = asyncHandler(async (req, res) => {
 //@access private
 const getAllCars = asyncHandler(async (req, res) => {
   const cars = await Car.find();
-  res.status(200).json(cars);
-  trips.length
+  cars.length
     ? res.status(200).json(cars)
     : res.status(400).json({
         message: "There is no Buses yet",
