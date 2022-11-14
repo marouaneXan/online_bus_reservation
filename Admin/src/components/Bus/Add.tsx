@@ -3,17 +3,20 @@ import { Formik, Form, FieldArray } from "formik";
 import TextField from "../Formik/TextField";
 import { busSchema } from "../../Validation/Bus";
 import { Bus } from "../../types";
+import { BusContext } from "../../Context/Car";
 interface Prop {
   closeModalAdd: () => void;
 }
 
 const Add = (props: Prop) => {
+  const {addBus}:any=useContext(BusContext)
   const values: any = {
     car_name: "",
     nbr_places: ""
   };
-  const onSubmit = () => {
-    console.log('added')
+  const onSubmit = (values:any) => {
+    const {...data}=values
+    addBus(data)
   };
   return (
     <Formik
