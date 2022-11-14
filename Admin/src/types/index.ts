@@ -27,6 +27,7 @@ export interface TripState {
   distance:string
 }
 export interface Client{
+  _id:string
   genre:string
   nom:string
   prenom:string
@@ -35,7 +36,7 @@ export interface Client{
   tel:string
   adress:string
   ville:string
-  nationality:string
+  nationalite:string
 }
 export interface Reservation{
   _id:string

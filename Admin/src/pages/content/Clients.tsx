@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import ClientCard from "../../components/Clients/ClientCard";
+import { ClientContext } from "../../Context/Clients";
+import { Client } from "../../types";
 
 const Clients = () => {
+  const { clients }: any = useContext(ClientContext);
   return (
     <div className="flex overflow-hidden bg-white pt-16">
       <div className="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
@@ -74,7 +78,9 @@ const Clients = () => {
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
-                    <ClientCard />
+                    {clients?.map((client:Client) => (
+                      <ClientCard key={client._id} client={client} />
+                    ))}
                   </tbody>
                 </table>
               </div>

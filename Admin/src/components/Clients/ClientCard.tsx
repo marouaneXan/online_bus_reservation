@@ -1,40 +1,45 @@
 import React from "react";
 import { GrEdit } from "react-icons/gr";
 import { AiFillDelete } from "react-icons/ai";
+import { Client } from "../../types";
+interface Prop {
+  client: Client;
+}
 
-const ClientCard = () => {
+const ClientCard = (props: Prop) => {
   return (
     <tr className="hover:bg-gray-100">
       <td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap lg:p-5">
-        <div className="text-base font-semibold text-gray-900">Mister</div>
+        <div className="text-base font-semibold text-gray-900">
+          {props.client.genre}
+        </div>
       </td>
       <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap lg:p-5">
-        Marouane
+        {props.client.nom}
       </td>
       <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap lg:p-5">
-        Zahaoui
+        {props.client.prenom}
       </td>
       <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap lg:p-5">
-        test@gmail.com
+        {props.client.email}
       </td>
       <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap lg:p-5">
-        2022-12-12
+        {props.client.date_naissance}
       </td>
       <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap lg:p-5">
-        0603860541
+        {props.client.tel}
       </td>
       <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap lg:p-5">
-        Najah el amir safi
+        {props.client.adress}
       </td>
       <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap lg:p-5">
-        Safi
+        {props.client.ville}
       </td>
       <td className="p-4 text-base font-medium text-gray-900 whitespace-nowrap lg:p-5">
-        Morocco
+        {props.client.nationalite}
       </td>
       <td className="p-4 flex items-center mt-1 space-x-2 whitespace-nowrap lg:p-5">
         <AiFillDelete className="text-[18px] cursor-pointer" />
-        <GrEdit className="text-[18px] cursor-pointer" />
       </td>
     </tr>
   );
