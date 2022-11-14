@@ -2,6 +2,7 @@ import { createContext, useState, useMemo,useEffect } from "react";
 import axios from "axios";
 import { Bus } from "../../types";
 import { Proxy } from "../../Config/Proxy";
+import { toast } from "react-toastify";
 export const ReservationContext=createContext(null)
 interface Statistic{
   today_money:number
@@ -33,6 +34,22 @@ const ReservationContextProvider = ({ children }: any) => {
     }
   };
 
+  //delete Bus
+  const deleteBus = async (reservation_id: string) => {
+    const res = await axios.delete(`${Proxy}/reservations/${reservation_id}`).catch((err) => {
+      const message: any =
+        (err.res && err.res.data && err.res.data.message) || err || err.message;
+      if (message) {
+        toast.error(message.response.data.message);
+        setLoading(false);
+      }
+    });
+    if (res && res.data) {
+      getReservation();
+      toast.success(res.data.message);
+    }
+  };
+
   //get statistic
   const statistic=async()=>{
     const res = await axios.get(`${Proxy}/reservations/statistics`)
@@ -53,7 +70,8 @@ const ReservationContextProvider = ({ children }: any) => {
       loading,
       empty,
       statistic,
-      statistics
+      statistics,
+      deleteBus
     }),
     [
       getReservation,
@@ -61,7 +79,8 @@ const ReservationContextProvider = ({ children }: any) => {
       loading,
       empty,
       statistic,
-      statistics
+      statistics,
+      deleteBus
     ]
   );
   return <ReservationContext.Provider value={values} >{children}</ReservationContext.Provider>

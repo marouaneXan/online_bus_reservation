@@ -1,12 +1,14 @@
-import React from "react";
+import React,{useContext} from "react";
 import { GrEdit } from "react-icons/gr";
 import { AiFillDelete } from "react-icons/ai";
 import { Reservation } from "../../types";
+import { ReservationContext } from "../../Context/Reservation";
 interface Prop {
   reservation: Reservation;
 }
 
 const ReservationCard = (props:Prop) => {
+  const {deleteBus}:any=useContext(ReservationContext)
   return (
     <tr className="hover:bg-gray-100">
       <td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap lg:p-5">
@@ -28,7 +30,7 @@ const ReservationCard = (props:Prop) => {
       {props.reservation?.trip?.price}
       </td>
       <td className="p-4 flex items-center mt-1 space-x-2 whitespace-nowrap lg:p-5">
-        <AiFillDelete className="text-[18px] cursor-pointer" />
+        <AiFillDelete onClick={()=>{deleteBus(props.reservation?._id)}} className="text-[18px] cursor-pointer" />
         <GrEdit className="text-[18px] cursor-pointer" />
       </td>
     </tr>
