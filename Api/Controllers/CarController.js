@@ -10,7 +10,9 @@ const addCar = asyncHandler(async (req, res) => {
     throw new Error("Please add all fields");
   }
   const newCar = await Car.create(req.body);
-  if (newCar) res.status(200).json(newCar);
+  if (newCar) res.status(200).json({
+    message:"New bus added successfully"
+  });
 });
 
 //@desc GET getAllCar
