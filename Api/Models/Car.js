@@ -9,8 +9,7 @@ const carSchema=mongoose.Schema({
         required:[true,"Please add a number of places field"]
     },
     car_image:{
-        type:String,
-        required:[true,"Please add a image field"]
+        type:String
     },
 })
 module.exports = mongoose.model("Car", carSchema);

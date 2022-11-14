@@ -4,8 +4,8 @@ const Car = require("../Models/Car");
 //@route /api/v1/cars
 //@access private
 const addCar = asyncHandler(async (req, res) => {
-  const { car_name, nbr_places, car_image } = req.body;
-  if (!car_name || !nbr_places || !car_image) {
+  const { car_name, nbr_places } = req.body;
+  if (!car_name || !nbr_places ) {
     res.status(400);
     throw new Error("Please add all fields");
   }
