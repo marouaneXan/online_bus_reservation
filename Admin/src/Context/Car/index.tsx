@@ -52,6 +52,29 @@ const BusContextProvider = ({ children }: any) => {
       toast.success(res.data.message);
     }
   };
+  //Add Bus
+  const addBus = async (data:Bus) => {
+    setLoading(true);
+    const res = await axios
+      .post(`${Proxy}/cars`,data)
+      .catch((err) => {
+        const message: any =
+          (err.res && err.res.data && err.res.data.message) ||
+          err ||
+          err.message;
+        if (message) {
+          setLoading(false);
+          console.log(message);
+          toast.error(message.response.data.message);
+          setLoading(false);
+        }
+      });
+    if (res && res.data) {
+      setShowModalAdd(false);
+      toast.success(res.data.message);
+      getBuses()
+    }
+  };
   const values: any = useMemo(
     () => ({
       getBuses,
@@ -62,6 +85,7 @@ const BusContextProvider = ({ children }: any) => {
       showModalAdd,
       closeModalAdd,
       displayModalAdd,
+      addBus
     }),
     [
       getBuses,
@@ -72,6 +96,7 @@ const BusContextProvider = ({ children }: any) => {
       showModalAdd,
       closeModalAdd,
       displayModalAdd,
+      addBus
     ]
   );
   return <BusContext.Provider value={values}>{children}</BusContext.Provider>;
