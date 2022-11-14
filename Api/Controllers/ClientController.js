@@ -26,10 +26,14 @@ const clientDetails = asyncHandler(async (req, res) => {
 //@access private
 const getAllClients = asyncHandler(async (req, res) => {
   const clients = await Client.find();
-  res.status(200).json(clients);
+  clients.length
+    ? res.status(200).json(clients)
+    : res.status(400).json({
+        message: "There is no clients",
+      });
 });
 module.exports = {
   deleteClient,
   getAllClients,
-  clientDetails
+  clientDetails,
 };
