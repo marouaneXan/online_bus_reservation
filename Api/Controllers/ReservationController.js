@@ -154,6 +154,7 @@ const statistic = asyncHandler(async (req, res) => {
   res.status(200).json({
     today_money,
     today_clients,
+    today_reservations
   });
 });
 
