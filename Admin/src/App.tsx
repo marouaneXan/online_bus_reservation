@@ -15,6 +15,7 @@ import NotFound from "./pages/NotFound";
 import CompanyContextProvider from "./Context/Company";
 import BusContextProvider from "./Context/Car";
 import ReservationContextProvider from "./Context/Reservation";
+import ClientContextProvider from "./Context/Clients";
 
 function App() {
   return (
@@ -24,21 +25,26 @@ function App() {
           <CompanyContextProvider>
             <BusContextProvider>
               <ReservationContextProvider>
-                <div className="App">
-                  <Navbar />
-                  <Routes>
-                    <Route path="/login" element={<Login />} />
-                    <Route path={"/"} element={<Dashboard />} />
-                    <Route path={"/trips"} element={<Trips />} />
-                    <Route path={"/clients"} element={<Clients />} />
-                    <Route path={"/reservations"} element={<Reservations />} />
-                    <Route path={"/buses"} element={<Buses />} />
-                    <Route path={"/companies"} element={<Companies />} />
-                    <Route path={"*"} element={<NotFound />} />
-                  </Routes>
-                  <Sidebar />
-                </div>
-                <ToastContainer />
+                <ClientContextProvider>
+                  <div className="App">
+                    <Navbar />
+                    <Routes>
+                      <Route path="/login" element={<Login />} />
+                      <Route path={"/"} element={<Dashboard />} />
+                      <Route path={"/trips"} element={<Trips />} />
+                      <Route path={"/clients"} element={<Clients />} />
+                      <Route
+                        path={"/reservations"}
+                        element={<Reservations />}
+                      />
+                      <Route path={"/buses"} element={<Buses />} />
+                      <Route path={"/companies"} element={<Companies />} />
+                      <Route path={"*"} element={<NotFound />} />
+                    </Routes>
+                    <Sidebar />
+                  </div>
+                  <ToastContainer />
+                </ClientContextProvider>
               </ReservationContextProvider>
             </BusContextProvider>
           </CompanyContextProvider>
