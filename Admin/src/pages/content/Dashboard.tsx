@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { StatisticCard } from "../../constant/StatisticCard";
+import { ReservationContext } from "../../Context/Reservation";
 
 const Dashboard = () => {
+  const {statistics}:any=useContext(ReservationContext)
   return (
     <div className="flex overflow-hidden bg-white pt-16">
       <div className="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
@@ -15,7 +17,8 @@ const Dashboard = () => {
                   </div>
                   <div className="flex-shrink-0 ml-3">
                     <span className="text-2xl font-bold leading-none text-gray-900">
-                      ${statistic.sum}
+                      {statistic.content==="Today's Money" && (<>{statistics.today_money}DH</>)}
+                      {statistic.content==="New Clients" && (<>{statistics.today_clients}</>)}
                     </span>
                     <h3 className="text-base font-normal text-gray-500">
                       {statistic.content}

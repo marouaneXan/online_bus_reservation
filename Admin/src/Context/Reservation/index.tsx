@@ -35,7 +35,7 @@ const ReservationContextProvider = ({ children }: any) => {
 
   //get statistic
   const statistic=async()=>{
-    const res = await axios.get(`${Proxy}/reservations`)
+    const res = await axios.get(`${Proxy}/reservations/statistics`)
     if (res && res.data) {
       setLoading(false);
       setStatistics(res.data);
@@ -43,6 +43,7 @@ const ReservationContextProvider = ({ children }: any) => {
   }
   useEffect(() => {
     getReservation()
+    statistic()
   }, [])
   
   const values: any = useMemo(
@@ -51,14 +52,16 @@ const ReservationContextProvider = ({ children }: any) => {
       reservations,
       loading,
       empty,
-      statistic
+      statistic,
+      statistics
     }),
     [
       getReservation,
       reservations,
       loading,
       empty,
-      statistic
+      statistic,
+      statistics
     ]
   );
   return <ReservationContext.Provider value={values} >{children}</ReservationContext.Provider>
