@@ -61,7 +61,7 @@ const Add = (props: Prop) => {
                       />
                     </div>
                     <div className="col-span-6 sm:col-span-3">
-                      <TextField label="Number of places" name="nbr_places" type="text" />
+                      <TextField label="Number of places" name="nbr_places" type="number" />
                     </div>
                   </div>
                 </div>
