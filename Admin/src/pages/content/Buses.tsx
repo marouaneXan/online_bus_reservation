@@ -20,7 +20,7 @@ const Buses = () => {
           ) : (
             <>
               {empty ? (
-                <Empty empty={empty} />
+                <Empty content="Bus" empty={empty} />
               ) : (
                 <div className="overflow-x-auto rounded-2xl">
                   <div className="inline-block min-w-full align-middle">
