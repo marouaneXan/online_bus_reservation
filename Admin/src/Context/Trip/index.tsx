@@ -8,6 +8,7 @@ const TripContextProvider = ({ children }: any) => {
   const [trips, setTrips] = useState<TripState[] | null>();
   const [showModalDelete, setShowModalDelete] = useState<boolean>(false);
   const [showModalAdd, setShowModalAdd] = useState<boolean>(false);
+  const [showModalUpdate, setShowModalUpdate] = useState<boolean>(false);
   const [trip, setTrip] = useState<[]>();
   const [loading, setLoading] = useState<boolean>(false);
   const [empty, setEmpty] = useState<boolean>(false);
@@ -26,6 +27,14 @@ const TripContextProvider = ({ children }: any) => {
   //show modal Add
   const displayModalAdd = () => {
     setShowModalAdd(true);
+  };
+  //Close modal Update
+  const closeModalUpdate = () => {
+    setShowModalUpdate(false);
+  };
+  //show modal Update
+  const displayModalUpdate = () => {
+    setShowModalUpdate(true);
   };
   // get all trips
   const getTrips = async () => {
@@ -103,7 +112,10 @@ const TripContextProvider = ({ children }: any) => {
       closeModalAdd,
       displayModalAdd,
       showModalAdd,
-      addTrip
+      addTrip,
+      showModalUpdate,
+      closeModalUpdate,
+      displayModalUpdate
     }),
     [
       getTrips,
@@ -117,7 +129,9 @@ const TripContextProvider = ({ children }: any) => {
       closeModalAdd,
       displayModalAdd,
       showModalAdd,
-      addTrip
+      addTrip,
+      showModalUpdate,
+      displayModalUpdate
     ]
   );
   return <TripContext.Provider value={values}>{children}</TripContext.Provider>;

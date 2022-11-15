@@ -7,6 +7,7 @@ import Empty from "../../components/Trip/Empty";
 import ReactPaginate from "react-paginate";
 import "../../App.css";
 import Add from "../../components/Trip/Add";
+import Update from "../../components/Trip/Update";
 
 const Trips = () => {
   const {
@@ -17,6 +18,8 @@ const Trips = () => {
     showModalAdd,
     closeModalAdd,
     displayModalAdd,
+    showModalUpdate,
+    closeModalUpdate,
   }: any = useContext(TripContext);
 
   //**********Pagination ******/
@@ -55,6 +58,12 @@ const Trips = () => {
                       {showModalAdd && (
                         <>
                           <Add closeModalAdd={closeModalAdd} />
+                          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+                        </>
+                      )}
+                      {showModalUpdate && (
+                        <>
+                          <Update closeModalUpdate={closeModalUpdate} />
                           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
                         </>
                       )}
