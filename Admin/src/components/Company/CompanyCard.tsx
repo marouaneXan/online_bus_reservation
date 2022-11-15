@@ -10,7 +10,7 @@ const CompayCard = () => {
       </td>
       <td className="p-4 flex items-center mt-1 space-x-2 whitespace-nowrap lg:p-5">
         <AiFillDelete className="text-[18px] cursor-pointer" />
-        <GrEdit className="text-[18px] cursor-pointer" />
+        {/* <GrEdit className="text-[18px] cursor-pointer" /> */}
       </td>
     </tr>
   );

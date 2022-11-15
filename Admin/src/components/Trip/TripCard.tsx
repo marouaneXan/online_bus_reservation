@@ -80,10 +80,10 @@ const TripCard = (props: Prop) => {
             className="text-[18px] cursor-pointer"
             onClick={displayModalDelete}
           />
-          <GrEdit
+          {/* <GrEdit
             onClick={displayModalUpdate}
             className="text-[18px] cursor-pointer"
-          />
+          /> */}
         </td>
       </tr>
     </>

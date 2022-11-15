@@ -22,7 +22,7 @@ const BusCard = (props:Prop) => {
       </td>
       <td className="p-4 flex items-center mt-1 space-x-4 whitespace-nowrap lg:p-5">
         <AiFillDelete onClick={()=>{deleteBus(props.bus._id)}} className="text-[18px] cursor-pointer" />
-        <GrEdit className="text-[18px] cursor-pointer" />
+        {/* <GrEdit className="text-[18px] cursor-pointer" /> */}
       </td>
     </tr>
   );

@@ -16,7 +16,7 @@ interface Prop {
 const Update = (props: Prop) => {
   const { companies, getCompanies }: any = useContext(CompanyContext);
   const { buses, getBuses }: any = useContext(BusContext);
-  const { addTrip }: any = useContext(TripContext);
+  const { updateTrip }: any = useContext(TripContext);
   useEffect(() => {
     getCompanies();
     getBuses();
@@ -39,7 +39,8 @@ const Update = (props: Prop) => {
     distance: "",
   };
   const onSubmit = (values: any) => {
-    console.log("added")
+    const {...data}=values
+    updateTrip(props.trip_id,data)
   };
   return (
     <Formik
