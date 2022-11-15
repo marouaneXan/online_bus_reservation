@@ -20,7 +20,7 @@ const Dashboard = () => {
                       {statistic.content==="Today's Money" && (<>{statistics?.today_money}DH</>)}
                       {statistic.content==="New Clients" && (<>{statistics?.today_clients}</>)}
                       {statistic.content==="Reservations" && (<>{statistics?.today_reservations}</>)}
-                      {statistic.content==="Sales" && (<>{reservations?.length}</>)}
+                      {statistic.content==="Sales" && (<>{reservations?.length ? reservations?.length :"0"}</>)}
                     </span>
                     <h3 className="text-base font-normal text-gray-500">
                       {statistic.content}
