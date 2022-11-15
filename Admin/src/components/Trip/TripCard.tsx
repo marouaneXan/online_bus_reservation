@@ -4,6 +4,7 @@ import { AiFillDelete } from "react-icons/ai";
 import { TripState } from "../../types";
 import Delete from "./Delete";
 import { TripContext } from "../../Context/Trip";
+import Update from "../../components/Trip/Update";
 interface Prop {
   trip: TripState;
   index: number;
@@ -15,6 +16,8 @@ const TripCard = (props: Prop) => {
     closeModalDelete,
     displayModalDelete,
     displayModalUpdate,
+    showModalUpdate,
+    closeModalUpdate,
   }: any = useContext(TripContext);
   return (
     <>
@@ -25,6 +28,12 @@ const TripCard = (props: Prop) => {
             close={closeModalDelete}
             message="Trip"
           />
+          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+        </>
+      )}
+      {showModalUpdate && (
+        <>
+          <Update closeModalUpdate={closeModalUpdate} trip_id={props.trip._id} />
           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </>
       )}

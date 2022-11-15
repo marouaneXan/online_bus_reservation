@@ -61,12 +61,6 @@ const Trips = () => {
                           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
                         </>
                       )}
-                      {showModalUpdate && (
-                        <>
-                          <Update closeModalUpdate={closeModalUpdate} />
-                          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-                        </>
-                      )}
                     </div>
                     <div className="overflow-x-auto rounded-2xl">
                       <div className="inline-block min-w-full align-middle">

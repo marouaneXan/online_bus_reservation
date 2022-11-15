@@ -10,6 +10,7 @@ import { Bus } from "../../types";
 import { TripContext } from "../../Context/Trip";
 interface Prop {
   closeModalUpdate: () => void;
+  trip_id:string
 }
 
 const Update = (props: Prop) => {
