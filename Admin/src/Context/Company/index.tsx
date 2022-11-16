@@ -29,7 +29,7 @@ const CompanyContextProvider = ({ children }: any) => {
   };
   //delete Company
   const deleteCompany = async (company_id: string) => {
-    const res = await axios.delete(`${Proxy}/company/${company_id}`).catch((err) => {
+    const res = await axios.delete(`${Proxy}/companies/${company_id}`).catch((err) => {
       const message: any =
         (err.res && err.res.data && err.res.data.message) || err || err.message;
       if (message) {
