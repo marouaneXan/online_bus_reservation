@@ -27,19 +27,35 @@ const CompanyContextProvider = ({ children }: any) => {
       setCompanies(res.data);
     }
   };
-  
+  //delete Company
+  const deleteCompany = async (company_id: string) => {
+    const res = await axios.delete(`${Proxy}/company/${company_id}`).catch((err) => {
+      const message: any =
+        (err.res && err.res.data && err.res.data.message) || err || err.message;
+      if (message) {
+        toast.error(message.response.data.message);
+        setLoading(false);
+      }
+    });
+    if (res && res.data) {
+      getCompanies();
+      toast.success(res.data.message);
+    }
+  };
   const values: any = useMemo(
     () => ({
       getCompanies,
       companies,
       loading,
       empty,
+      deleteCompany
     }),
     [
       getCompanies,
       companies,
       loading,
       empty,
+      deleteCompany
     ]
   );
   return <CompanyContext.Provider value={values} >{children}</CompanyContext.Provider>
