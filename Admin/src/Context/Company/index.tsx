@@ -1,4 +1,4 @@
-import { createContext, useState, useMemo } from "react";
+import { createContext, useState, useMemo,useEffect } from "react";
 import axios from "axios";
 import { Company } from "../../types";
 import { Proxy } from "../../Config/Proxy";
@@ -42,6 +42,9 @@ const CompanyContextProvider = ({ children }: any) => {
       toast.success(res.data.message);
     }
   };
+  useEffect(()=>{
+    getCompanies()
+  },[])
   const values: any = useMemo(
     () => ({
       getCompanies,

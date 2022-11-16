@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import CompayCard from "../../components/Company/CompanyCard";
+import { CompanyContext } from "../../Context/Company";
+import { Company } from "../../types";
 
 const Companies = () => {
+  const { companies }: any = useContext(CompanyContext);
   return (
     <div className="flex overflow-hidden bg-white pt-16">
       <div className="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
@@ -27,7 +30,9 @@ const Companies = () => {
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
-                    <CompayCard />
+                    {companies?.map((company: Company) => (
+                      <CompayCard key={company._id} company={company} />
+                    ))}
                   </tbody>
                 </table>
               </div>
