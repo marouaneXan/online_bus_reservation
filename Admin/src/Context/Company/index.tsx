@@ -2,6 +2,7 @@ import { createContext, useState, useMemo } from "react";
 import axios from "axios";
 import { Company } from "../../types";
 import { Proxy } from "../../Config/Proxy";
+import { toast } from "react-toastify";
 export const CompanyContext=createContext(null)
 const CompanyContextProvider = ({ children }: any) => {
   const [companies, setCompanies] = useState<Company[] | null>();
@@ -26,18 +27,19 @@ const CompanyContextProvider = ({ children }: any) => {
       setCompanies(res.data);
     }
   };
+  
   const values: any = useMemo(
     () => ({
       getCompanies,
       companies,
       loading,
-      empty
+      empty,
     }),
     [
       getCompanies,
       companies,
       loading,
-      empty
+      empty,
     ]
   );
   return <CompanyContext.Provider value={values} >{children}</CompanyContext.Provider>
