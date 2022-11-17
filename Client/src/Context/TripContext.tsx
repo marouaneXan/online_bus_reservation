@@ -49,9 +49,14 @@ const TripContextProvider = ({ children }: any) => {
 
   //Search for Trips available
   const makeReservation = async (trip_id: string, client_id: string) => {
+    const token = localStorage.getItem('token')
     setLoading(true);
     const res: object | any = await axios
-      .post(`${Proxy}/reservations/${trip_id}/${client_id}`)
+      .post(`${Proxy}/reservations/${trip_id}/${client_id}`, {
+        headers: {
+          'Authorization': `Bearer ${token}` 
+        }
+      })
       .catch((err) => {
         const message: any =
           (err.res && err.res.data && err.res.data.message) ||
