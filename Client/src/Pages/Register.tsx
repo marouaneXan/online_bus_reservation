@@ -1,13 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import busVid from "../assets/landing_page_vd.mp4";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form } from "formik";
 import TextField from "../Components/Formik/TextField";
 import { RegisterSchema } from "../Validation/Register";
 import RadioField from "../Components/Formik/RadioField";
 import { AuthContext } from "../Context/AuthContext";
 import Spinner from "../Components/Layouts/Spinner";
+import { token } from "../Config/Token";
 const Register = () => {
+  const navigate=useNavigate()
+  useEffect(()=>{
+    token ? navigate('/') : ''
+  },[token])
   const { register, success, error, loading }: any = useContext(AuthContext);
   const values: object = {
     genre: "",
