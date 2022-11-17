@@ -31,7 +31,7 @@ const searchTrip = asyncHandler(async (req, res) => {
 //@route /api/v1/trips
 //@access public
 const getAllTrips = asyncHandler(async (req, res) => {
-  const trips = await Trip.find().populate(["car", "company"]);
+  const trips = await Trip.find().sort({createdAt:-1}).populate(["car", "company"]);
 
   trips.length
     ? res.status(200).json(trips)
