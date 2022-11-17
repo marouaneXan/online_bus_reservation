@@ -30,20 +30,20 @@ const Search = () => {
           rounded-md text-black bg-gray-100/90 md:flex-row md:space-y-0"
         >
           <TextField
-            className="bg-transparent w-[300px] sm:w-[400px] font-[Poppins] focus:outline-none"
+            className="shadow-lg-sm border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-2 focus:ring-fuchsia-50 focus:border-fuchsia-300 block w-full p-2.5"
             name="departure_city"
             type="text"
             placeholder="From"
           />
           <TextField
-            className="bg-transparent w-[300px] sm:w-[400px] font-[Poppins] focus:outline-none"
+            className="shadow-lg-sm border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-2 focus:ring-fuchsia-50 focus:border-fuchsia-300 block w-full p-2.5"
             name="arrival_city"
             type="text"
             placeholder="To"
           />
           <TextField
             min={new Date().toISOString().split('T')[0]}
-            className="bg-transparent w-[300px] sm:w-[400px] font-[Poppins] focus:outline-none"
+            className="shadow-lg-sm border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-2 focus:ring-fuchsia-50 focus:border-fuchsia-300 block w-full p-2.5"
             placeholder="Check in"
             type="date"
             name="departure_date"
