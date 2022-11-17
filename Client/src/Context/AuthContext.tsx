@@ -42,7 +42,7 @@ const AuthContextProvider = ({ children }: any) => {
       toast.success(res.data.message)
       console.log(res)
       setTimeout(() => {
-        navigate("/");
+        navigate("/results_availabilities");
         localStorage.setItem("logged", true as any);
         localStorage.setItem("client_id", res.data.client);
         localStorage.setItem("token", res.data.token);
