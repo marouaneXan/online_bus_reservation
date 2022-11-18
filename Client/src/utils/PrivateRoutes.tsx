@@ -6,6 +6,6 @@ import { token } from "../Config/Token";
 const PrivateRoutes = () => {
     const {connected}:any=useContext(AuthContext)
     const {trips}:any=useContext(TripContext)
-  return ((connected && token) || trips) ? <Outlet /> : <Navigate to="/" />;
+  return (connected || trips) ? <Outlet /> : <Navigate to="/" />;
 };
 export default PrivateRoutes;

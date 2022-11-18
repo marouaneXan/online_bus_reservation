@@ -6,7 +6,7 @@ import { token } from '../Config/Token'
 const Reservations = () => {
   const navigate=useNavigate()
   useEffect(()=>{
-    token ? navigate('/reservations') : navigate('/register')
+    token ? navigate('/reservations') : ''
   },[token])
   return (
     <>
