@@ -30,18 +30,43 @@
 
 To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
 
+- Run the client side:
 ```bash
 # Clone this repository
 $ git clone https://github.com/marouaneXan/online_bus_reservation.git
 
-# Go into the repository
-$ cd online_bus_reservation
+# Go into the folder client
+$ cd online_bus_reservation/Client
 
 # Install dependencies
 $ npm install
 
-# Run the app
-$ npm start
+# Run the client side
+$ npm run dev
+```
+- Run the backoffice side:
+```bash
+
+# Go into the folder admin
+$ cd online_bus_reservation/Admin
+
+# Install dependencies
+$ npm install
+
+# Run the client side
+$ npm run dev
+```
+- Run the backend of the application:
+```bash
+
+# Go into the folder Api
+$ cd online_bus_reservation/Api
+
+# Install dependencies
+$ npm install
+
+# Run the client side
+$ npm run server
 ```
 
 > **Note**
