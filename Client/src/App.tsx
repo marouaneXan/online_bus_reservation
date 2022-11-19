@@ -11,6 +11,7 @@ import TripContextProvider from "./Context/TripContext";
 import Trips from "./Pages/Trips";
 import Reservations from "./Pages/Reservations";
 import PrivateRoutes from "./utils/PrivateRoutes";
+import NotFound from "./Pages/NotFound";
 
 function App() {
   return (
@@ -22,10 +23,11 @@ function App() {
             <Routes>
               <Route element={<PrivateRoutes />}>
                 <Route path="/results_availabilities" element={<Trips />} />
+                <Route path="/reservations" element={<Reservations />} />
               </Route>
               <Route path="/register" element={<Register />} />
               <Route path="/" element={<Home />} />
-              <Route path="/reservations" element={<Reservations />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
             <Footer />
           </div>
