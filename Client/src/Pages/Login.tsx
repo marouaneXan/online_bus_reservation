@@ -60,9 +60,9 @@ const Login = () => {
                 {loading ? <Spinner /> : "Login"}
               </button>
               <div className="mt-6 text-grey-dark">
-                Already have an account?
+                I do not have an account?
                 <Link className="text-blue-600 hover:underline" to="/">
-                  Log in
+                  Register
                 </Link>
               </div>
             </Form>
