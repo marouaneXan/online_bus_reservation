@@ -7,8 +7,8 @@ const {
   getReservationDetails,
   statistic
 } = require("../Controllers/ReservationController");
-const { protectClient } = require("../Middleware/ClientMiddleware");
-const { protectAdmin } = require("../Middleware/AdminMiddleware");
+// const { protectClient } = require("../Middleware/ClientMiddleware");
+// const { protectAdmin } = require("../Middleware/AdminMiddleware");
 const router = express.Router();
 router.get("/statistics", statistic);
 router.get("/", getAllReservations);
