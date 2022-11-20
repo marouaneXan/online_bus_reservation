@@ -51,6 +51,38 @@ const AuthContextProvider = ({ children }: any) => {
     }
   };
 
+  const login = async (data: object) => {
+    setLoading(true);
+    const res = await axios
+      .post(Proxy+"/clientAuth/login", data)
+      .catch((err) => {
+        const message: any =
+          (err.res && err.res.data && err.res.data.message) ||
+          err ||
+          err.message;
+        if (message) {
+          setLoading(false);
+          toast.error(message.response.data.message)
+          setTimeout(() => {
+            setLoading(false);
+          }, 4000);
+        }
+      });
+    if (res && res.data) {
+      
+      setLoading(false);
+      toast.success(res.data.message)
+      console.log(res)
+      setTimeout(() => {
+        navigate("/");
+        localStorage.setItem("logged", true as any);
+        localStorage.setItem("client_id", res.data.client);
+        localStorage.setItem("token", res.data.token);
+        setConnected(true);
+      }, 5000);
+    }
+  };
+
   const values:any = useMemo(
     () => ({
       connected,
@@ -64,6 +96,7 @@ const AuthContextProvider = ({ children }: any) => {
       error,
       setError,
       register,
+      login
     }),
     [
       connected,
@@ -77,6 +110,7 @@ const AuthContextProvider = ({ children }: any) => {
       error,
       setError,
       register,
+      login
     ]
   );
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
