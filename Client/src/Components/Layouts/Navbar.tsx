@@ -1,8 +1,7 @@
 import React, { useState, useContext } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
-import { AiOutlineShoppingCart } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 import {
@@ -16,6 +15,7 @@ import logoNav from "../../assets/merkob.png";
 import { AuthContext } from "../../Context/AuthContext";
 
 const Navbar = () => {
+  const navigate=useNavigate()
   const { connected }: any = useContext(AuthContext);
   const location: any = useLocation();
   const [nav, setNav] = useState<boolean>(false);
@@ -24,6 +24,10 @@ const Navbar = () => {
     setNav(!nav);
     setLogo(!logo);
   };
+  const logout=()=>{
+    localStorage.clear()
+    navigate('/register')
+  }
 
   return (
     <>
@@ -70,7 +74,7 @@ const Navbar = () => {
               >
                 reservations
               </Link>
-              <button className="hidden md:flex lg:flex font-bold uppercase text-sm px-6 py-3 mr-1 mb-1">
+              <button onClick={()=> logout()} className="hidden md:flex lg:flex font-bold uppercase text-sm px-6 py-3 mr-1 mb-1">
                 Log out
               </button>
             </div>
