@@ -63,12 +63,17 @@ const Navbar = () => {
               </Link>
             </>
           ) : (
-            <Link
-              to="/reservations"
-              className="hidden md:flex lg:flex bg-emerald-500 bg-gradient-to-r from-[#5651e5] to-[#709dff] text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-            >
-              reservations
-            </Link>
+            <div className="flex">
+              <Link
+                to="/reservations"
+                className="hidden md:flex lg:flex bg-emerald-500 bg-gradient-to-r from-[#5651e5] to-[#709dff] text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+              >
+                reservations
+              </Link>
+              <button className="hidden md:flex lg:flex font-bold uppercase text-sm px-6 py-3 mr-1 mb-1">
+                Log out
+              </button>
+            </div>
           )}
 
           {/* Hamburger */}
