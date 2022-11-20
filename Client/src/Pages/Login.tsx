@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import busVid from "../assets/landing_page_vd.mp4";
 import { Link, useNavigate } from "react-router-dom";
-import { Formik, Form } from "formik";
+import { Formik, Form, ErrorMessage } from "formik";
 import TextField from "../Components/Formik/TextField";
 import { LoginSchema } from "../Validation/Login";
 import { AuthContext } from "../Context/AuthContext";
@@ -40,18 +40,28 @@ const Login = () => {
           <div className="absolute top-0 w-full h-full flex flex-col space-y-6 justify-center text-center text-white p-4">
             <h1 className="text-3xl md:text-4xl font-bold">Login</h1>
             <Form className="flex flex-col space-y-2 items-center max-w-[500px] mx-auto w-full border p-8 rounded-md text-black bg-gray-100/90">
-              <TextField
-                name="email"
-                className="border rounded-md p-2 w-full"
-                type="text"
-                placeholder="Email"
-              />
-              <TextField
-                name="password"
-                className="border rounded-md p-2 w-full"
-                type="password"
-                placeholder="password"
-              />
+              <div className="w-full">
+                <TextField
+                  name="email"
+                  className="border rounded-md p-2 w-full"
+                  type="text"
+                  placeholder="Email"
+                />
+                <span className="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+                  <ErrorMessage name="email" />
+                </span>
+              </div>
+              <div className="w-full">
+                <TextField
+                  name="password"
+                  className="border rounded-md p-2 w-full"
+                  type="password"
+                  placeholder="password"
+                />
+                <span className="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+                  <ErrorMessage name="password" />
+                </span>
+              </div>
               <button
                 disabled={loading}
                 type="submit"
