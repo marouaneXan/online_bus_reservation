@@ -12,6 +12,7 @@ import Trips from "./Pages/Trips";
 import Reservations from "./Pages/Reservations";
 import PrivateRoutes from "./utils/PrivateRoutes";
 import NotFound from "./Pages/NotFound";
+import Login from "./Pages/Login";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
               </Route>
               <Route path="/register" element={<Register />} />
               <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
             <Footer />
