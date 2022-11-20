@@ -12,15 +12,14 @@ interface props {
 }
 
 const TextField = (props: props) => {
-  const [field,meta] = useField(props.label ?? "maska");
-  const errorText = meta.error && meta.touched ? meta.error : "";
+  const [field,meta] = useField(props.label ?? "xan");
   return (
-    <>
+    <div className="w-full">
       <input {...field} {...props} />
-      {/* <span className="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
-        <ErrorMessage name={errorText} />
-      </span> */}
-    </>
+      <span className="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+        <ErrorMessage name={props.name} />
+      </span>
+    </div>
   );
 };
 export default TextField;
