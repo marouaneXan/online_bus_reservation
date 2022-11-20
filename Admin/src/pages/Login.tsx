@@ -1,71 +1,54 @@
+import React,{useContext} from 'react'
 import { Link } from "react-router-dom";
+import TextField from "../components/Formik/TextField";
+import { Formik, Form } from "formik";
+import { LoginSchema } from "../Validation/Login";
+import { AuthContext } from "../Context/Auth";
 
 const Login = () => {
+  const {login}:any=useContext(AuthContext)
+  const values: object = {
+    email: "",
+    password: "",
+  };
+  const onSubmit = (values: object) => {
+    const {...data}=values
+    login(data)
+  };
   return (
-    <div className="flex flex-col justify-center items-center px-6 pt-8 mx-auto md:h-screen pt:mt-0">
-      <Link
-        to="/"
-        className="flex justify-center items-center mb-8 text-2xl font-semibold lg:mb-10"
-      >
-        <span className="self-center text-2xl font-bold whitespace-nowrap">
-          Merkob.ma
-        </span>
-      </Link>
-      {/* <!-- Card --> */}
-      <div className="p-10 w-full max-w-lg bg-white rounded-2xl shadow-xl shadow-gray-300">
-        <div className="space-y-8">
-          <h2 className="text-2xl font-bold text-gray-900">
-            Sign in to platform
-          </h2>
-          <form className="mt-8 space-y-6">
-            <div>
-              <label className="block mb-2 text-sm font-medium text-gray-900">
-                Your email
-              </label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                className="border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-2 focus:ring-fuchsia-50 focus:border-fuchsia-300 block w-full p-2.5"
-                placeholder="name@company.com"
-                required
-              />
-            </div>
-            <div>
-              <label className="block mb-2 text-sm font-medium text-gray-900">
-                Your password
-              </label>
-              <input
-                type="password"
-                name="password"
-                id="password"
-                placeholder="••••••••"
-                className="border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-2 focus:ring-fuchsia-50 focus:border-fuchsia-300 block w-full p-2.5"
-                required
-              />
-            </div>
-            <div className="flex items-start">
-              <div className="flex items-center h-5">
-                <input
-                  id="remember"
-                  aria-describedby="remember"
-                  name="remember"
-                  type="checkbox"
-                  className="w-5 h-5  rounded border-gray-300 focus:outline-none focus:ring-0 checked:bg-dark-900"
-                  required
-                />
-              </div>
-            </div>
-            <button
-              type="submit"
-              className="py-3 px-5 w-full text-base font-medium text-center text-white bg-gradient-to-br from-pink-500 to-voilet-500 hover:scale-[1.02] shadow-md shadow-gray-300 transition-transform rounded-lg sm:w-auto"
-            >
-              Login to your account
-            </button>
-          </form>
+    <Formik
+      initialValues={values}
+      validationSchema={LoginSchema}
+      onSubmit={onSubmit}
+    >
+       {(formik)=>(
+        <div className="flex bg-gray-200 flex-col justify-center items-center px-6 pt-8 mx-auto md:h-screen pt:mt-0">
+        <Link
+          to="/"
+          className="flex justify-center items-center mb-8 text-2xl font-semibold lg:mb-10"
+        >
+          <span className="self-center text-2xl font-bold whitespace-nowrap">
+            Merkob.ma
+          </span>
+        </Link>
+        {/* <!-- Card --> */}
+        <div className="p-10 w-full max-w-lg bg-white rounded-2xl shadow-xl shadow-gray-300">
+          <div className="space-y-8">
+            <h2 className="text-2xl font-bold text-gray-900">
+              Sign in to platform
+            </h2>
+            <Form className="mt-8 space-y-6">
+              <TextField name="email" type="text" label="Email" placeholder="name@gmail.com" />
+              <TextField name="password" label="Password" type="text" placeholder="••••••••" />
+              <button className="sm:inline-flex text-white  font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-3 shadow-md shadow-gray-300 bg-emerald-500 bg-gradient-to-r from-[#5651e5] to-[#709dff] hover:scale-[1.02] transition-transform">
+                Login to your account
+              </button>
+            </Form>
+          </div>
         </div>
       </div>
-    </div>
+       )}
+    </Formik>
   );
 };
 

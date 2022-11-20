@@ -16,39 +16,42 @@ import CompanyContextProvider from "./Context/Company";
 import BusContextProvider from "./Context/Car";
 import ReservationContextProvider from "./Context/Reservation";
 import ClientContextProvider from "./Context/Clients";
+import AuthContextProvider from "./Context/Auth";
 
 function App() {
   return (
     <>
       <Router>
-        <TripContextProvider>
-          <CompanyContextProvider>
-            <BusContextProvider>
-              <ReservationContextProvider>
-                <ClientContextProvider>
-                  <div className="App">
-                    <Navbar />
-                    <Routes>
-                      <Route path="/login" element={<Login />} />
-                      <Route path={"/"} element={<Dashboard />} />
-                      <Route path={"/trips"} element={<Trips />} />
-                      <Route path={"/clients"} element={<Clients />} />
-                      <Route
-                        path={"/reservations"}
-                        element={<Reservations />}
-                      />
-                      <Route path={"/buses"} element={<Buses />} />
-                      <Route path={"/companies"} element={<Companies />} />
-                      <Route path={"*"} element={<NotFound />} />
-                    </Routes>
-                    <Sidebar />
-                  </div>
-                  <ToastContainer />
-                </ClientContextProvider>
-              </ReservationContextProvider>
-            </BusContextProvider>
-          </CompanyContextProvider>
-        </TripContextProvider>
+        <AuthContextProvider>
+          <TripContextProvider>
+            <CompanyContextProvider>
+              <BusContextProvider>
+                <ReservationContextProvider>
+                  <ClientContextProvider>
+                    <div className="App">
+                      <Navbar />
+                      <Routes>
+                        <Route path="/login" element={<Login />} />
+                        <Route path={"/"} element={<Dashboard />} />
+                        <Route path={"/trips"} element={<Trips />} />
+                        <Route path={"/clients"} element={<Clients />} />
+                        <Route
+                          path={"/reservations"}
+                          element={<Reservations />}
+                        />
+                        <Route path={"/buses"} element={<Buses />} />
+                        <Route path={"/companies"} element={<Companies />} />
+                        <Route path={"*"} element={<NotFound />} />
+                      </Routes>
+                      <Sidebar />
+                    </div>
+                    <ToastContainer />
+                  </ClientContextProvider>
+                </ReservationContextProvider>
+              </BusContextProvider>
+            </CompanyContextProvider>
+          </TripContextProvider>
+        </AuthContextProvider>
       </Router>
     </>
   );

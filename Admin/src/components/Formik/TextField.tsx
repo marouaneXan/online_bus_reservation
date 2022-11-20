@@ -3,9 +3,10 @@ import { FieldConfig, useField, ErrorMessage } from "formik";
 
 interface Prop  {
   label?: string;
-  id?:string
-  name:string
-  type:string
+  value?: string;
+  name: string;
+  type: string;
+  placeholder?: string;
 }
 
 const TextField = (props: Prop) => {
