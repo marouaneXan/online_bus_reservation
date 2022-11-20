@@ -26,7 +26,7 @@ const Navbar = () => {
   };
   const logout=()=>{
     localStorage.clear()
-    navigate('/register')
+    navigate('/login')
   }
 
   return (
@@ -74,7 +74,7 @@ const Navbar = () => {
               >
                 reservations
               </Link>
-              <button onClick={()=> logout()} className="hidden md:flex lg:flex font-bold uppercase text-sm px-6 py-3 mr-1 mb-1">
+              <button onClick={()=> {logout()}} className="hidden md:flex lg:flex font-bold uppercase text-sm px-6 py-3 mr-1 mb-1">
                 Log out
               </button>
             </div>
