@@ -22,6 +22,7 @@
   <a href="#credits">Credits</a> •
   <a href="#license">License</a> •
   <a href="#resources">Resources</a> •
+  <a href="#resources">Api</a> 
 </p>
 
 ![Class_Diagram](https://user-images.githubusercontent.com/93975817/196899186-b0cfad35-8365-4e32-acd0-345117e0d3f4.png)
@@ -31,6 +32,7 @@
 To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
 
 - Run the client side:
+
 ```bash
 # Clone this repository
 $ git clone https://github.com/marouaneXan/online_bus_reservation.git
@@ -44,7 +46,9 @@ $ npm install
 # Run the client side
 $ npm run dev
 ```
+
 - Run the backoffice side:
+
 ```bash
 
 # Go into the folder admin
@@ -56,7 +60,9 @@ $ npm install
 # Run the client side
 $ npm run dev
 ```
+
 - Run the backend of the application:
+
 ```bash
 
 # Go into the folder Api
@@ -90,6 +96,42 @@ MIT
 2- Link for conception uml (Class diagram): https://lucid.app/lucidchart/35108162-5e59-4a7d-9114-5fe2fe3011b8/edit?viewport_loc=-317%2C-9917%2C2985%2C1309%2C0_0&invitationId=inv_b9fea858-c5f4-4294-a095-2fb1f5d9f066#
 
 ---
+
+## Api
+
+1- Auth
+- http://localhost:5000/api/v1/clientAuth/register
+- http://localhost:5000/api/v1/clientAuth/login
+- http://localhost:5000/api/v1/adminAuth/register
+- http://localhost:5000/api/v1/adminAuth/login
+
+  2- Trip
+- http://localhost:5000/api/v1/trips ====> method: GET, @desc: get all trips
+- http://localhost:5000/api/v1/trips/:bus_id/:company_id ====> method:POST, @desc: create trip
+- http://localhost:5000/api/v1/trips/:trip_id ====> method:DELETE, @desc: delete trip
+- http://localhost:5000/api/v1/trips/:trip_id ====> method:PUT, @desc: update trip
+
+  3- Bus
+- http://localhost:5000/api/v1/cars ====> method: GET, @desc: get all buses
+- http://localhost:5000/api/v1/cars ====> method: POST, @desc: create bus
+- http://localhost:5000/api/v1/cars/:car_id ====> method: PUT, @desc: update bus
+- http://localhost:5000/api/v1/cars/:car_id ====> method: DELETE, @desc: delete bus
+
+  4- Company
+- http://localhost:5000/api/v1/company ====> method: GET, @desc: get all companies
+- http://localhost:5000/api/v1/company ====> method: POST, @desc: create company
+- http://localhost:5000/api/v1/company/:company_id ====> method: PUT, @desc: update company
+- http://localhost:5000/api/v1/company/:company_id ====> method: DELETE, @desc: delete company
+
+  5- Client
+- http://localhost:5000/api/v1/clients ====> method: GET, @desc: get all clients
+
+  3- Reservation
+- http://localhost:5000/api/v1/reservations ====> method: GET, @desc: get all reservations
+- http://localhost:5000/api/v1/reservations/:client_id ====> method: GET, @desc: get all    reservations for one client
+- http://localhost:5000/api/v1/reservations/:trip_id/:client_id ====> method: POST, @desc: make reservation
+- http://localhost:5000/api/v1/reservations/:reservation_id/:trip_id/:client_id ====> method: DELETE, @desc: cancel reservation
+- http://localhost:5000/api/v1/reservations/statistics ====> method: GET, @desc: get all statistics
 
 > GitHub [@marouaneXan](https://github.com/marouaneXan) &nbsp;&middot;&nbsp;
 > Instagram [@itsmemarouane](https://www.instagram.com/itsmemarouane)
