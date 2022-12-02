@@ -90,7 +90,6 @@ const Add = (props: Prop) => {
                       <TextField
                         label="Departure date"
                         name="departure_date"
-                        id="Departure date"
                         type="date"
                       />
                     </div>
@@ -98,7 +97,6 @@ const Add = (props: Prop) => {
                       <TextField
                         label="Departure time"
                         name="departure_time"
-                        id="Departure time"
                         type="time"
                       />
                     </div>
@@ -106,7 +104,6 @@ const Add = (props: Prop) => {
                       <TextField
                         label="Arrival time"
                         name="arrival_time"
-                        id="Arrival time"
                         type="time"
                       />
                     </div>
@@ -160,15 +157,13 @@ const Add = (props: Prop) => {
                       <TextField
                         label="Price"
                         name="price"
-                        id="Price"
                         type="number"
                       />
                     </div>
                     <div className="col-span-6 sm:col-span-3">
                       <TextField
                         label="Distance"
-                        name="distance"
-                        id="Distance"
+                        name="distance" 
                         type="number"
                       />
                     </div>
