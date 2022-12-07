@@ -4,11 +4,6 @@ export interface Bus {
   nbr_places: Number;
   car_image: string;
 }
-// interface BreakPoint {
-//   _id:string,
-//   arrival_time: string;
-//   city_name: string;
-// }
 export interface Company {
   _id:string;
   company_name: string;
